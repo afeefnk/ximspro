@@ -2,13 +2,13 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 
-import AdminLogin from "./pages/Admin Login/AdminLogin";
-import Password from "./pages/Forgot Password/Password";
+import AdminLogin from "./pages/AdminLogin/AdminLogin";
+import Password from "./pages/ForgotPassword/Password";
 
 import Layout from "./pages/Layout";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Companies from "./pages/Companies/Companies";    
-import AddCompany from "./pages/AddCompany/addCompany";  
+import AddCompany from "./pages/AddCompany/AddCompany";  
 
 const App = () => {
   return (
