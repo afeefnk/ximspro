@@ -200,7 +200,7 @@ const AddCompany = () => {
           className="object-cover"
         />
       </div>
-    </div>
+    </div>  
   );
 };
 

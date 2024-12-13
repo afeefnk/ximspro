@@ -138,6 +138,18 @@ const Companies = () => {
     URL.revokeObjectURL(url); // Clean up the URL
   };
 
+  const handleView = () => {
+    alert("Clicked View");
+  };
+
+  const handleEdit = () => {
+    alert("Clicked Edit");
+  };
+
+  const handleDelete = () => {
+    alert("Clicked Delete")
+  }
+
   return (
     <div>
       <div className="border rounded-lg main">
@@ -224,6 +236,7 @@ const Companies = () => {
                       src={view}
                       alt="View"
                       className="cursor-pointer duration-300 hover:scale-105"
+                      onClick={handleView}
                     />
                   </td>
                   <td className="justify-items-center companiesdata">
@@ -231,6 +244,7 @@ const Companies = () => {
                       src={edit}
                       alt="Edit"
                       className="cursor-pointer duration-300 hover:scale-105"
+                      onClick={handleEdit}
                     />
                   </td>
                   <td className="justify-items-center companiesdata">
@@ -256,6 +270,7 @@ const Companies = () => {
                       src={deletes}
                       alt="Delete"
                       className="cursor-pointer duration-300 hover:scale-105"
+                      onClick={handleDelete}
                     />
                   </td>
                   <td className="justify-items-center companiesdata">
