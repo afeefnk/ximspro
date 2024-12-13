@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IoEye, IoEyeOff } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast";
 import axios from 'axios';
 import { BASE_URL } from "../../Utils/Config";
@@ -132,12 +132,11 @@ const AdminLogin = () => {
           </div>
 
           <div className="flex justify-between text-sm text-[#25282B]">
-            <a
-              href="/forgotpassword"
+            <Link to="/forgotpassword"
               className="hover:underline forgotpassword"
             >
               Forgot password?
-            </a>
+            </Link>
             <a href="" className="hover:underline adminlogin">
               Admin Login
             </a>
