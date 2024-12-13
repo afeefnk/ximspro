@@ -8,7 +8,7 @@ import Password from "./pages/Forgot Password/Password";
 import Layout from "./pages/Layout";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Companies from "./pages/Companies/Companies";    
-import AddCompany from "./pages/Add Company/addCompany";  
+import AddCompany from "./pages/AddCompany/addCompany";  
 
 const App = () => {
   return (
