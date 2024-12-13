@@ -47,7 +47,7 @@ const AddCompany = () => {
             <h3 className="text-[#677487] head">Company Information</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block" htmlFor="companyName">
+                <label  htmlFor="companyName">
                   Company Name *
                 </label>
                 <input
@@ -58,7 +58,7 @@ const AddCompany = () => {
                 />
               </div>
               <div>
-                <label className="block" htmlFor="adminName">
+                <label  htmlFor="adminName">
                   Company Admin Name *
                 </label>
                 <input
@@ -69,7 +69,7 @@ const AddCompany = () => {
                 />
               </div>
               <div>
-                <label className="block text-sm" htmlFor="email">
+                <label htmlFor="email">
                   Email Address *
                 </label>
                 <input
@@ -80,7 +80,7 @@ const AddCompany = () => {
                 />
               </div>
               <div>
-                <label className="block" htmlFor="phone1">
+                <label  htmlFor="phone1">
                   Phone No 1
                 </label>
                 <input
@@ -90,7 +90,7 @@ const AddCompany = () => {
                 />
               </div>
               <div>
-                <label className="block" htmlFor="phone2">
+                <label htmlFor="phone2">
                   Phone No 2
                 </label>
                 <input
@@ -100,7 +100,7 @@ const AddCompany = () => {
                 />
               </div>
               <div>
-                <label className="block" htmlFor="logo">
+                <label htmlFor="logo">
                   Company Logo
                 </label>
                 <input
@@ -111,7 +111,7 @@ const AddCompany = () => {
                 />
                 <label
                   htmlFor="logo"
-                  className="flex items-center justify-between border border-[#E9E9E9] text-sm cursor-pointer rounded px-3 w-1/2"
+                  className="flex items-center justify-between border border-[#E9E9E9] text-sm cursor-pointer rounded px-3 w-1/2 h-11"
                 >
                   <p
                     className={`filename ${
@@ -133,7 +133,7 @@ const AddCompany = () => {
             <h3 className="text-[#677487]">Credentials</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
               <div> 
-                <label className="block" htmlFor="userId">
+                <label htmlFor="userId">
                   User ID
                 </label>
                 <input
@@ -143,7 +143,7 @@ const AddCompany = () => {
                 />
               </div>
               <div>
-                <label className="block" htmlFor="password">
+                <label htmlFor="password">
                   Password
                 </label>
                 <input

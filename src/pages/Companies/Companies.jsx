@@ -108,9 +108,8 @@ const Companies = () => {
   };
 
   const handleAddCompany = () => {
-    navigate("/admin/addcompany")
-  }
-
+    navigate("/admin/addcompany");
+  };
 
   const handleExportToCSV = () => {
     const csvHeaders = ["ID", "Name", "Admin Name", "Email", "Phone", "Status"];
@@ -139,9 +138,6 @@ const Companies = () => {
     URL.revokeObjectURL(url); // Clean up the URL
   };
 
-
-  
-
   return (
     <div>
       <div className="border rounded-lg main">
@@ -161,11 +157,17 @@ const Companies = () => {
               className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
             />
           </div>
-          <button className="bg-[#677487] rounded duration-200 hover:bg-[#4f5763] text-white topbtn" onClick={handleExportToCSV}>
+          <button
+            className="bg-[#677487] rounded duration-200 hover:bg-[#4f5763] text-white topbtn"
+            onClick={handleExportToCSV}
+          >
             <img src={csvicon} alt="Export" className="w-5 h-5" />
             Export to CSV
           </button>
-          <button className="bg-[#1BC194] duration-200 text-white rounded hover:bg-[#21ab86] topbtn" onClick={handleAddCompany}>
+          <button
+            className="bg-[#1BC194] duration-200 text-white rounded hover:bg-[#21ab86] topbtn"
+            onClick={handleAddCompany}
+          >
             <img src={addicon} alt="Add" className="w-4 h-4" />
             Add New Company
           </button>
@@ -177,7 +179,7 @@ const Companies = () => {
             <thead className="border-t border-b border-[#E9E9E9] listheads">
               <tr className="bg-[#F7F7F7] border-b">
                 <th className=" companiesthead">Sl</th>
-                <th className="text-start p-0 companiesthead">Logo</th>
+                <th className="text-start companiestheadlogo">Logo</th>
                 <th className="text-start companiesthead">Company Name</th>
                 <th className="text-start companiesthead">Admin Name</th>
                 <th className="text-start companiesthead">Email</th>
@@ -192,41 +194,46 @@ const Companies = () => {
             </thead>
             <tbody>
               {paginatedCompanies.map((company, index) => (
-                <tr key={company.id} className="hover:bg-gray-100 cursor-pointer">
-                  <td>{index + 1 + indexOfFirstItem}</td>
-                  <td className="p-0">
+                <tr
+                  key={company.id}
+                  className="hover:bg-gray-100 cursor-pointer"
+                >
+                  <td className="companiesdata">
+                    {String(index + 1 + indexOfFirstItem).padStart(2, "0")}
+                  </td>
+                  <td>
                     <img src={company.logo} alt="Logo" />
                   </td>
-                  <td>{company.name}</td>
-                  <td>{company.adminName}</td>
-                  <td>{company.email}</td>
-                  <td>{company.phone}</td>
-                  <td className="w-[90px]">
+                  <td className=" companiesdata">{company.name}</td>
+                  <td className=" companiesdata">{company.adminName}</td>
+                  <td className=" companiesdata">{company.email}</td>
+                  <td className=" companiesdata">{company.phone}</td>
+                  <td className="companiesdata">
                     <span
-                      className={`p-1 rounded ${
+                      className={`p-1 rounded block ${
                         company.status === "Active"
                           ? "bg-green-100 text-[#24D6A5]"
-                          : "bg-violet-200 text-[#8239BC]"
+                          : "bg-violet-100 text-[#8239BC]"
                       }`}
                     >
                       {company.status}
                     </span>
                   </td>
-                  <td className="justify-items-center">
+                  <td className="justify-items-center companiesdata">
                     <img
                       src={view}
                       alt="View"
                       className="cursor-pointer duration-300 hover:scale-105"
                     />
                   </td>
-                  <td className="justify-items-center">
+                  <td className="justify-items-center companiesdata">
                     <img
                       src={edit}
                       alt="Edit"
                       className="cursor-pointer duration-300 hover:scale-105"
                     />
                   </td>
-                  <td className="justify-items-center">
+                  <td className="justify-items-center companiesdata">
                     <button
                       className={` items-center rounded-full p-1 toggle ${
                         company.status === "Blocked"
@@ -244,14 +251,14 @@ const Companies = () => {
                       />
                     </button>
                   </td>
-                  <td className="justify-items-center">
+                  <td className="justify-items-center companiesdata">
                     <img
                       src={deletes}
                       alt="Delete"
                       className="cursor-pointer duration-300 hover:scale-105"
                     />
                   </td>
-                  <td className="justify-items-center">
+                  <td className="justify-items-center companiesdata">
                     <img src={permission} alt="Permissions" />
                   </td>
                 </tr>
@@ -273,41 +280,41 @@ const Companies = () => {
           entries
         </p>
         <div className="flex">
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          className={`px-0 py-2 ${
-            currentPage === 1
-              ? "text-gray-300 cursor-not-allowed font-extrabold"
-              : "text-[#25282B] font-extrabold"
-          }`}
-        >
-          &lt;
-        </button>
-        {Array.from({ length: totalPages }).map((_, i) => (
           <button
-            key={i}
-            onClick={() => handlePageChange(i + 1)}
-            className={`px-2 py-2 ${
-              currentPage === i + 1
-                ? "border-[#1E4DA1] text-[#1E4DA1] underline pageno"
-                : "border-gray-300 text-[#898989] pageno"
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className={`px-0 py-2 ${
+              currentPage === 1
+                ? "text-gray-300 cursor-not-allowed font-extrabold"
+                : "text-[#25282B] font-extrabold"
             }`}
           >
-            {i + 1}
+            &lt;
           </button>
-        ))}
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className={`px-0 py-2 ${
-            currentPage === totalPages
-              ? "text-gray-300 cursor-not-allowed font-extrabold"
-              : "text-[#25282B] font-extrabold rounded-lg"
-          }`}
-        >
-          &gt;
-        </button>
+          {Array.from({ length: totalPages }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => handlePageChange(i + 1)}
+              className={`px-2 py-2 ${
+                currentPage === i + 1
+                  ? "border-[#1E4DA1] text-[#1E4DA1] underline pageno"
+                  : "border-gray-300 text-[#898989] pageno"
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className={`px-0 py-2 ${
+              currentPage === totalPages
+                ? "text-gray-300 cursor-not-allowed font-extrabold"
+                : "text-[#25282B] font-extrabold rounded-lg"
+            }`}
+          >
+            &gt;
+          </button>
         </div>
       </div>
     </div>
