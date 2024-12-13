@@ -80,7 +80,7 @@ const AdminLogin = () => {
         localStorage.removeItem('logoutTime');
         navigate('/');
     } else {
-        navigate('/dashboard');
+        navigate('/admin/dashboard');
     }
     }
   },[navigate])
