@@ -71,7 +71,7 @@ const AddCompany = () => {
     });
 
     try {
-      const response = awaitaxios.post(`${BASE_URL}/accounts/create-company/`, formData, {
+      const response = await axios.post(`${BASE_URL}/accounts/create-company/`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
