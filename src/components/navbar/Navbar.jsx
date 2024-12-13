@@ -35,12 +35,12 @@ const Navbar = () => {
       {/* Right Section */}
       <div className="flex items-center space-x-3 icons justify-end">
         {/* Notification Icon */}
-        <button aria-label="Notifications" className="icon-button duration-300 hover:scale-105">
+        <button aria-label="Notifications" className="icon-button">
           <img src={bell} alt="bell icon" />
         </button>
 
         {/* Settings Icon */}
-        <button aria-label="Settings" className="icon-button duration-300 hover:scale-105">
+        <button aria-label="Settings" className="icon-button">
           <img src={setting} alt="setting icon" />
         </button>
 

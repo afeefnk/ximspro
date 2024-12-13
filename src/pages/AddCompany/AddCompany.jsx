@@ -243,7 +243,7 @@ const AddCompany = () => {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="w-full md:w-auto bg-[#1E4DA1] text-white px-7 py-2 rounded duration-200 hover:bg-[#18366b]"
+              className="w-full md:w-auto bg-[#1E4DA1] text-white px-7 py-2 rounded duration-200 hover:bg-[#18366b] cursor-pointer"
             >
               Submit
             </button>
