@@ -16,7 +16,7 @@ const App = () => {
       <Routes>
         <Route path="/">
           <Route index element={<AdminLogin />} />
-          <Route path="forgotpassword" element={<Password />} />
+          <Route path="/forgotpassword" element={<Password />} />
         </Route>
 
         <Route path="/admin" element={<Layout/>}>
