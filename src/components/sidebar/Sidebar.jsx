@@ -15,6 +15,11 @@ const Sidebar = () => {
     navigate(path); 
   };
 
+  const handleLogout =()=> {
+    localStorage.removeItem("adminAuthToken");
+    navigate('/');
+  }
+
   return (
     <div className=" h-screen bg-[#F7F7F7] border-r border-[#E9E9E9] flex flex-col items-center transition-all duration-300 mainsidebar">
       {/* Logo */}
@@ -54,6 +59,9 @@ const Sidebar = () => {
           </div>
           <span className="mt-1 spans">Companies</span>
           </div>
+        </div>
+        <div className="transition-transform duration-300 hover:scale-105 cursor-pointer">
+          <p onClick={handleLogout}>Logout</p>
         </div>
       </nav>
     </div>
