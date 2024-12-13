@@ -133,7 +133,7 @@ const AdminLogin = () => {
 
           <div className="flex justify-between text-sm text-[#25282B]">
             <a
-              href="/forgotpassword"
+              href="forgotpassword"
               className="hover:underline forgotpassword"
             >
               Forgot password?
