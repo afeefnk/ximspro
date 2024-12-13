@@ -52,7 +52,7 @@ const AdminLogin = () => {
         localStorage.setItem('logoutTime', logoutTime);
   
         toast.success('Admin Login Success');
-        navigate('/dashboard');
+        navigate('/admin/dashboard');
       } else {
         throw new Error(response.data.error || 'Login failed');
       }
