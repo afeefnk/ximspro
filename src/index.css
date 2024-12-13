@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: 'Cabinet Grotesk Medium';
+    src: url('../src/assets/fonts/Cabinet Grotesk/CabinetGrotesk-Bold.woff') format('woff');
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Cabinet Grotesk Regular';
+    src: url('../src/assets/fonts/Cabinet Grotesk/CabinetGrotesk-Regular.woff') format('woff');
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Cabinet Grotesk Light';
+    src: url('../src/assets/fonts/Cabinet Grotesk/CabinetGrotesk-Light.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Cabinet Grotesk';
+    src: url('../src/assets/fonts/Cabinet Grotesk/CabinetGrotesk.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Switzer Light';
+    src: url('../src/assets/fonts/Switzer/Switzer-Light.otf') format('truetype');
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Switzer Regular';
+    src: url('../src/assets/fonts/Switzer/Switzer-Regular.otf') format('truetype');
+    font-style: normal;
+  }

@@ -1,0 +1,50 @@
+.navbar {
+    position: sticky;
+    z-index: 50;
+}
+
+ .span1 {
+    font-family: 'Switzer Regular';
+    font-weight: 500;
+    font-size: 16px;
+}
+
+ .span2 {
+    font-family: 'Switzer Regular';
+    font-size: 18px;
+}
+
+.icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%; 
+    border: 1px solid #E9E9E9;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.icons {
+    height: 46px;
+}
+
+/* Divider between settings and profile */
+.divider {
+    height: 32px; /* Adjust the height for alignment */
+    width: 1px;
+    background-color: #E9E9E9; /* Light gray */
+    margin: 0 8px; /* Add some space between elements */
+}
+
+.span3 {
+    font-family: 'Switzer Light';
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.span4 {
+    font-family: 'Switzer Light';
+    font-size: 12px;
+}

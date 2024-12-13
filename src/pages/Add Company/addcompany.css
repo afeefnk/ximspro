@@ -1,0 +1,61 @@
+h2 {
+    margin-bottom: 25px;
+    font-family: 'Switzer Regular';
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 27.77px;
+}
+
+h3 {
+    font-family: 'Switzer Regular';
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20.83px;
+    margin-bottom: 25px;
+}
+
+label {
+    font-family: 'Switzer Regular';
+    margin-bottom: 5px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #25282B;
+}
+
+input {
+    border-radius: 4px;
+    height: 44px;
+    padding: 0px 15px;
+}
+
+.submits {
+    font-family: 'Switzer Light';
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 8px 30px;
+}
+
+.form-checkbox span {
+    font-family: 'Switzer Light';
+    font-weight: 400; 
+    font-size: 14px;
+}
+
+/* Style for unchecked checkboxes */
+input[type="checkbox"]:not(:checked) + span {
+    color: #898989; /* Gray color when not checked */
+  }
+  
+  /* Style for checked checkboxes */
+  input[type="checkbox"]:checked + span {
+    color: #1E4DA1; /* Blue color when checked */
+  }
+  
+  .filename {
+    font-family: 'Switzer Light';
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+

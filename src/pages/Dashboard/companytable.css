@@ -1,0 +1,85 @@
+.regcompany {
+    font-family: 'Switzer Regular';
+    font-weight: 600;
+    font-size: 24px;
+    width: 40%;
+    line-height: 31.68px;
+}
+
+.theads {
+   position: sticky;
+   top: 0; 
+   z-index: 1; 
+   background-color: #FAFAFA; 
+   height: 30px;
+}
+
+.tableheading {
+   font-family: 'Switzer Regular';
+   font-weight: 400;
+   font-size: 14px;
+   line-height: 21px;
+   height: 21px;
+   padding: 0px 20px;
+}
+
+ .data {
+    padding: 15px 20px;
+    border-bottom: 1px solid #E9E9E9;
+    font-family: 'Switzer Regular';
+    font-size: 14px;
+    line-height: 21px;
+ }
+
+  .index {
+    font-weight: 400;
+    font-family: 'Switzer Light';
+    color: #677487;
+    font-size: 12px;
+    line-height: 18px;
+ }
+
+ .time {
+    font-family: 'Switzer Light';
+    font-weight: 400;
+    font-size: 12px;    
+    line-height: 18px;
+ }
+
+ .status {
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-family: 'Switzer Light';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+ }
+
+   .table-container {
+      max-height: 541px; 
+      overflow-y: auto; 
+      overflow-x: auto; 
+   }
+
+
+/* .dashtable {
+   border-collapse: collapse;
+   width: 100%;
+} */
+
+.table-container {
+   scrollbar-width: thin; 
+   scrollbar-color: #dbdbdb #f5f5f5; 
+ }
+ 
+
+
+
+
+
+
+
+ 
+
+
+ 

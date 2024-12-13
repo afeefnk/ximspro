@@ -1,0 +1,59 @@
+.recent-activities {
+  max-height: 655px; /* Fixed height for the scrolling container */
+  overflow-y: auto; /* Enable vertical scrolling for the table body */
+  overflow-x: auto; /* Enable horizontal scrolling for wide tables */
+}
+
+.recent-activities .recenthead {
+  position: sticky; /* Make the header sticky */
+  top: 0; /* Stick the header to the top */
+  z-index: 1; /* Ensure it stays above the scrolling content */
+  background-color: white; /* Match the background color */
+  padding: 20px 20px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.recent-activities .accards {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 12px;
+  margin: 0px 16px;
+  box-shadow: 1px 1px 50px rgba(105, 105, 105, 0.1);
+  height: 72px;
+}
+
+.activity-details p:first-child {
+  font-family: 'Switzer Regular';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.activity-details p:last-child {
+  font-family: 'Switzer Regular';
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18.48px;
+}
+
+.activity-details p:last-child span {
+  font-family: 'Switzer Light';
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.recent-activities {
+  scrollbar-width: thin; 
+  scrollbar-color: #dbdbdb #f5f5f5; 
+}
+
+.recenthead {
+  font-family: 'Switzer Regular';
+  font-weight: 600;
+  font-size: 24px;
+}
+
+

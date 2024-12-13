@@ -1,0 +1,118 @@
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+h1 {
+    padding: 20px;
+    font-family: 'Switzer Regular';
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 27.77px;
+}
+
+input::placeholder {
+    font-family: 'Switzer Light';
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.topbtn {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    padding: 10px 12px;
+    gap: 8px;
+}
+
+
+.overflow-x-auto {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table-auto {
+    width: 100%;
+    min-width: 100%;
+    border-collapse: collapse;
+}
+
+tr {
+    height: 52px;    
+}
+
+th {
+    font-family: 'Switzer Light';
+    font-weight: 400;
+    color: #677487;
+    font-size: 12px;
+    line-height: 13.88px;
+    
+}
+
+td {
+    font-family: 'Switzer Light';
+    font-size: 400;
+    font-size: 12px;
+    color: #677487;
+    
+}
+
+.c_logo {
+    padding: 0;
+}
+
+.toggle {
+    width: 27px;
+    height: 15px;
+}
+
+.bar {
+    width: 11px;
+    height: 11px;
+}
+
+.translate-x-2 {
+    transform: translateX(0.6rem);
+  }
+  
+  .translate-x-0 {
+    transform: translateX(-0.1rem);
+  }
+
+  .pagination {
+    font-family: 'Switzer Light';
+    font-size: 400;
+    line-height: 18.48px;
+    font-size: 14px;
+    color: rgb(138, 148, 162);
+  }
+  .pageno {
+    font-family: 'Switzer Regular';
+    font-weight: 500;
+    font-size: 13px;
+  }
+
+  .companieslist{
+    border-collapse: collapse;
+   width: 100%;
+  }
+
+  .listheads{
+    position: sticky;
+    top: 0; 
+    z-index: 1; 
+    background-color: #FAFAFA; 
+    height: 30px;
+  }
+
+  .companiesthead {
+    font-family: 'Switzer Regular';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    height: 21px;
+    padding: 0px 20px;
+  }
+
