@@ -15,10 +15,7 @@ const Sidebar = () => {
     navigate(path); 
   };
 
-  const handleLogout =()=> {
-    localStorage.removeItem("adminAuthToken");
-    navigate('/');
-  }
+
 
   return (
     <div className=" h-screen bg-[#F7F7F7] border-r border-[#E9E9E9] flex flex-col items-center transition-all duration-300 mainsidebar">
@@ -38,7 +35,7 @@ const Sidebar = () => {
             activeItem === "dashboard" ? "active" : ""
           }`}
         >
-          <div className="transition-transform duration-300 hover:scale-105">
+          <div>
           <div className="flex items-center justify-center">
             <img src={dashboard} alt="Dashboard icon" className="w-5 h-5 sideicon" />
           </div>
@@ -53,15 +50,12 @@ const Sidebar = () => {
             activeItem === "companies" ? "active" : ""
           }`}
         >
-           <div className="transition-transform duration-300 hover:scale-105">
+           <div>
           <div className="flex items-center justify-center">
             <img src={company} alt="Company icon" className="w-5 h-5 sideicon" />
           </div>
           <span className="mt-1 spans">Companies</span>
           </div>
-        </div>
-        <div className="transition-transform duration-300 hover:scale-105 cursor-pointer">
-          <p onClick={handleLogout}>Logout</p>
         </div>
       </nav>
     </div>

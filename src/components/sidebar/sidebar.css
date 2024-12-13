@@ -18,6 +18,10 @@
     /* position: relative; */
     padding: 8px 0; 
 }
+
+.mainsidebar .item:hover {
+    
+}
 .mainsidebar .item .sideicon {
     width: 16px;
     height: auto;

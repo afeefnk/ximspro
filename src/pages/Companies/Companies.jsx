@@ -213,8 +213,8 @@ const Companies = () => {
                   <td className="companiesdata">
                     {String(index + 1 + indexOfFirstItem).padStart(2, "0")}
                   </td>
-                  <td>
-                    <img src={company.logo} alt="Logo" />
+                  <td className="border-b border-[#E9E9E9]">
+                    <img src={company.logo} alt="Logo" className="w-auto h-9"/>
                   </td>
                   <td className=" companiesdata">{company.name}</td>
                   <td className=" companiesdata">{company.adminName}</td>
@@ -248,8 +248,9 @@ const Companies = () => {
                     />
                   </td>
                   <td className="justify-items-center companiesdata">
+                    <div className="justify-items-center">
                     <button
-                      className={` items-center rounded-full p-1 toggle ${
+                      className={` items-center rounded-full p-1 toggle  ${
                         company.status === "Blocked"
                           ? "bg-[#F36643]"
                           : "bg-[#1BC194]"
@@ -257,13 +258,14 @@ const Companies = () => {
                       onClick={() => toggleBlockStatus(company.id)}
                     >
                       <div
-                        className={`bg-white  rounded-full transform transition-transform bar ${
+                        className={`bg-white  rounded-full transform transition-transform bar  ${
                           company.status === "Blocked"
                             ? "translate-x-2"
                             : "translate-x-0"
                         }`}
                       />
                     </button>
+                    </div>
                   </td>
                   <td className="justify-items-center companiesdata">
                     <img
