@@ -233,7 +233,7 @@ const Dashboard = () => {
           {stats.map((stat) => (
             <div
               key={stat.id}
-              className="p-5 card space-y-7 duration-300 hover:scale-105"
+              className="p-5 card space-y-7 cursor-pointer"
             >
               <div
                 className={`${stat.bgColor} w-16 h-16 flex items-center justify-center rounded-xl`}

@@ -30,33 +30,6 @@ const Companies = () => {
       phone: "0502276924",
       status: "Blocked",
     },
-    {
-      id: 3,
-      logo: com_logo,
-      name: "International Development Company For Oil Equipment",
-      adminName: "Gisco Administrator",
-      email: "khalid.oumeijoud@global.psm.com",
-      phone: "0502276924",
-      status: "Active",
-    },
-    {
-      id: 4,
-      logo: com_logo,
-      name: "International Development Company For Oil Equipment",
-      adminName: "Gisco Administrator",
-      email: "khalid.oumeijoud@global.psm.com",
-      phone: "0502276924",
-      status: "Blocked",
-    },
-    {
-      id: 5,
-      logo: com_logo,
-      name: "International Development Company For Oil Equipment",
-      adminName: "Gisco Administrator",
-      email: "khalid.oumeijoud@global.psm.com",
-      phone: "0502276924",
-      status: "Active",
-    },
     // Additional companies...
   ]);
 
@@ -68,6 +41,23 @@ const Companies = () => {
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [companyToDelete, setCompanyToDelete] = useState(null);
+
+  const handleDeleteClick = (companyId) => {
+    setCompanyToDelete(companyId);
+    setShowDeleteModal(true);
+  };
+
+  const handleConfirmDelete = () => {
+    setCompanies(companies.filter((company) => company.id !== companyToDelete));
+    setShowDeleteModal(false);
+  };
+
+  const handleCancelDelete = () => {
+    setShowDeleteModal(false);
+  };
 
   // Filter companies based on search query
   const filteredCompanies = companies.filter(
@@ -146,15 +136,11 @@ const Companies = () => {
     alert("Clicked Edit");
   };
 
-  const handleDelete = () => {
-    alert("Clicked Delete")
-  }
-
   return (
     <div>
       <div className="border rounded-lg main">
         <h1 className="text-[#25282B]">Companies</h1>
-        <div className="flex gap-3 p-5">
+        <div className="flex gap-3 p-5 items-center">
           <div className="relative">
             <input
               type="text"
@@ -190,18 +176,18 @@ const Companies = () => {
           <table className="companieslist">
             <thead className="border-t border-b border-[#E9E9E9] listheads">
               <tr className="bg-[#F7F7F7] border-b">
-                <th className=" companiesthead">Sl</th>
+                <th className="companiesthead">Sl</th>
                 <th className="text-start companiestheadlogo">Logo</th>
                 <th className="text-start companiesthead">Company Name</th>
                 <th className="text-start companiesthead">Admin Name</th>
                 <th className="text-start companiesthead">Email</th>
                 <th className="text-start companiesthead">Phone</th>
                 <th className="text-start companiesthead">Status</th>
-                <th className=" companiesthead">View</th>
-                <th className=" companiesthead">Edit</th>
-                <th className=" companiesthead">Block</th>
-                <th className=" companiesthead">Delete</th>
-                <th className=" companiesthead">Permissions</th>
+                <th className="companiesthead">View</th>
+                <th className="companiesthead">Edit</th>
+                <th className="companiesthead">Block</th>
+                <th className="companiesthead">Delete</th>
+                <th className="companiesthead">Permissions</th>
               </tr>
             </thead>
             <tbody>
@@ -214,12 +200,12 @@ const Companies = () => {
                     {String(index + 1 + indexOfFirstItem).padStart(2, "0")}
                   </td>
                   <td className="border-b border-[#E9E9E9]">
-                    <img src={company.logo} alt="Logo" className="w-auto h-9"/>
+                    <img src={company.logo} alt="Logo" className="w-auto h-9" />
                   </td>
-                  <td className=" companiesdata">{company.name}</td>
-                  <td className=" companiesdata">{company.adminName}</td>
-                  <td className=" companiesdata">{company.email}</td>
-                  <td className=" companiesdata">{company.phone}</td>
+                  <td className="companiesdata">{company.name}</td>
+                  <td className="companiesdata">{company.adminName}</td>
+                  <td className="companiesdata">{company.email}</td>
+                  <td className="companiesdata">{company.phone}</td>
                   <td className="companiesdata">
                     <span
                       className={`p-1 rounded block ${
@@ -235,7 +221,7 @@ const Companies = () => {
                     <img
                       src={view}
                       alt="View"
-                      className="cursor-pointer duration-300 hover:scale-105"
+                      className="cursor-pointer w-5 h-auto"
                       onClick={handleView}
                     />
                   </td>
@@ -243,36 +229,36 @@ const Companies = () => {
                     <img
                       src={edit}
                       alt="Edit"
-                      className="cursor-pointer duration-300 hover:scale-105"
+                      className="cursor-pointer w-auto h-auto"
                       onClick={handleEdit}
                     />
                   </td>
                   <td className="justify-items-center companiesdata">
                     <div className="justify-items-center">
-                    <button
-                      className={` items-center rounded-full p-1 toggle  ${
-                        company.status === "Blocked"
-                          ? "bg-[#F36643]"
-                          : "bg-[#1BC194]"
-                      }`}
-                      onClick={() => toggleBlockStatus(company.id)}
-                    >
-                      <div
-                        className={`bg-white  rounded-full transform transition-transform bar  ${
+                      <button
+                        className={`items-center rounded-full p-1 toggle ${
                           company.status === "Blocked"
-                            ? "translate-x-2"
-                            : "translate-x-0"
+                            ? "bg-[#F36643]"
+                            : "bg-[#1BC194]"
                         }`}
-                      />
-                    </button>
+                        onClick={() => toggleBlockStatus(company.id)}
+                      >
+                        <div
+                          className={`bg-white rounded-full transform transition-transform bar ${
+                            company.status === "Blocked"
+                              ? "translate-x-2"
+                              : "translate-x-0"
+                          }`}
+                        />
+                      </button>
                     </div>
                   </td>
                   <td className="justify-items-center companiesdata">
                     <img
                       src={deletes}
                       alt="Delete"
-                      className="cursor-pointer duration-300 hover:scale-105"
-                      onClick={handleDelete}
+                      className="cursor-pointer w-auto h-auto"
+                      onClick={() => handleDeleteClick(company.id)}
                     />
                   </td>
                   <td className="justify-items-center companiesdata">
@@ -334,6 +320,23 @@ const Companies = () => {
           </button>
         </div>
       </div>
+
+      {/* Delete Confirmation Modal */}
+      {showDeleteModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>Are you sure you want to delete this company?</h3>
+            <div className="modal-actions">
+              <button className="cancel-btn" onClick={handleCancelDelete}>
+                Cancel
+              </button>
+              <button className="confirm-btn" onClick={handleConfirmDelete}>
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./navbar.css";
+import './navbar.css';
 import bell from '../../assets/images/Navbar/bell.svg';
 import setting from '../../assets/images/Navbar/settings.svg';
 import profile from '../../assets/images/Navbar/admin.png';
@@ -13,19 +13,18 @@ const Navbar = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const handleLogout =()=> {
-    localStorage.removeItem("adminAuthToken");
+  const handleLogout = () => {
+    localStorage.removeItem('adminAuthToken');
     navigate('/');
-  }
+  };
 
   const handleChangePassword = () => {
-    console.log("Change Password clicked");
+    console.log('Change Password clicked');
     // Navigate to change password screen or modal
   };
 
-
   return (
-    <div className="navbar h-24 border-b border-[#E9E9E9] flex items-center justify-between px-4 lg:px-5 shadow-sm relative">
+    <div className="navbar h-20 border-b border-[#E9E9E9] flex items-center justify-between px-4 lg:px-5 shadow-sm relative">
       {/* Left Section */}
       <div className="flex flex-col -space-y-1">
         <span className="text-[#677487] span1">Welcome To,</span>
@@ -64,26 +63,27 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Dropdown Menu */}
-          {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 bg-white border border-[#E9E9E9] shadow-md rounded-lg w-48">
-              <ul className="py-2">
-                <li
-                  className="px-4 py-2 hover:bg-[#f5f5f5] cursor-pointer text-sm text-[#25282B]"
-                  onClick={handleChangePassword}
-                >
-                  Change Password
-                </li>
-                <li
-                  className="px-4 py-2 hover:bg-[#f5f5f5] cursor-pointer text-sm text-[#25282B]"
-                  onClick={handleLogout}
-                >
-
-                  Logout
-                </li>
-              </ul>
-            </div>
-          )}
+          {/* Dropdown Menu with animation */}
+          <div
+            className={`dropdown-menu absolute right-0 mt-2 bg-white border border-[#E9E9E9] shadow-md rounded-lg w-48 ${
+              isDropdownOpen ? 'show' : ''
+            }`}
+          >
+            <ul className="py-2">
+              <li
+                className="px-4 py-2 hover:bg-[#f5f5f5] cursor-pointer text-sm text-[#25282B]"
+                onClick={handleChangePassword}
+              >
+                Change Password
+              </li>
+              <li
+                className="px-4 py-2 hover:bg-[#f5f5f5] cursor-pointer text-sm text-[#25282B]"
+                onClick={handleLogout}
+              >
+                Logout
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

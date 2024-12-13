@@ -19,9 +19,6 @@
     padding: 8px 0; 
 }
 
-.mainsidebar .item:hover {
-    
-}
 .mainsidebar .item .sideicon {
     width: 16px;
     height: auto;
@@ -32,6 +29,20 @@
     font-size: 14px;
     color: #677487;
     font-weight: 400;
+}
+
+
+/* Hover State */
+.mainsidebar .item:hover {
+    transition: border-right 0.3s ease-in-out;
+}
+
+.mainsidebar .item:hover .sideicon {
+    filter: brightness(0) saturate(100%) invert(19%) sepia(77%) saturate(2567%) hue-rotate(209deg) brightness(93%) contrast(96%);
+}
+
+.mainsidebar .item:hover .spans {
+    color: #1E4DA1;
 }
 
 /* Active State */

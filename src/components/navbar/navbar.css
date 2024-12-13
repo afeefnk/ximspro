@@ -48,3 +48,21 @@
     font-family: 'Switzer Light';
     font-size: 12px;
 }
+
+
+
+/* Dropdown menu initial state */
+.dropdown-menu {
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  }
+  
+  /* Dropdown menu when it is visible */
+  .dropdown-menu.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+  
