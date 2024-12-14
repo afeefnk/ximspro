@@ -9,6 +9,7 @@ import Layout from "./pages/Layout";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Companies from "./pages/Companies/Companies";    
 import AddCompany from "./pages/AddCompany/AddCompany" 
+import ViewCompany from "./pages/ViewCompany/ViewCompany";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="dashboard" element={<Dashboard/>}/>
           <Route path="companies" element={<Companies/>}/>
           <Route path="addcompany" element={<AddCompany/>}/>
+          <Route path="viewcompany" element={<ViewCompany/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

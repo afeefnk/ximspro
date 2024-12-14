@@ -78,7 +78,7 @@ const AddCompany = () => {
       });
 
       if (response.status === 200) {
-        toast.success("Company added successfully!");
+        alert("Company added successfully!");
         setFormDataState({
           company_name: "",
           company_admin_name: "",

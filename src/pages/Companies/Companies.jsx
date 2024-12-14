@@ -129,7 +129,7 @@ const Companies = () => {
   };
 
   const handleView = () => {
-    alert("Clicked View");
+    navigate('/admin/viewcompany');
   };
 
   const handleEdit = () => {
