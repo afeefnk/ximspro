@@ -23,10 +23,10 @@ const Dashboard = () => {
 
   const [targetValues, setTargetValues] = useState({
     totalCompanies: 27,
-    totalUsers: 150,
-    companyFiles: 103,
-    customerServices: 175,
-    activeCompanies: 24,
+    totalUsers: 0,
+    companyFiles: 0,
+    customerServices: 0,
+    activeCompanies: 0,
   });
 
   const [recentCompanies, setRecentCompanies] = useState([
