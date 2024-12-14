@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import view from "../../assets/images/Companies/view.svg";
 import edit from "../../assets/images/Companies/edit.svg";
 import deletes from "../../assets/images/Companies/delete.svg";
@@ -8,67 +9,70 @@ import searchIcon from "../../assets/images/Companies/search.svg";
 import csvicon from "../../assets/images/Companies/csv icon.svg";
 import addicon from "../../assets/images/Companies/add.svg";
 import "./companies.css";
+import { BASE_URL } from "../../Utils/Config";
 import { useNavigate } from "react-router-dom";
 
 const Companies = () => {
-  const [companies, setCompanies] = useState([
-    {
-      id: 1,
-      logo: com_logo,
-      name: "International Development Company For Oil Equipment",
-      adminName: "Gisco Administrator",
-      email: "khalid.oumeijoud@global.psm.com",
-      phone: "0502276924",
-      status: "Active",
-    },
-    {
-      id: 2,
-      logo: com_logo,
-      name: "International Development Company For Oil Equipment",
-      adminName: "Gisco Administrator",
-      email: "khalid.oumeijoud@global.psm.com",
-      phone: "0502276924",
-      status: "Blocked",
-    },
-    // Additional companies...
-  ]);
-
-  const navigate = useNavigate();
-
-  // State for search query
+  const [companies, setCompanies] = useState([]); // Start with an empty array
   const [searchQuery, setSearchQuery] = useState("");
-
-  // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
+  const navigate = useNavigate();
 
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [companyToDelete, setCompanyToDelete] = useState(null);
+  // Fetch companies data from the API when the component mounts
+  useEffect(() => {
+    axios
+      .get(`${BASE_URL}/accounts/companies/`)
+      .then((response) => {
+        setCompanies(response.data);
+        console.log("mmmmmmmmmmmmmmmmmmm", response.data);
+        // Assuming the API returns an array of companies
+      })
+      .catch((error) => {
+        console.error("Error fetching companies data:", error);
+      });
+  }, []); // Empty dependency array means this effect runs once when the component mounts
 
   const handleDeleteClick = (companyId) => {
-    setCompanyToDelete(companyId);
-    setShowDeleteModal(true);
-  };
-
-  const handleConfirmDelete = () => {
-    setCompanies(companies.filter((company) => company.id !== companyToDelete));
-    setShowDeleteModal(false);
-  };
-
-  const handleCancelDelete = () => {
-    setShowDeleteModal(false);
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this company?"
+    );
+    if (confirmDelete) {
+      // Make the API call to delete the company
+      axios
+        .delete(`${BASE_URL}/accounts/company/${companyId}/delete/`)
+        // Corrected URL to use companyId
+        .then((response) => {
+          // Handle the response (e.g., update state after deletion)
+          setCompanies(companies.filter((company) => company.id !== companyId)); // Remove the deleted company from the list
+          console.log("Company deleted successfully:", response.data);
+        })
+        .catch((error) => {
+          console.error("Error deleting company:", error);
+          // Handle error (e.g., show a notification or an alert)
+        });
+    }
   };
 
   // Filter companies based on search query
-  const filteredCompanies = companies.filter(
-    (company) =>
-      company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      company.adminName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      company.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      company.phone.includes(searchQuery)
-  );
+  // Filter companies based on search query
+  const filteredCompanies = companies.filter((company) => {
+    const nameMatch =
+      company.company_name &&
+      company.company_name.toLowerCase().includes(searchQuery.toLowerCase());
+    const adminNameMatch =
+      company.company_admin_name &&
+      company.company_admin_name
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
+    const emailMatch =
+      company.email_address &&
+      company.email_address.toLowerCase().includes(searchQuery.toLowerCase());
+    const phoneMatch =
+      company.phone_no1 && company.phone_no1.includes(searchQuery);
+    return nameMatch || adminNameMatch || emailMatch || phoneMatch;
+  });
 
-  // Calculate indices for the current page
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const paginatedCompanies = filteredCompanies.slice(
@@ -112,28 +116,26 @@ const Companies = () => {
       company.status,
     ]);
 
-    // Combine headers and rows into a single CSV string
     const csvContent = [
       csvHeaders.join(","),
       ...csvRows.map((row) => row.join(",")),
     ].join("\n");
 
-    // Create a blob and trigger download
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
     link.download = "companies.csv";
     link.click();
-    URL.revokeObjectURL(url); // Clean up the URL
+    URL.revokeObjectURL(url);
   };
 
   const handleView = () => {
-    navigate('/admin/viewcompany');
+    navigate(`/admin/viewcompany/${companyId}`);
   };
 
-  const handleEdit = () => {
-    alert("Clicked Edit");
+  const handleEdit = (companyId) => {
+    navigate(`/admin/editcompany/${companyId}`);
   };
 
   return (
@@ -171,7 +173,6 @@ const Companies = () => {
           </button>
         </div>
 
-        {/* Table */}
         <div className="overflow-x-auto w-full">
           <table className="companieslist">
             <thead className="border-t border-b border-[#E9E9E9] listheads">
@@ -200,12 +201,18 @@ const Companies = () => {
                     {String(index + 1 + indexOfFirstItem).padStart(2, "0")}
                   </td>
                   <td className="border-b border-[#E9E9E9]">
-                    <img src={company.logo} alt="Logo" className="w-auto h-9" />
+                    <img
+                      src={ company.company_logo}
+                      alt="Logo"
+                      className="w-24"
+                    />
                   </td>
-                  <td className="companiesdata">{company.name}</td>
-                  <td className="companiesdata">{company.adminName}</td>
-                  <td className="companiesdata">{company.email}</td>
-                  <td className="companiesdata">{company.phone}</td>
+                  <td className="companiesdata">{company.company_name}</td>
+                  <td className="companiesdata">
+                    {company.company_admin_name}
+                  </td>
+                  <td className="companiesdata">{company.email_address}</td>
+                  <td className="companiesdata">{company.phone_no1}</td>
                   <td className="companiesdata">
                     <span
                       className={`p-1 rounded block ${
@@ -222,7 +229,7 @@ const Companies = () => {
                       src={view}
                       alt="View"
                       className="cursor-pointer w-5 h-auto"
-                      onClick={handleView}
+                      onClick={() => handleView(company.id)}
                     />
                   </td>
                   <td className="justify-items-center companiesdata">
@@ -230,7 +237,7 @@ const Companies = () => {
                       src={edit}
                       alt="Edit"
                       className="cursor-pointer w-auto h-auto"
-                      onClick={handleEdit}
+                      onClick={() => handleEdit(company.id)} // Pass the company.id here
                     />
                   </td>
                   <td className="justify-items-center companiesdata">
@@ -271,7 +278,6 @@ const Companies = () => {
         </div>
       </div>
 
-      {/* Pagination */}
       <div className="flex justify-between items-center mt-1">
         <p className="pagination">
           Showing{" "}
@@ -322,7 +328,7 @@ const Companies = () => {
       </div>
 
       {/* Delete Confirmation Modal */}
-      {showDeleteModal && (
+      {/* {showDeleteModal && (
         <div className="modal-overlay">
           <div className="modal-content">
             <h3>Are you sure you want to delete this company?</h3>
@@ -336,7 +342,7 @@ const Companies = () => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

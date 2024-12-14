@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Companies from "./pages/Companies/Companies";    
 import AddCompany from "./pages/AddCompany/AddCompany" 
 import ViewCompany from "./pages/ViewCompany/ViewCompany";
+import EditCompany from "./pages/EditCompany/EditCompany";
 
 const App = () => {
   return (
@@ -24,7 +25,8 @@ const App = () => {
           <Route path="dashboard" element={<Dashboard/>}/>
           <Route path="companies" element={<Companies/>}/>
           <Route path="addcompany" element={<AddCompany/>}/>
-          <Route path="viewcompany" element={<ViewCompany/>}/>
+          <Route path="viewcompany/:companyId" element={<ViewCompany />} /> 
+          <Route path="editcompany/:companyId" element={<EditCompany />} />  {/* Added :companyId param */}
         </Route>
       </Routes>
     </BrowserRouter>

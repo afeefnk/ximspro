@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
-import "./addcompany.css";
+import { useParams, useNavigate } from "react-router-dom";
+import "./editcompany.css";
 import { BASE_URL } from "../../Utils/Config";
-import addcompany from "../../assets/images/Companies/addcompanyimg.svg";
 import uploadIcon from "../../assets/images/Companies/choose file.svg";
 
-const AddCompany = () => {
+const EditCompany = () => {
   const [fileName, setFileName] = useState("Choose File");
   const [formDataState, setFormDataState] = useState({
     company_name: "",
@@ -16,22 +16,21 @@ const AddCompany = () => {
     phone_no2: "",
     user_id: "",
     password: "",
-    permissions: [],
-    company_logo: null,
+    permissions: [], // Permissions should be an array
+    company_logo: "", // To handle logo URL or file
   });
   const [permissionList, setPermissionList] = useState([]);
+  const { companyId } = useParams();
+  const navigate = useNavigate();
 
   // Fetch permissions from backend
   const fetchPermission = async () => {
     try {
       const response = await axios.get(`${BASE_URL}/accounts/permissions/`);
       const permissions = response.data;
-
       if (Array.isArray(permissions)) {
-        setPermissionList(permissions); // Update permissionList state
-        console.log("Fetched Permissions:", permissions); // Log permissions to the console
+        setPermissionList(permissions);
       } else {
-        console.warn("Unexpected data format:", permissions);
         setPermissionList([]);
       }
     } catch (error) {
@@ -40,9 +39,37 @@ const AddCompany = () => {
     }
   };
 
+  // Fetch existing company data when the component mounts
+  const fetchCompanyData = async () => {
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/accounts/companies/${companyId}/`
+      );
+      const companyData = response.data[0]; // Assuming data is in an array
+      setFormDataState({
+        company_name: companyData.company_name || "",
+        company_admin_name: companyData.company_admin_name || "",
+        email_address: companyData.email_address || "",
+        phone_no1: companyData.phone_no1 || "",
+        phone_no2: companyData.phone_no2 || "",
+        user_id: companyData.user_id || "",
+        password: companyData.password || "",
+        permissions: companyData.permissions ? companyData.permissions : [], // Permissions as array
+        company_logo: companyData.company_logo || "", // Set logo URL
+      });
+
+      setFileName(companyData.company_logo ? "Logo uploaded" : "Choose File");
+      console.log("kkkkkkkkkkk", response.data);
+    } catch (error) {
+      console.error("Error fetching company data:", error);
+      toast.error("Failed to fetch company data.");
+    }
+  };
+
   useEffect(() => {
-    fetchPermission(); // Fetch permissions when the component mounts
-  }, []);
+    fetchPermission();
+    fetchCompanyData();
+  }, [companyId]);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -65,68 +92,52 @@ const AddCompany = () => {
     const { value, checked } = e.target;
     setFormDataState((prevState) => {
       const updatedPermissions = checked
-        ? [...prevState.permissions, value]
-        : prevState.permissions.filter((perm) => perm !== value);
+        ? [...prevState.permissions, value] // Add permission if checked
+        : prevState.permissions.filter((perm) => perm !== value); // Remove permission if unchecked
       return { ...prevState, permissions: updatedPermissions };
     });
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  // Prepare the form data using FormData
-  const formData = new FormData();
-  formData.append('company_name', formDataState.company_name);
-  formData.append('company_admin_name', formDataState.company_admin_name);
-  formData.append('email_address', formDataState.email_address);
-  formData.append('password', formDataState.password);
-  formData.append('phone_no1', formDataState.phone_no1);
-  formData.append('phone_no2', formDataState.phone_no2);
-  formData.append('user_id', formDataState.user_id);
-  
-  // Append permissions as a string (assuming you need to send them in this way)
-  formData.append('permissions', formDataState.permissions.join(","));
+    // Prepare the form data using FormData
+    const formData = new FormData();
+    formData.append("company_name", formDataState.company_name);
+    formData.append("company_admin_name", formDataState.company_admin_name);
+    formData.append("email_address", formDataState.email_address);
+    formData.append("password", formDataState.password);
+    formData.append("phone_no1", formDataState.phone_no1);
+    formData.append("phone_no2", formDataState.phone_no2);
+    formData.append("user_id", formDataState.user_id);
+    formData.append("permissions", formDataState.permissions.join(","));
+    console.log("companyData.permissions:", formDataState.permissions);
 
-  // Append the company logo file (if selected)
-  if (formDataState.company_logo) {
-    formData.append('company_logo', formDataState.company_logo);
-  }
-
-  console.log("FormData to be sent:", formData); // Debugging the form data
-
-  try {
-    const response = await axios.post(
-      `${BASE_URL}/accounts/create-company/`,
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",  // Automatically handled by FormData
-        },
-      }
-    );
-
-    if (response.status === 200 || response.status === 201) {
-      toast.success("Company added successfully!");
-      // Reset form state if necessary
-      setFormDataState({
-        company_name: "",
-        company_admin_name: "",
-        email_address: "",
-        phone_no1: "",
-        phone_no2: "",
-        user_id: "",
-        password: "",
-        permissions: [],
-        company_logo: null,
-      });
-      setFileName("Choose File");
+    // Append the company logo file (if selected)
+    if (formDataState.company_logo) {
+      formData.append("company_logo", formDataState.company_logo);
     }
-  } catch (error) {
-    console.error("Error adding company:", error);
-    toast.error("Failed to add company. Please try again.");
-  }
-};
 
+    try {
+      const response = await axios.put(
+        `${BASE_URL}/accounts/companies/update/${companyId}/`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data", // Automatically handled by FormData
+          },
+        }
+      );
+
+      if (response.status === 200 || response.status === 201) {
+        toast.success("Company updated successfully!");
+        navigate("/admin/companies"); // Redirect to company list or dashboard
+      }
+    } catch (error) {
+      console.error("Error updating company:", error);
+      toast.error("Failed to update company. Please try again.");
+    }
+  };
 
   const truncateFileName = (name, maxLength = 20) => {
     if (name.length <= maxLength) return name;
@@ -141,7 +152,7 @@ const AddCompany = () => {
 
       {/* Left Form Section */}
       <div className="w-full md:w-2/3 bg-white rounded-lg p-5">
-        <h2 className="text-[#25282B]">Add New Company</h2>
+        <h2 className="text-[#25282B]">Edit Company</h2>
 
         <form className="space-y-6" onSubmit={handleSubmit}>
           {/* Company Information */}
@@ -215,7 +226,8 @@ const AddCompany = () => {
                 >
                   <p
                     className={`filename ${
-                      fileName === "Choose File" || fileName === "No file chosen"
+                      fileName === "Choose File" ||
+                      fileName === "No file chosen"
                         ? "text-[#D2D2D2]"
                         : "text-black"
                     }`}
@@ -242,7 +254,7 @@ const AddCompany = () => {
                   className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
                 />
               </div>
-              <div>
+              {/* <div>
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
@@ -251,30 +263,38 @@ const AddCompany = () => {
                   onChange={handleInputChange}
                   className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
 
           {/* Permissions */}
           <div>
-            <h3 className="text-[#677487] mb-2">Permissions</h3>
-            <div className="flex flex-wrap gap-4">
-              {permissionList.map((permission) => (
-                <label
-                  key={permission.id}
-                  className="inline-flex items-center cursor-pointer"
-                >
-                  <input
-                    type="checkbox"
-                    className="form-checkbox border border-[#E9E9E9]"
-                    value={permission.id}
-                    onChange={handlePermissionChange}
-                  />
-                  <span className="ml-2">{permission.name}</span>
-                </label>
-              ))}
-            </div>
-          </div>
+  <h3 className="text-[#677487] mb-2">Permissions</h3>
+  <div className="flex flex-wrap gap-4">
+    {permissionList.map((permission) => {
+    
+      console.log("Permission: ", permission);
+      console.log("Selected Permissions: ", formDataState.permissions);
+      console.log("Is Permission Checked: ", formDataState.permissions);
+      console.log("Permission ID:", permission.id, "Permissions:", formDataState.permissions);
+
+      return (
+        <label key={permission.id} className="inline-flex items-center cursor-pointer">
+         <input
+  type="checkbox"
+  className="form-checkbox border border-[#E9E9E9]"
+  value={permission.id}
+  checked={formDataState.permissions.includes(permission.id.toString())}
+
+  onChange={handlePermissionChange}
+/>
+
+          <span className="ml-2">{permission.name}</span>
+        </label>
+      );
+    })}
+  </div>
+</div>
 
           {/* Submit Button */}
           <div className="flex justify-end">
@@ -282,22 +302,13 @@ const AddCompany = () => {
               type="submit"
               className="w-full md:w-auto bg-[#1E4DA1] text-white px-7 py-2 rounded duration-200 hover:bg-[#18366b] cursor-pointer"
             >
-              Submit
+              Update
             </button>
           </div>
         </form>
-      </div>
-
-      {/* Right Illustration Section */}
-      <div className="hidden md:flex md:w-1/3 justify-end">
-        <img
-          src={addcompany}
-          alt="Increase your business"
-          className="object-cover"
-        />
       </div>
     </div>
   );
 };
 
-export default AddCompany;
+export default EditCompany;
