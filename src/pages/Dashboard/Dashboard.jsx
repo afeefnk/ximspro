@@ -51,6 +51,55 @@ const Dashboard = () => {
       phone: "0502276924",
       status: "Active",
     },
+    {
+      name: "International Development Company For Oil Equipment",
+      date: "Dec 19, 2013",
+      time: "07:40 am",
+      phone: "0502276924",
+      status: "Blocked",
+    },
+    {
+      name: "International Development Company For Oil Equipment",
+      date: "Dec 19, 2013",
+      time: "07:40 am",
+      phone: "0502276924",
+      status: "Active",
+    },
+    {
+      name: "International Development Company For Oil Equipment",
+      date: "Dec 19, 2013",
+      time: "07:40 am",
+      phone: "0502276924",
+      status: "Blocked",
+    },
+    {
+      name: "International Development Company For Oil Equipment",
+      date: "Dec 19, 2013",
+      time: "07:40 am",
+      phone: "0502276924",
+      status: "Active",
+    },
+    {
+      name: "International Development Company For Oil Equipment",
+      date: "Dec 19, 2013",
+      time: "07:40 am",
+      phone: "0502276924",
+      status: "Blocked",
+    },
+    {
+      name: "International Development Company For Oil Equipment",
+      date: "Dec 19, 2013",
+      time: "07:40 am",
+      phone: "0502276924",
+      status: "Active",
+    },
+    {
+      name: "International Development Company For Oil Equipment",
+      date: "Dec 19, 2013",
+      time: "07:40 am",
+      phone: "0502276924",
+      status: "Blocked",
+    },
     // Other company entries...
   ]);
 
@@ -146,6 +195,48 @@ const Dashboard = () => {
   const activities = [
     {
       title: "PSM Thomassen Gulf (PTG) Uploaded Policy",
+      date: "Dec 19, 2013",
+      time: "07:40 am",
+      icon: activityIcon,
+    },
+    {
+      title: "Direct Shipping Uploaded Manual",
+      date: "Dec 19, 2013",
+      time: "07:40 am",
+      icon: activityIcon,
+    },
+    {
+      title: "Direct Shipping Uploaded Manual",
+      date: "Dec 19, 2013",
+      time: "07:40 am",
+      icon: activityIcon,
+    },
+    {
+      title: "Direct Shipping Uploaded Manual",
+      date: "Dec 19, 2013",
+      time: "07:40 am",
+      icon: activityIcon,
+    },
+    {
+      title: "Direct Shipping Uploaded Manual",
+      date: "Dec 19, 2013",
+      time: "07:40 am",
+      icon: activityIcon,
+    },
+    {
+      title: "Direct Shipping Uploaded Manual",
+      date: "Dec 19, 2013",
+      time: "07:40 am",
+      icon: activityIcon,
+    },
+    {
+      title: "Direct Shipping Uploaded Manual",
+      date: "Dec 19, 2013",
+      time: "07:40 am",
+      icon: activityIcon,
+    },
+    {
+      title: "Direct Shipping Uploaded Manual",
       date: "Dec 19, 2013",
       time: "07:40 am",
       icon: activityIcon,
