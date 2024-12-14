@@ -130,7 +130,7 @@ const Companies = () => {
     URL.revokeObjectURL(url);
   };
 
-  const handleView = () => {
+  const handleView = (companyId) => {
     navigate(`/admin/viewcompany/${companyId}`);
   };
 
