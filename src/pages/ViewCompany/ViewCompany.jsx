@@ -152,7 +152,7 @@ const ViewCompany = () => {
 
       {/* Left Form Section */}
       <div className="w-full md:w-2/3 bg-white rounded-lg p-5">
-        <h2 className="text-[#25282B]">Edit Company</h2>
+        <h2 className="text-[#25282B]">View Company</h2>
 
         <form className="space-y-6" onSubmit={handleSubmit}>
           {/* Company Information */}

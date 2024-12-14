@@ -3,6 +3,8 @@ import { motion } from "framer-motion"; // Importing motion from framer-motion
 import "./dashboard.css";
 import companies from "../../assets/images/Dashboard/companies.svg";
 import users from "../../assets/images/Dashboard/users.svg";
+import { BASE_URL } from "../../Utils/Config";
+import axios from "axios";
 import files from "../../assets/images/Dashboard/files.svg";
 import service from "../../assets/images/Dashboard/service.svg";
 import ac_company from "../../assets/images/Dashboard/ac-company.svg";
@@ -13,6 +15,9 @@ import CompanyTable from "./CompanyTable";
 import RecentActivities from "./RecentActivities";
 
 const Dashboard = () => {
+  
+
+  // State to hold the dynamic values for the dashboard
   const [values, setValues] = useState({
     totalCompanies: 0,
     totalUsers: 0,
@@ -21,14 +26,16 @@ const Dashboard = () => {
     activeCompanies: 0,
   });
 
+  // Target values that will be fetched from the backend
   const [targetValues, setTargetValues] = useState({
-    totalCompanies: 27,
+    totalCompanies: 0,
     totalUsers: 0,
     companyFiles: 0,
     customerServices: 0,
     activeCompanies: 0,
   });
 
+  // State to hold the recent companies for the table
   const [recentCompanies, setRecentCompanies] = useState([
     {
       name: "International Development Company For Oil Equipment",
@@ -44,77 +51,35 @@ const Dashboard = () => {
       phone: "0502276924",
       status: "Active",
     },
-    {
-      name: "International Development Company For Oil Equipment",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      phone: "0502276924",
-      status: "Blocked",
-    },
-    {
-      name: "International Development Company For Oil Equipment",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      phone: "0502276924",
-      status: "Active",
-    },
-    {
-      name: "International Development Company For Oil Equipment",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      phone: "0502276924",
-      status: "Blocked",
-    },
-    {
-      name: "International Development Company For Oil Equipment",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      phone: "0502276924",
-      status: "Active",
-    },
-    {
-      name: "International Development Company For Oil Equipment",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      phone: "0502276924",
-      status: "Blocked",
-    },
-    {
-      name: "International Development Company For Oil Equipment",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      phone: "0502276924",
-      status: "Active",
-    },
-    {
-      name: "International Development Company For Oil Equipment",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      phone: "0502276924",
-      status: "Active",
-    },
-    {
-      name: "International Development Company For Oil Equipment",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      phone: "0502276924",
-      status: "Active",
-    },
+    // Other company entries...
   ]);
 
+  // Fetch values from the backend API
   useEffect(() => {
-    // Simulate an API call to fetch dynamic values
     const fetchValues = async () => {
-      const response = await fetch("/api/dashboard-values");
-      const data = await response.json();
-      setTargetValues(data);
+      try {
+        const response = await fetch(`${BASE_URL}/accounts/companies/count/`);
+        const data = await response.json();
+
+        // Update the target values with the fetched data
+        if (data && data.count) {
+          setTargetValues((prevValues) => ({
+            ...prevValues,
+            totalCompanies: data.count, // Set the fetched company count
+          }));
+        } else {
+          console.error("Invalid data format or missing count");
+        }
+      } catch (error) {
+        console.error("Error fetching company count:", error);
+      }
     };
 
     fetchValues();
-  }, []);
+  }, []); // Only run once when the component mounts
 
+  // Animation function to count from 0 to the target value
   useEffect(() => {
-    // Animation function to count from 0 to the target value
     const countUp = (key, targetValue) => {
       let currentValue = 0;
       const interval = setInterval(() => {
@@ -130,12 +95,15 @@ const Dashboard = () => {
       }, 10); // Update interval (10ms)
     };
 
-    // Start counting for each stat
+    // Start counting for each stat when target values change
     Object.keys(targetValues).forEach((key) => {
-      countUp(key, targetValues[key]);
+      if (targetValues[key] > 0) {
+        countUp(key, targetValues[key]); // Start the animation if target value is > 0
+      }
     });
-  }, [targetValues]);
+  }, [targetValues]); // Re-run the animation when targetValues change
 
+  // Stats data for display
   const stats = [
     {
       id: 1,
@@ -174,6 +142,7 @@ const Dashboard = () => {
     },
   ];
 
+  // Recent activities data
   const activities = [
     {
       title: "PSM Thomassen Gulf (PTG) Uploaded Policy",
@@ -187,42 +156,7 @@ const Dashboard = () => {
       time: "07:40 am",
       icon: activityIcon,
     },
-    {
-      title: "Ash Developments Uploaded Policy",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      icon: activityIcon,
-    },
-    {
-      title: "Ash Developments Uploaded Policy",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      icon: activityIcon,
-    },
-    {
-      title: "Direct Shipping Uploaded Manual",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      icon: activityIcon,
-    },
-    {
-      title: "Direct Shipping Uploaded Manual",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      icon: activityIcon,
-    },
-    {
-      title: "Direct Shipping Uploaded Manual",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      icon: activityIcon,
-    },
-    {
-      title: "Direct Shipping Uploaded Manual",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      icon: activityIcon,
-    },
+    // Other activities...
   ];
 
   return (
@@ -231,10 +165,7 @@ const Dashboard = () => {
         <h1 className="mb-2 p-0 pb-3 text-[#25282B] mainheadss">Overall</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {stats.map((stat) => (
-            <div
-              key={stat.id}
-              className="p-5 card space-y-7 cursor-pointer"
-            >
+            <div key={stat.id} className="p-5 card space-y-7 cursor-pointer">
               <div
                 className={`${stat.bgColor} w-16 h-16 flex items-center justify-center rounded-xl`}
               >
@@ -251,12 +182,19 @@ const Dashboard = () => {
                 >
                   {values[stat.key]} {/* Display the animated value */}
                 </motion.p>
+
+                {/* Add this line to display the static value fetched from the API */}
+                {/* {stat.key === "totalCompanies" && (
+                  <p className="text-[#1E4DA1]">{targetValues.totalCompanies}</p>
+                )} */}
               </div>
             </div>
           ))}
         </div>
       </div>
-         <div className="flex flex-wrap gap-5 pb-4 mt-5">
+
+      {/* Display company table and recent activities */}
+      <div className="flex flex-wrap gap-5 pb-4 mt-5">
         <div className="flex">
           <CompanyTable companies={recentCompanies} />
         </div>
