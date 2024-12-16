@@ -4,6 +4,7 @@
     font-family: 'Switzer Regular';
     font-size: 24px;
     font-weight: 600;
+    line-height: 27.77px;
 }
 
 .card {
@@ -11,13 +12,27 @@
     height: 214px;
     box-shadow: 1px 1px 50px rgba(105, 105, 105, 0.1); 
     border-radius: 8px; 
+    padding: 20px 19px;
+    cursor: pointer;
 }
+
+.singlecard {
+    width: 72px;
+    height: 72px;
+    border: 14.16px;
+}
+
+.dashicons {
+    width: 28px;
+    height: 28px;
+}
+
 
 .subheads {
     font-family: 'Switzer Regular';
     font-weight: 500;  
     font-size: 18px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .ptexts {
@@ -25,6 +40,119 @@
     font-weight: 600;
     font-size: 32px;
     line-height: 42.24px;
+}
+
+.dashtoptext {
+    padding-top: 15px;
+    padding-bottom: 25px;
+}
+
+.toptext {
+    text-align: center;
+    font-family: 'Switzer Light';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.2px;
+    color: #677487;
+}
+
+.toptextspan {
+    font-family: 'Switzer Regular';
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20.83px;
+    color: #254396;
+}
+
+.cardslay {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+
+
+
+@media(min-width:432px){
+    .dashtoptext {
+        display: none;
+    }
+}
+
+@media(max-width:431px) {
+    .cards {
+        width: 396px;
+    }
+
+    .cardslay {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .cardslay .card:last-child {
+        grid-column: span 2; /* Make the last card span full width on mobile */
+    }
+
+    .singlecard {
+        width: 44px;
+        height: 44px;
+        border-radius: 6px;
+    }
+
+    .dashicons {
+        width: 24px;
+        height: 24px;
+    }
+
+    .card {
+        padding: 14px;
+        height: 157px;
+    }
+
+    .subheads {
+        font-size: 16px;
+        font-family: 'Switzer Regular';
+        font-weight: 500;
+        line-height: 21.12px;
+        margin-top: 15px;
+    }
+
+}
+
+@media(max-width:415px) {
+    .cards {
+        width: 383px;
+    }
+}
+
+@media (max-width: 400px) {
+    .cards {
+        width: 359px;
+    }
+    .card {
+        height: 153px;
+    }
+    .mainheadss {
+        font-size: 22px;
+    }
+    .subheads {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    .ptexts {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 376px) {
+    .cards {
+        width: 345px;
+    }
+}
+
+@media (max-width: 361px) {
+    .cards {
+        width: 328px;
+    }
 }
 
 

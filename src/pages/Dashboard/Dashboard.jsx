@@ -95,35 +95,35 @@ const Dashboard = () => {
       title: "Total Companies",
       key: "totalCompanies",
       bgColor: "bg-[#3575FF1A]",
-      icon: <img src={companies} alt="" />,
+      icon: <img src={companies} alt="" className="dashicons" />,
     },
     {
       id: 2,
       title: "Total Users",
       key: "totalUsers",
       bgColor: "bg-[#F366431A]",
-      icon: <img src={users} alt="" />,
+      icon: <img src={users} alt="" className="dashicons" />,
     },
     {
       id: 3,
       title: "Company Files",
       key: "companyFiles",
       bgColor: "bg-[#4524F81A]",
-      icon: <img src={files} alt="" />,
+      icon: <img src={files} alt="" className="dashicons" />,
     },
     {
       id: 4,
       title: "Customer Services",
       key: "customerServices",
       bgColor: "bg-[#24D6A51A]",
-      icon: <img src={service} alt="" />,
+      icon: <img src={service} alt="" className="dashicons" />,
     },
     {
       id: 5,
       title: "Active Companies",
       key: "activeCompanies",
       bgColor: "bg-[#FFBF351A]",
-      icon: <img src={ac_company} alt="" />,
+      icon: <img src={ac_company} alt="" className="dashicons" />,
     },
   ];
 
@@ -277,13 +277,16 @@ const Dashboard = () => {
 
   return (
     <>
+    <div className="dashtoptext">
+      <p className="toptext">Welcome Back, <br/><span className="toptextspan">Logged in as Super Admin</span></p>
+    </div>
       <div className="p-5 border border-[#E9E9E9] rounded-lg cards">
         <h1 className="mb-2 p-0 pb-3 text-[#25282B] mainheadss">Overall</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div className="cardslay">
           {stats.map((stat) => (
-            <div key={stat.id} className="p-5 card space-y-7 cursor-pointer">
+            <div key={stat.id} className="card lg:space-y-7">
               <div
-                className={`${stat.bgColor} w-16 h-16 flex items-center justify-center rounded-xl`}
+                className={`${stat.bgColor} flex items-center justify-center rounded-xl singlecard`}
               >
                 {stat.icon}
               </div>

@@ -3,7 +3,7 @@ import "./companytable.css";
 
 const CompanyTable = ({ companies }) => {
   return (
-    <div className="border border-[#E9E9E9] rounded-lg">
+    <div className="border border-[#E9E9E9] rounded-lg companytable">
       <h4 className="p-5 mb-3 text-[#25282B] regcompany">Recent Registered Companies</h4>
       <div className="table-container">
         <table className="min-w-full text-left dashtable">

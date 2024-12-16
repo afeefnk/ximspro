@@ -8,6 +8,7 @@ import uploadIcon from "../../assets/images/Companies/choose file.svg";
 
 const EditCompany = () => {
   const [fileName, setFileName] = useState("Choose File");
+  const [companyLogoPreview, setCompanyLogoPreview] = useState(null); // To preview the logo
   const [formDataState, setFormDataState] = useState({
     company_name: "",
     company_admin_name: "",
@@ -16,8 +17,8 @@ const EditCompany = () => {
     phone_no2: "",
     user_id: "",
     password: "",
-    permissions: [], // Permissions should be an array
-    company_logo: "", // To handle logo URL or file
+    permissions: [],
+    company_logo: "",
   });
   const [permissionList, setPermissionList] = useState([]);
   const { companyId } = useParams();
@@ -55,10 +56,17 @@ const EditCompany = () => {
         user_id: companyData.user_id || "",
         password: companyData.password || "",
         permissions: companyData.permissions ? companyData.permissions : [],
-        company_logo: companyData.company_logo || "", // Set logo URL
+        company_logo: companyData.company_logo || "",
       });
-
-      setFileName(companyData.company_logo ? "Logo uploaded" : "Choose File");
+  
+      // Update the file name to the actual logo file name or "Choose File" if no logo
+      if (companyData.company_logo) {
+        setFileName(truncateFileName(companyData.company_logo));
+        setCompanyLogoPreview(companyData.company_logo); // Set logo preview
+      } else {
+        setFileName("Choose File");
+        setCompanyLogoPreview(null); // Reset preview if no logo
+      }
     } catch (error) {
       console.error("Error fetching company data:", error);
       toast.error("Failed to fetch company data.");
@@ -80,11 +88,23 @@ const EditCompany = () => {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setFileName(file ? truncateFileName(file.name) : "No file chosen");
+    setFileName(file ? truncateFileName(file.name) : "No file chosen");  // Show the actual file name
     setFormDataState((prevState) => ({
       ...prevState,
       company_logo: file,
     }));
+
+
+    // Show the logo preview
+    const fileReader = new FileReader();
+    fileReader.onloadend = () => {
+      setCompanyLogoPreview(fileReader.result);
+    };
+    if (file) {
+      fileReader.readAsDataURL(file); // Convert image file to base64
+    } else {
+      setCompanyLogoPreview(null); // Reset if no file is selected
+    }
   };
 
   const handlePermissionChange = (e) => {
@@ -146,12 +166,17 @@ const EditCompany = () => {
   };
 
   const truncateFileName = (name, maxLength = 20) => {
-    if (name.length <= maxLength) return name;
-    const extension = name.split(".").pop();
-    const baseName = name.substring(0, maxLength - extension.length - 5);
+    // If name is a URL (starts with http:// or https://), extract the file name
+    const fileName = name.includes("://") ? name.split("/").pop() : name;
+  
+    // Truncate if necessary
+    if (fileName.length <= maxLength) return fileName;
+    const extension = fileName.split(".").pop();
+    const baseName = fileName.substring(0, maxLength - extension.length - 5);
     return `${baseName}...${extension}`;
   };
-
+  
+  
   return (
     <div className="flex flex-col md:flex-row w-full border rounded-lg min-h-screen gap-10">
       <Toaster position="top-center" reverseOrder={false} />
@@ -232,8 +257,7 @@ const EditCompany = () => {
                 >
                   <p
                     className={`filename ${
-                      fileName === "Choose File" ||
-                      fileName === "No file chosen"
+                      fileName === "Choose File" || fileName === "No file chosen"
                         ? "text-[#D2D2D2]"
                         : "text-black"
                     }`}
@@ -242,6 +266,17 @@ const EditCompany = () => {
                   </p>
                   <img src={uploadIcon} alt="Upload" />
                 </label>
+
+                {/* Display the logo preview below */}
+                {companyLogoPreview && (
+                  <div className="mt-4">
+                    <img
+                      src={companyLogoPreview}
+                      alt="Company Logo Preview"
+                      className="w-32 object-cover rounded-md"
+                    />
+                  </div>
+                )}
               </div>
             </div>
           </div>
