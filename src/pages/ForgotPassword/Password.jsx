@@ -30,7 +30,7 @@ const Password = () => {
           onClick={handleClose}
         />
 
-        <h2 className="mb-7 text-[#25282B] forgotpasshead">
+        <h2 className="text-[#25282B] forgotpasshead">
           Forgot Password
         </h2>
         </div>

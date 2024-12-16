@@ -4,7 +4,7 @@ import view from "../../assets/images/Companies/view.svg";
 import edit from "../../assets/images/Companies/edit.svg";
 import deletes from "../../assets/images/Companies/delete.svg";
 import permission from "../../assets/images/Companies/permission.svg";
-import com_logo from "../../assets/images/Companies/image 1.svg";
+// import com_logo from "../../assets/images/Companies/image 1.svg";
 import searchIcon from "../../assets/images/Companies/search.svg";
 import csvicon from "../../assets/images/Companies/csv icon.svg";
 import addicon from "../../assets/images/Companies/add.svg";
@@ -13,7 +13,7 @@ import { BASE_URL } from "../../Utils/Config";
 import { useNavigate } from "react-router-dom";
 
 const Companies = () => {
-  const [companies, setCompanies] = useState([]); // Start with an empty array
+  const [companies, setCompanies] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
@@ -25,37 +25,61 @@ const Companies = () => {
       .get(`${BASE_URL}/accounts/companies/`)
       .then((response) => {
         setCompanies(response.data);
-        console.log("mmmmmmmmmmmmmmmmmmm", response.data);
-        // Assuming the API returns an array of companies
+        console.log("response data", response.data);
       })
       .catch((error) => {
         console.error("Error fetching companies data:", error);
       });
-  }, []); // Empty dependency array means this effect runs once when the component mounts
+  }, []);
 
   const handleDeleteClick = (companyId) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this company?"
     );
     if (confirmDelete) {
-      // Make the API call to delete the company
       axios
         .delete(`${BASE_URL}/accounts/company/${companyId}/delete/`)
-        // Corrected URL to use companyId
         .then((response) => {
-          // Handle the response (e.g., update state after deletion)
-          setCompanies(companies.filter((company) => company.id !== companyId)); // Remove the deleted company from the list
+          setCompanies(companies.filter((company) => company.id !== companyId));
           console.log("Company deleted successfully:", response.data);
         })
         .catch((error) => {
           console.error("Error deleting company:", error);
-          // Handle error (e.g., show a notification or an alert)
         });
     }
   };
 
-  // Filter companies based on search query
-  // Filter companies based on search query
+  // Update company status using the API
+  const toggleBlockStatus = (companyId, currentStatus) => {
+    const newAction =
+      currentStatus.toLowerCase() === "active" ? "block" : "active";
+  
+    axios
+      .post(`${BASE_URL}/accounts/company/${companyId}/change-status/`, {
+        action: newAction,
+      })
+      .then(() => {
+        console.log("Status updated successfully");
+        // Fetch updated companies data after status change
+        axios
+          .get(`${BASE_URL}/accounts/companies/`)
+          .then((response) => {
+            setCompanies(response.data);
+            console.log("Companies data refreshed");
+          })
+          .catch((error) => {
+            console.error("Error refreshing companies data:", error);
+          });
+      })
+      .catch((error) => {
+        console.error(
+          "Error updating status:",
+          error.response?.data || error.message
+        );
+      });
+  };
+  
+
   const filteredCompanies = companies.filter((company) => {
     const nameMatch =
       company.company_name &&
@@ -88,19 +112,6 @@ const Companies = () => {
     }
   };
 
-  const toggleBlockStatus = (id) => {
-    setCompanies((prevCompanies) =>
-      prevCompanies.map((company) =>
-        company.id === id
-          ? {
-              ...company,
-              status: company.status === "Active" ? "Blocked" : "Active",
-            }
-          : company
-      )
-    );
-  };
-
   const handleAddCompany = () => {
     navigate("/admin/addcompany");
   };
@@ -109,10 +120,10 @@ const Companies = () => {
     const csvHeaders = ["ID", "Name", "Admin Name", "Email", "Phone", "Status"];
     const csvRows = paginatedCompanies.map((company) => [
       company.id,
-      company.name,
-      company.adminName,
-      company.email,
-      company.phone,
+      company.company_name,
+      company.company_admin_name,
+      company.email_address,
+      company.phone_no1,
       company.status,
     ]);
 
@@ -142,30 +153,30 @@ const Companies = () => {
     <div>
       <div className="border rounded-lg main">
         <h1 className="text-[#25282B]">Companies</h1>
-        <div className="flex gap-3 p-5 items-center">
+        <div className="flex gap-3 p-5 ">
           <div className="relative">
             <input
               type="text"
               placeholder="Search..."
-              className="border border-[#E9E9E9] rounded px-3 py-2 pr-10 focus:outline-none w-64"
+              className="border border-[#E9E9E9] rounded focus:outline-none search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
             <img
               src={searchIcon}
               alt="Search"
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2"
             />
           </div>
           <button
-            className="bg-[#677487] rounded duration-200 hover:bg-[#4f5763] text-white topbtn"
+            className="bg-[#677487] rounded duration-200 hover:bg-[#4f5763] text-white topbtn excsv gap-1"
             onClick={handleExportToCSV}
           >
             <img src={csvicon} alt="Export" className="w-5 h-5" />
             Export to CSV
           </button>
           <button
-            className="bg-[#1BC194] duration-200 text-white rounded hover:bg-[#21ab86] topbtn"
+            className="bg-[#1BC194] duration-200 text-white rounded hover:bg-[#21ab86] topbtn addcmpny gap-2"
             onClick={handleAddCompany}
           >
             <img src={addicon} alt="Add" className="w-4 h-4" />
@@ -197,14 +208,14 @@ const Companies = () => {
                   key={company.id}
                   className="hover:bg-gray-100 cursor-pointer"
                 >
-                  <td className="companiesdata">
+                  <td className="companiesdatasl">
                     {String(index + 1 + indexOfFirstItem).padStart(2, "0")}
                   </td>
                   <td className="border-b border-[#E9E9E9]">
                     <img
-                      src={ company.company_logo}
+                      src={company.company_logo}
                       alt="Logo"
-                      className="w-24"
+                      className="w-28"
                     />
                   </td>
                   <td className="companiesdata">{company.company_name}</td>
@@ -216,14 +227,16 @@ const Companies = () => {
                   <td className="companiesdata">
                     <span
                       className={`p-1 rounded block ${
-                        company.status === "Active"
+                        company.status.toLowerCase() === "active"
                           ? "bg-green-100 text-[#24D6A5]"
                           : "bg-violet-100 text-[#8239BC]"
                       }`}
                     >
-                      {company.status}
+                      {company.status.charAt(0).toUpperCase() +
+                        company.status.slice(1).toLowerCase()}
                     </span>
                   </td>
+
                   <td className="justify-items-center companiesdata">
                     <img
                       src={view}
@@ -237,22 +250,24 @@ const Companies = () => {
                       src={edit}
                       alt="Edit"
                       className="cursor-pointer w-auto h-auto"
-                      onClick={() => handleEdit(company.id)} // Pass the company.id here
+                      onClick={() => handleEdit(company.id)}
                     />
                   </td>
                   <td className="justify-items-center companiesdata">
                     <div className="justify-items-center">
                       <button
                         className={`items-center rounded-full p-1 toggle ${
-                          company.status === "Blocked"
+                          company.status.toLowerCase() === "blocked"
                             ? "bg-[#F36643]"
                             : "bg-[#1BC194]"
                         }`}
-                        onClick={() => toggleBlockStatus(company.id)}
+                        onClick={() =>
+                          toggleBlockStatus(company.id, company.status)
+                        }
                       >
                         <div
                           className={`bg-white rounded-full transform transition-transform bar ${
-                            company.status === "Blocked"
+                            company.status.toLowerCase() === "blocked"
                               ? "translate-x-2"
                               : "translate-x-0"
                           }`}
@@ -260,6 +275,7 @@ const Companies = () => {
                       </button>
                     </div>
                   </td>
+
                   <td className="justify-items-center companiesdata">
                     <img
                       src={deletes}
@@ -326,23 +342,6 @@ const Companies = () => {
           </button>
         </div>
       </div>
-
-      {/* Delete Confirmation Modal */}
-      {/* {showDeleteModal && (
-        <div className="modal-overlay">
-          <div className="modal-content">
-            <h3>Are you sure you want to delete this company?</h3>
-            <div className="modal-actions">
-              <button className="cancel-btn" onClick={handleCancelDelete}>
-                Cancel
-              </button>
-              <button className="confirm-btn" onClick={handleConfirmDelete}>
-                Delete
-              </button>
-            </div>
-          </div>
-        </div>
-      )} */}
     </div>
   );
 };

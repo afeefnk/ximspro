@@ -1,4 +1,4 @@
-h2 {
+.editcmpnyhead {
     margin-bottom: 25px;
     font-family: 'Switzer Regular';
     font-weight: 600;
@@ -21,7 +21,7 @@ label {
     color: #25282B;
 }
 
-input {
+.editcmpyinput {
     border-radius: 4px;
     height: 44px;
     padding: 0px 15px;

@@ -54,12 +54,11 @@ const EditCompany = () => {
         phone_no2: companyData.phone_no2 || "",
         user_id: companyData.user_id || "",
         password: companyData.password || "",
-        permissions: companyData.permissions ? companyData.permissions : [], // Permissions as array
+        permissions: companyData.permissions ? companyData.permissions : [],
         company_logo: companyData.company_logo || "", // Set logo URL
       });
 
       setFileName(companyData.company_logo ? "Logo uploaded" : "Choose File");
-      console.log("kkkkkkkkkkk", response.data);
     } catch (error) {
       console.error("Error fetching company data:", error);
       toast.error("Failed to fetch company data.");
@@ -101,7 +100,6 @@ const EditCompany = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Prepare the form data using FormData
     const formData = new FormData();
     formData.append("company_name", formDataState.company_name);
     formData.append("company_admin_name", formDataState.company_admin_name);
@@ -110,11 +108,15 @@ const EditCompany = () => {
     formData.append("phone_no1", formDataState.phone_no1);
     formData.append("phone_no2", formDataState.phone_no2);
     formData.append("user_id", formDataState.user_id);
-    formData.append("permissions", formDataState.permissions.join(","));
-    console.log("companyData.permissions:", formDataState.permissions);
 
-    // Append the company logo file (if selected)
-    if (formDataState.company_logo) {
+    // Convert permissions to expected format
+    formData.append(
+      "permissions",
+      JSON.stringify(formDataState.permissions.map((perm) => parseInt(perm, 10)))
+    );
+
+    // Add company logo only if it is a valid file
+    if (formDataState.company_logo instanceof File) {
       formData.append("company_logo", formDataState.company_logo);
     }
 
@@ -124,14 +126,18 @@ const EditCompany = () => {
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data", // Automatically handled by FormData
+            "Content-Type": "multipart/form-data",
           },
         }
       );
 
       if (response.status === 200 || response.status === 201) {
         toast.success("Company updated successfully!");
-        navigate("/admin/companies"); // Redirect to company list or dashboard
+
+        // Delay navigation to allow the toast to display
+        setTimeout(() => {
+          navigate("/admin/companies");
+        }, 1500); // 1.5-second delay
       }
     } catch (error) {
       console.error("Error updating company:", error);
@@ -152,7 +158,7 @@ const EditCompany = () => {
 
       {/* Left Form Section */}
       <div className="w-full md:w-2/3 bg-white rounded-lg p-5">
-        <h2 className="text-[#25282B]">Edit Company</h2>
+        <h2 className="text-[#25282B] editcmpnyhead">Edit Company</h2>
 
         <form className="space-y-6" onSubmit={handleSubmit}>
           {/* Company Information */}
@@ -166,7 +172,7 @@ const EditCompany = () => {
                   id="company_name"
                   value={formDataState.company_name}
                   onChange={handleInputChange}
-                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
+                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none editcmpyinput"
                   required
                 />
               </div>
@@ -177,7 +183,7 @@ const EditCompany = () => {
                   id="company_admin_name"
                   value={formDataState.company_admin_name}
                   onChange={handleInputChange}
-                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
+                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none editcmpyinput"
                   required
                 />
               </div>
@@ -188,7 +194,7 @@ const EditCompany = () => {
                   id="email_address"
                   value={formDataState.email_address}
                   onChange={handleInputChange}
-                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
+                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none editcmpyinput"
                   required
                 />
               </div>
@@ -199,7 +205,7 @@ const EditCompany = () => {
                   id="phone_no1"
                   value={formDataState.phone_no1}
                   onChange={handleInputChange}
-                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
+                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none editcmpyinput"
                 />
               </div>
               <div>
@@ -209,7 +215,7 @@ const EditCompany = () => {
                   id="phone_no2"
                   value={formDataState.phone_no2}
                   onChange={handleInputChange}
-                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
+                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none editcmpyinput"
                 />
               </div>
               <div>
@@ -217,7 +223,7 @@ const EditCompany = () => {
                 <input
                   type="file"
                   id="company_logo"
-                  className="hidden"
+                  className="hidden editcmpyinput"
                   onChange={handleFileChange}
                 />
                 <label
@@ -240,61 +246,29 @@ const EditCompany = () => {
             </div>
           </div>
 
-          {/* Credentials */}
-          <div>
-            <h3 className="text-[#677487]">Credentials</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-              <div>
-                <label htmlFor="user_id">User ID</label>
-                <input
-                  type="text"
-                  id="user_id"
-                  value={formDataState.user_id}
-                  onChange={handleInputChange}
-                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
-                />
-              </div>
-              {/* <div>
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  value={formDataState.password}
-                  onChange={handleInputChange}
-                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
-                />
-              </div> */}
-            </div>
-          </div>
-
           {/* Permissions */}
           <div>
-  <h3 className="text-[#677487] mb-2">Permissions</h3>
-  <div className="flex flex-wrap gap-4">
-    {permissionList.map((permission) => {
-    
-      console.log("Permission: ", permission);
-      console.log("Selected Permissions: ", formDataState.permissions);
-      console.log("Is Permission Checked: ", formDataState.permissions);
-      console.log("Permission ID:", permission.id, "Permissions:", formDataState.permissions);
-
-      return (
-        <label key={permission.id} className="inline-flex items-center cursor-pointer">
-         <input
-  type="checkbox"
-  className="form-checkbox border border-[#E9E9E9]"
-  value={permission.id}
-  checked={formDataState.permissions.includes(permission.id.toString())}
-
-  onChange={handlePermissionChange}
-/>
-
-          <span className="ml-2">{permission.name}</span>
-        </label>
-      );
-    })}
-  </div>
-</div>
+            <h3 className="text-[#677487] mb-2">Permissions</h3>
+            <div className="flex flex-wrap gap-4">
+              {permissionList.map((permission) => (
+                <label
+                  key={permission.id}
+                  className="inline-flex items-center cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    className="form-checkbox border border-[#E9E9E9]"
+                    value={permission.id}
+                    checked={formDataState.permissions.includes(
+                      permission.id.toString()
+                    )}
+                    onChange={handlePermissionChange}
+                  />
+                  <span className="ml-2">{permission.name}</span>
+                </label>
+              ))}
+            </div>
+          </div>
 
           {/* Submit Button */}
           <div className="flex justify-end">

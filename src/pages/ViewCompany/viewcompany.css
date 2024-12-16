@@ -1,71 +1,85 @@
-/* Styles for the container */
+
 .view-company-container {
-    width: 90%;
-    margin: 0 auto;
+  width: 85%;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #E9E9E9;
+  font-family: 'Arial', sans-serif;
+}
+
+
+.headercmpy {
+  font-size: 26px;
+  font-family: 'Switzer Regular';
+  font-weight: 600;
+  text-align: start;
+  color: #25282B;
+  text-decoration:underline;
+  margin-bottom: 25px;
+  padding: 2rem 0;
+}
+
+
+.viewcpmylabels {
+  font-size: 18px;
+  font-family: 'Switzer Regular';
+  font-weight: 600;
+  color: #25282B;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.viewdata {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+  padding: 18px 0;
+}
+
+
+.company-logos {
+  max-width: 180px;
+  max-height: 180px;
+  border-radius: 10px;
+  margin-top: 12px;
+  object-fit: cover;
+}
+
+
+.lists {
+  list-style-type: square;
+  padding-left: 25px;
+  margin: 15px 0 0;
+}
+
+.lists li {
+  font-size: 16px;
+  color: #333;
+  padding: 4px 0;
+}
+
+
+@media (max-width: 768px) {
+  .md\\:grid-cols-2 {
+      grid-template-columns: 1fr;
+  }
+
+  .view-company-container {
+    width: 95%;
     padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
-  /* Header styles */
-  .header {
-    font-size: 24px;
-    font-weight: 600;
-    text-align: center;
-    color: #25282b;
-    margin-bottom: 20px;
+
+  .headercmpy {
+    font-size: 22px;
   }
-  
-  /* Table styles */
-  .company-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .company-table thead {
-    background-color: #1e4da1;
-    color: white;
-    text-align: left;
-  }
-  
-  .company-table thead th {
-    padding: 12px;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  
-  .company-table tbody tr:nth-child(even) {
-    background-color: #f3f3f3;
-  }
-  
-  .company-table tbody tr:nth-child(odd) {
-    background-color: #ffffff;
-  }
-  
-  .company-table tbody td {
-    padding: 12px;
-    font-size: 14px;
-    color: #25282b;
-    border-bottom: 1px solid #e9e9e9;
-  }
-  
-  /* Loading and error styles */
-  .loading, .error, .no-data {
-    text-align: center;
-    font-size: 16px;
-    color: #777;
-    margin-top: 20px;
-  }
-  
-  /* No data styles */
-  .no-data {
+
+  .headcmpy {
     font-size: 18px;
-    color: #555;
-    font-style: italic;
   }
-  
+
+  .viewdata {
+    font-size: 14px;
+  }
+}

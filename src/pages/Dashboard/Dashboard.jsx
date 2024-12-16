@@ -4,7 +4,7 @@ import "./dashboard.css";
 import companies from "../../assets/images/Dashboard/companies.svg";
 import users from "../../assets/images/Dashboard/users.svg";
 import { BASE_URL } from "../../Utils/Config";
-import axios from "axios";
+// import axios from "axios";
 import files from "../../assets/images/Dashboard/files.svg";
 import service from "../../assets/images/Dashboard/service.svg";
 import ac_company from "../../assets/images/Dashboard/ac-company.svg";
@@ -15,8 +15,6 @@ import CompanyTable from "./CompanyTable";
 import RecentActivities from "./RecentActivities";
 
 const Dashboard = () => {
-  
-
   // State to hold the dynamic values for the dashboard
   const [values, setValues] = useState({
     totalCompanies: 0,
@@ -34,6 +32,110 @@ const Dashboard = () => {
     customerServices: 0,
     activeCompanies: 0,
   });
+
+  // Fetch values of company count
+  useEffect(() => {
+    const fetchValues = async () => {
+      try {
+        const response = await fetch(`${BASE_URL}/accounts/companies/count/`);
+        const data = await response.json();
+
+        if (data && data.count) {
+          setTargetValues((prevValues) => ({
+            ...prevValues,
+            totalCompanies: data.count, // Set the fetched company count
+          }));
+        } else {
+          console.error("Invalid data format or missing count");
+        }
+      } catch (error) {
+        console.error("Error fetching company count:", error);
+      }
+    };
+
+    fetchValues();
+  }, []); // Only run once when the component mounts
+
+
+
+
+
+
+
+  // Animation function to count from 0 to the target value
+  useEffect(() => {
+    const countUp = (key, targetValue) => {
+      let currentValue = 0;
+      const interval = setInterval(() => {
+        if (currentValue < targetValue) {
+          currentValue += 1; // Increment by 1
+          setValues((prevValues) => ({
+            ...prevValues,
+            [key]: currentValue,
+          }));
+        } else {
+          clearInterval(interval); // Stop the interval when the target is reached
+        }
+      }, 10); // Update interval (10ms)
+    };
+
+    // Start counting for each stat when target values change
+    Object.keys(targetValues).forEach((key) => {
+      if (targetValues[key] > 0) {
+        countUp(key, targetValues[key]); // Start the animation if target value is > 0
+      }
+    });
+  }, [targetValues]); // Re-run the animation when targetValues change
+
+
+  // Stats data for display
+  const stats = [
+    {
+      id: 1,
+      title: "Total Companies",
+      key: "totalCompanies",
+      bgColor: "bg-[#3575FF1A]",
+      icon: <img src={companies} alt="" />,
+    },
+    {
+      id: 2,
+      title: "Total Users",
+      key: "totalUsers",
+      bgColor: "bg-[#F366431A]",
+      icon: <img src={users} alt="" />,
+    },
+    {
+      id: 3,
+      title: "Company Files",
+      key: "companyFiles",
+      bgColor: "bg-[#4524F81A]",
+      icon: <img src={files} alt="" />,
+    },
+    {
+      id: 4,
+      title: "Customer Services",
+      key: "customerServices",
+      bgColor: "bg-[#24D6A51A]",
+      icon: <img src={service} alt="" />,
+    },
+    {
+      id: 5,
+      title: "Active Companies",
+      key: "activeCompanies",
+      bgColor: "bg-[#FFBF351A]",
+      icon: <img src={ac_company} alt="" />,
+    },
+  ];
+
+
+
+
+
+
+
+
+
+
 
   // State to hold the recent companies for the table
   const [recentCompanies, setRecentCompanies] = useState([
@@ -103,93 +205,16 @@ const Dashboard = () => {
     // Other company entries...
   ]);
 
-  // Fetch values from the backend API
-  useEffect(() => {
-    const fetchValues = async () => {
-      try {
-        const response = await fetch(`${BASE_URL}/accounts/companies/count/`);
-        const data = await response.json();
 
-        // Update the target values with the fetched data
-        if (data && data.count) {
-          setTargetValues((prevValues) => ({
-            ...prevValues,
-            totalCompanies: data.count, // Set the fetched company count
-          }));
-        } else {
-          console.error("Invalid data format or missing count");
-        }
-      } catch (error) {
-        console.error("Error fetching company count:", error);
-      }
-    };
 
-    fetchValues();
-  }, []); // Only run once when the component mounts
 
-  // Animation function to count from 0 to the target value
-  useEffect(() => {
-    const countUp = (key, targetValue) => {
-      let currentValue = 0;
-      const interval = setInterval(() => {
-        if (currentValue < targetValue) {
-          currentValue += 1; // Increment by 1
-          setValues((prevValues) => ({
-            ...prevValues,
-            [key]: currentValue,
-          }));
-        } else {
-          clearInterval(interval); // Stop the interval when the target is reached
-        }
-      }, 10); // Update interval (10ms)
-    };
 
-    // Start counting for each stat when target values change
-    Object.keys(targetValues).forEach((key) => {
-      if (targetValues[key] > 0) {
-        countUp(key, targetValues[key]); // Start the animation if target value is > 0
-      }
-    });
-  }, [targetValues]); // Re-run the animation when targetValues change
 
-  // Stats data for display
-  const stats = [
-    {
-      id: 1,
-      title: "Total Companies",
-      key: "totalCompanies",
-      bgColor: "bg-[#3575FF1A]",
-      icon: <img src={companies} alt="" />,
-    },
-    {
-      id: 2,
-      title: "Total Users",
-      key: "totalUsers",
-      bgColor: "bg-[#F366431A]",
-      icon: <img src={users} alt="" />,
-    },
-    {
-      id: 3,
-      title: "Company Files",
-      key: "companyFiles",
-      bgColor: "bg-[#4524F81A]",
-      icon: <img src={files} alt="" />,
-    },
-    {
-      id: 4,
-      title: "Customer Services",
-      key: "customerServices",
-      bgColor: "bg-[#24D6A51A]",
-      icon: <img src={service} alt="" />,
-    },
-    {
-      id: 5,
-      title: "Active Companies",
-      key: "activeCompanies",
-      bgColor: "bg-[#FFBF351A]",
-      icon: <img src={ac_company} alt="" />,
-    },
-  ];
+
+
+
+
+
 
   // Recent activities data
   const activities = [

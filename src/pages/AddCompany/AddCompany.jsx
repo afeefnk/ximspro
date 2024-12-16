@@ -21,7 +21,7 @@ const AddCompany = () => {
   });
   const [permissionList, setPermissionList] = useState([]);
   const [permission, setPermission] = useState([]);
-  
+
   const fetchPermission = async () => {
     try {
       const response = await axios.get(`${BASE_URL}/accounts/permissions/`);
@@ -61,60 +61,66 @@ const AddCompany = () => {
     }));
   };
 
-  // const handlePermissionChange = (e) => {
-  //   const { value, checked } = e.target;
-  //   setFormDataState((prevState) => {
-  //     const updatedPermissions = checked
-  //       ? [...prevState.permissions, value] // Add permission if checked
-  //       : prevState.permissions.filter((perm) => perm !== value); // Remove permission if unchecked
-  //     return { ...prevState, permissions: updatedPermissions };
-  //   });
-  // };
+  const handlePermissionChange = (e, permissionId) => {
+    const { checked } = e.target;
+  
+    setFormDataState((prevState) => {
+      let updatedPermissions;
+  
+      if (checked) {
+        updatedPermissions = [...prevState.permissions, permissionId];
+      } else {
+        updatedPermissions = prevState.permissions.filter((id) => id !== permissionId);
+      }
+  
+      return { ...prevState, permissions: updatedPermissions };
+    });
+  };
   
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     // Prepare the form data using FormData
     const formData = new FormData();
-    formData.append('company_name', formDataState.company_name);
-    formData.append('company_admin_name', formDataState.company_admin_name);
-    formData.append('email_address', formDataState.email_address);
-    formData.append('password', formDataState.password);
-    formData.append('phone_no1', formDataState.phone_no1);
-    formData.append('phone_no2', formDataState.phone_no2);
-    formData.append('user_id', formDataState.user_id);
-    
+    formData.append("company_name", formDataState.company_name);
+    formData.append("company_admin_name", formDataState.company_admin_name);
+    formData.append("email_address", formDataState.email_address);
+    formData.append("password", formDataState.password);
+    formData.append("phone_no1", formDataState.phone_no1);
+    formData.append("phone_no2", formDataState.phone_no2);
+    formData.append("user_id", formDataState.user_id);
+
     // If the backend expects JSON array, use JSON.stringify
     // formData.append('permissions', JSON.stringify(formDataState.permissions));
-  
+
     // Append the company logo file (if selected)
     if (formDataState.company_logo) {
-      formData.append('company_logo', formDataState.company_logo);
+      formData.append("company_logo", formDataState.company_logo);
     }
-  
+
     // Log the FormData content to the console (it's not directly visible in the console, so we need to log it manually)
     console.log("FormData content:");
     for (let pair of formData.entries()) {
       console.log(pair[0] + ": " + pair[1]);
     }
-  
+
     try {
       // Log the request config, URL, and headers
       const config = {
         headers: {
-          "Content-Type": "multipart/form-data",  // Automatically handled by FormData
+          "Content-Type": "multipart/form-data", // Automatically handled by FormData
         },
       };
       console.log("Making request to:", `${BASE_URL}/accounts/create-company/`);
       console.log("Request headers:", config.headers);
-      
+
       const response = await axios.post(
         `${BASE_URL}/accounts/create-company/`,
         formData,
         config
       );
-    
+
       if (response.status === 200 || response.status === 201) {
         toast.success("Company added successfully!");
         // Reset form state if necessary
@@ -138,7 +144,6 @@ const AddCompany = () => {
       toast.error("Failed to add company. Please try again.");
     }
   };
-  
 
   const truncateFileName = (name, maxLength = 20) => {
     if (name.length <= maxLength) return name;
@@ -153,7 +158,7 @@ const AddCompany = () => {
 
       {/* Left Form Section */}
       <div className="w-full md:w-2/3 bg-white rounded-lg p-5">
-        <h2 className="text-[#25282B]">Add New Company</h2>
+        <h2 className="text-[#25282B] addcmpnyhead">Add New Company</h2>
 
         <form className="space-y-6" onSubmit={handleSubmit}>
           {/* Company Information */}
@@ -167,7 +172,7 @@ const AddCompany = () => {
                   id="company_name"
                   value={formDataState.company_name}
                   onChange={handleInputChange}
-                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
+                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none addcmyinputs"
                   required
                 />
               </div>
@@ -178,7 +183,7 @@ const AddCompany = () => {
                   id="company_admin_name"
                   value={formDataState.company_admin_name}
                   onChange={handleInputChange}
-                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
+                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none addcmyinputs"
                   required
                 />
               </div>
@@ -189,7 +194,7 @@ const AddCompany = () => {
                   id="email_address"
                   value={formDataState.email_address}
                   onChange={handleInputChange}
-                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
+                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none addcmyinputs"
                   required
                 />
               </div>
@@ -200,7 +205,7 @@ const AddCompany = () => {
                   id="phone_no1"
                   value={formDataState.phone_no1}
                   onChange={handleInputChange}
-                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
+                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none addcmyinputs"
                 />
               </div>
               <div>
@@ -210,7 +215,7 @@ const AddCompany = () => {
                   id="phone_no2"
                   value={formDataState.phone_no2}
                   onChange={handleInputChange}
-                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
+                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none addcmyinputs"
                 />
               </div>
               <div>
@@ -218,7 +223,7 @@ const AddCompany = () => {
                 <input
                   type="file"
                   id="company_logo"
-                  className="hidden"
+                  className="hidden addcmyinputs"
                   onChange={handleFileChange}
                 />
                 <label
@@ -227,7 +232,8 @@ const AddCompany = () => {
                 >
                   <p
                     className={`filename ${
-                      fileName === "Choose File" || fileName === "No file chosen"
+                      fileName === "Choose File" ||
+                      fileName === "No file chosen"
                         ? "text-[#D2D2D2]"
                         : "text-black"
                     }`}
@@ -251,7 +257,7 @@ const AddCompany = () => {
                   id="user_id"
                   value={formDataState.user_id}
                   onChange={handleInputChange}
-                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
+                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none addcmyinputs"
                 />
               </div>
               <div>
@@ -261,7 +267,7 @@ const AddCompany = () => {
                   id="password"
                   value={formDataState.password}
                   onChange={handleInputChange}
-                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none"
+                  className="w-full border border-[#E9E9E9] text-sm focus:outline-none addcmyinputs"
                 />
               </div>
             </div>
@@ -269,25 +275,25 @@ const AddCompany = () => {
 
           {/* Permissions */}
           <div>
-  <h3 className="text-[#677487] mb-2">Permissions</h3>
-  <div className="flex flex-wrap gap-4">
-    {permissionList.map((permission) => (
-      <label
-        key={permission.id}
-        className="inline-flex items-center cursor-pointer"
-      >
-        <input
-          type="checkbox"
-          className="form-checkbox border border-[#E9E9E9]"
-          value={permission.id}
-          onChange={(e) => handlePermissionChange(e, permission.id)} // Handle permission change
-        />
-        <span className="ml-2">{permission.name}</span>
-      </label>
-    ))}
-  </div>
-</div>
+            <h3 className="text-[#677487] mb-2">Permissions</h3>
+            <div className="flex flex-wrap gap-4">
+            {permissionList.map((permission) => (
+  <label
+    key={permission.id}
+    className="inline-flex items-center cursor-pointer"
+  >
+    <input
+      type="checkbox"
+      className="form-checkbox border border-[#E9E9E9] addcmyinputs"
+      value={permission.id}
+      onChange={(e) => handlePermissionChange(e, permission.id)} // Handle permission change
+    />
+    <span className="ml-2">{permission.name}</span>
+  </label>
+))}
 
+            </div>
+          </div>
 
           {/* Submit Button */}
           <div className="flex justify-end">

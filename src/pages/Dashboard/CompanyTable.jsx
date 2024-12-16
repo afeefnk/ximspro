@@ -9,7 +9,7 @@ const CompanyTable = ({ companies }) => {
         <table className="min-w-full text-left dashtable">
           <thead className="theads">
             <tr>
-              <th className="tableheading">No</th>
+              <th className="tableheading tableheadingsl">No</th>
               <th className="tableheading">Company Name</th>
               <th className="tableheading">Date</th>
               <th className="tableheading">Phone</th>

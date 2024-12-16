@@ -15,24 +15,32 @@
 }
 
 .tableheading {
-   font-family: 'Switzer Regular';
+   font-family: 'Switzer Light';
    font-weight: 400;
+   color: #677487;
    font-size: 14px;
    line-height: 21px;
    height: 21px;
    padding: 0px 20px;
 }
 
+.tableheadingsl {
+   text-align: center;
+}
+
  .data {
     padding: 15px 20px;
     border-bottom: 1px solid #E9E9E9;
     font-family: 'Switzer Regular';
+    font-weight: 500;
+    color: #25282B;
     font-size: 14px;
     line-height: 21px;
  }
 
   .index {
     font-weight: 400;
+    text-align: center;
     font-family: 'Switzer Light';
     color: #677487;
     font-size: 12px;
