@@ -122,13 +122,18 @@
 
 }
 
-@media(max-width:415px) {
+@media(max-width:421px) {
     .cards {
         width: 100%;
     }
+    .subheads {
+        font-size: 15px;
+        margin-bottom: 5px;
+    }
+
 }
 
-@media (max-width: 400px) {
+@media (max-width: 403px) {
     .cards {
         width: 359px;
     }
@@ -151,12 +156,21 @@
     .cards {
         width: 345px;
     }
+    .subheads {
+        font-size: 13px;
+        margin-bottom: 5px;
+    }
 }
 
 @media (max-width: 361px) {
     .cards {
         width: 328px;
     }
+    .subheads {
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
 }
 
 
