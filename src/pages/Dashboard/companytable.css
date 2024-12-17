@@ -110,7 +110,7 @@
   }
   .dashtable {
     border-collapse: separate; 
-    width: 100%;
+    /* width: 100%; */
     border-spacing: 0;
   }
   .theads {
@@ -128,18 +128,18 @@
     display: none;
   }
   .headingdate {
-    width: 100%;
+    width: 100%; 
   }
   .tabledateres {
     background-color: #F4F7FB;
     height: auto;
-    width: auto;
+    width: 100%;
     font-family: "Switzer Regular";
     font-size: 14px;
     font-weight: 500;
     line-height: 18.48px;
     padding: 4.5px;
-    margin-top: 5px;
+    margin-top: 7px;
     color: #677487;
     display: flex;
     
@@ -160,8 +160,216 @@
 }
 }
 
-@media (max-width: 400px) {
-  .companytable {
+@media (max-width:430px) {
+  .regcompany {
+    width: 70%;
+    line-height: 29px;
+  }
+  .tableheading {
+    font-family: "Switzer Light";
+    font-weight: 400;
+    color: #677487;
+    font-size: 13px;
+    line-height: 21px;
+    padding: 0px 9px;
+    border-right: 1px solid #E9E9E9;
+    margin-top: 0px; 
+  }
+  .data {
+    padding: 9px;
+    line-height: 17px;
+    
+  }
+  .tableheadingsl {
+    padding-left: 15px;
+  }
+  .tabledateres {
+    background-color: #F4F7FB;
+    height: auto;
     width: 100%;
+    font-family: "Switzer Regular";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18.48px;
+    padding: 4.5px;
+    margin-top: 7px;
+    color: #677487;
+    display: flex;
+  }
+
+
+}
+
+@media (max-width:421px) {
+  .tabledateres {
+    background-color: #F4F7FB;
+    height: auto;
+    width: 100%;
+    font-family: "Switzer Regular";
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 18.48px;
+    padding: 4.5px;
+    margin-top: 7px;
+    color: #677487;
+    display: flex;
+  }
+  .tabledatespan {
+    font-family: "Switzer Light";
+    font-weight: 400;
+    font-size: 12px;
+    margin-left: 5px;
+  }
+  .data {
+    font-size: 13px;
+    line-height: 16px;
   }
 }
+
+@media (max-width:416px) {
+  .tableheading {
+    font-size: 12px;
+    padding: 0px 12px;
+  }
+  .data {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  .tabledateres {
+    background-color: #F4F7FB;
+    height: auto;
+    width: 94%;
+    font-family: "Switzer Regular";
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 17.48px;
+    padding: 4.5px;
+    margin-top: 6px;
+    color: #677487;
+    display: flex;
+  }
+  .tabledatespan {
+    font-family: "Switzer Light";
+    font-weight: 400;
+    font-size: 11px;
+    margin-left: 5px;
+  }
+  .tableheading {
+    font-family: "Switzer Light";
+    font-weight: 400;
+    color: #677487;
+    font-size: 12px;
+    line-height: 21px;
+    padding: 0px 9px;
+    border-right: 1px solid #E9E9E9;
+    margin-top: 0px; 
+  }
+}
+
+@media (max-width:401px) {
+  .data {
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .tabledateres {
+    background-color: #F4F7FB;
+    height: auto;
+    width: 94%;
+    font-family: "Switzer Regular";
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 17.48px;
+    padding: 4.5px;
+    margin-top: 6px;
+    color: #677487;
+    display: flex;
+  }
+  .tabledatespan {
+    font-family: "Switzer Light";
+    font-weight: 400;
+    font-size: 11px;
+    margin-left: 5px;
+  }
+}
+
+@media (max-width:395px) {
+  .tabledateres {
+    background-color: #F4F7FB;
+    height: auto;
+    width: 90%;
+    font-family: "Switzer Regular";
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 17.48px;
+    padding: 4.5px;
+    margin-top: 6px;
+    color: #677487;
+    display: flex;
+  }
+  .tabledatespan {
+    font-family: "Switzer Light";
+    font-weight: 400;
+    font-size: 10px;
+    margin-left: 5px;
+  }
+  .data {
+    font-size: 11px;
+    line-height: 14px;
+  }
+}
+
+@media (max-width:377px) {
+  .tabledateres {
+    background-color: #F4F7FB;
+    height: auto;
+    width: 95%;
+    font-family: "Switzer Regular";
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 17.48px;
+    padding: 4.5px;
+    margin-top: 6px;
+    color: #677487;
+    display: flex;
+  }
+}
+
+@media (max-width:360px) {
+    .tabledateres {
+      background-color: #F4F7FB;
+      height: auto;
+      width: 95%;
+      font-family: "Switzer Regular";
+      font-size: 9px;
+      font-weight: 500;
+      line-height: 17.48px;
+      padding: 4.5px;
+      margin-top: 6px;
+      color: #677487;
+      display: flex;
+    }
+    .tabledatespan {
+      font-family: "Switzer Light";
+      font-weight: 400;
+      font-size: 8px;
+      margin-left: 5px;
+    }
+    .tableheading {
+      font-size: 11px;
+      line-height: 20px;
+     
+    }
+    .regcompany {
+      width: 80%;
+      line-height: 30px;
+    }
+}
+
+
+
+
+
+
+
+
+
