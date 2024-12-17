@@ -218,7 +218,7 @@ const Companies = () => {
                       className="w-28"
                     />
                   </td>
-                  <td className="companiesdata">{company.company_name}</td>
+                  <td className="companiesdata companydataname">{company.company_name}</td>
                   <td className="companiesdata">
                     {company.company_admin_name}
                   </td>

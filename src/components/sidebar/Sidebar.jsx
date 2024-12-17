@@ -36,7 +36,7 @@ const Sidebar = () => {
       <img src={logo} alt="XIMSpro Logo" className="logo mb-8" />
 
       {/* Navigation */}
-      <nav className="lg:flex lg:flex-col items-center lg:space-y-3 relative lg:top-20 gap-5">
+      <nav className="lg:flex lg:flex-col items-center lg:space-y-3 relative lg:top-20 sidebartab">
         {/* Dashboard */}
         <div
           onClick={() => handleItemClick("dashboard", "/admin/dashboard")}

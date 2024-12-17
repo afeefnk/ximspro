@@ -147,7 +147,7 @@ tr {
 
 .companiestheadlogo {
   font-family: "Switzer Regular";
-  width: 1%;
+  width: 0%;
   font-weight: 400;
   font-size: 12px;
   color: #677487;
@@ -157,6 +157,10 @@ tr {
 }
 .compnyname {
   width: 17%;
+  padding-left: 8px;
+}
+.companydataname {
+  padding-left: 8px;
 }
 
 .compnyemail {
