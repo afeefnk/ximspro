@@ -86,7 +86,7 @@ const AdminLogin = () => {
   },[navigate])
 
   return (
-    <div className="flex flex-col h-screen items-center justify-center lg:bg-custom-pattern bg-cover bg-center lg:bg-[#F7F7F7]">
+    <div className="flex flex-col h-screen items-center justify-center lg:bg-custom-pattern bg-cover bg-center lg:bg-[#F7F7F7] overflow-hidden">
       <Toaster position="top-center" />
       {/* Logo Section */}
       <div className="mb-9">
