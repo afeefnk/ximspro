@@ -84,6 +84,14 @@
     visibility: visible;
   }
 
+  .dashboardicon:active {
+    background-color: #254396;
+  }
+
+  .navbar .dashboardicon:active .imgdashicon {
+    filter: brightness(100%) saturate(0%);
+  }
+
 
 
 
