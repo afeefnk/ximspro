@@ -101,7 +101,7 @@ const AdminLogin = () => {
             <label className="text-[#898989] labels">Email</label>
             <input
               type="email"
-              placeholder="email"
+              placeholder="Email"
               value={email}
               onChange={handleEmailChange}
               className="rounded-lg border border-[#E9E9E9] mt-1 email outline-none inputs"
@@ -113,7 +113,7 @@ const AdminLogin = () => {
             <div className="relative w-full">
               <input
                 type={passwordVisible ? "text" : "password"}
-                placeholder="password"
+                placeholder="Password"
                 value={password}
                 onChange={handlePasswordChange}
                 className="rounded-lg w-full border border-[#E9E9E9] mt-1 outline-none inputs"

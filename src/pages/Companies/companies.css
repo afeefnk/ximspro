@@ -147,12 +147,23 @@ tr {
 
 .companiestheadlogo {
   font-family: "Switzer Regular";
+  width: 1%;
   font-weight: 400;
   font-size: 12px;
   color: #677487;
   line-height: 21px;
   height: 21px;
   padding: 0px;
+}
+.compnyname {
+  width: 17%;
+}
+
+.compnyemail {
+  width: 20%;
+}
+.compnyper {
+  padding: 10px 10px;
 }
 
 /* .modal-overlay {

@@ -313,7 +313,7 @@ const Dashboard = () => {
       </div>
 
       {/* Display company table and recent activities */}
-      <div className="flex flex-wrap gap-5 pb-4 mt-5">
+      <div className="twotables flex flex-wrap pb-4 mt-5">
         <div className="flex">
           <CompanyTable companies={recentCompanies} />
         </div>

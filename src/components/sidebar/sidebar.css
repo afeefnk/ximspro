@@ -81,11 +81,11 @@
     .mainsidebar {
       position: fixed;
       bottom: 0;
-      height: 84px;
+      height: 87px;
       width: 100%;
       z-index: 1000;
       background-color: #fff;
-      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.05);
     }
   
     .logo {
@@ -103,7 +103,7 @@
       transition: all 0.3s ease-in-out;
       width: 8.5rem;
       width: 90px;
-      margin: 1.5rem 5px;
+      margin: 1.6rem 5px;
     }
   
     .mainsidebar .item.active {
@@ -116,13 +116,14 @@
     }
   
     .mainsidebar .item .sideicon {
-      width: 20px;
+      width: 16.67px;
       height: auto;
       margin-bottom: 2px;
     }
   
     .mainsidebar .item.active .spans {
       color: #254396;
+      /* font-size: 18px;  */
     }
 
     .mainsidebar .item.active .sideicon {

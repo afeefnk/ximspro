@@ -83,6 +83,8 @@
         width: 396px;
         height: 393px;
         box-shadow: 1px 1px 50px rgba(105, 105, 105, 0.13); 
+        position: sticky;
+        margin-bottom: 40px;
     }
 
     .loginheading {

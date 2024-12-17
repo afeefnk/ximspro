@@ -4,15 +4,20 @@ import "./companytable.css";
 const CompanyTable = ({ companies }) => {
   return (
     <div className="border border-[#E9E9E9] rounded-lg companytable">
-      <h4 className="p-5 mb-3 text-[#25282B] regcompany">Recent Registered Companies</h4>
+      <h4 className=" text-[#25282B] regcompany">
+        Recent Registered Companies
+      </h4>
       <div className="table-container">
         <table className="min-w-full text-left dashtable">
           <thead className="theads">
             <tr>
-              <th className="tableheading tableheadingsl">No</th>
-              <th className="tableheading">Company Name</th>
-              <th className="tableheading">Date</th>
-              <th className="tableheading">Phone</th>
+              <th className="tableheading tableheadingsl rightborder">No</th>
+              <th className="tableheading headingname">Company Name</th>
+              <th className="tableheading headingdate rightborder">
+                Company Name & Date
+              </th>
+              <th className="tableheading headdate">Date</th>
+              <th className="tableheading rightborder">Phone</th>
               <th className="tableheading">Status</th>
             </tr>
           </thead>
@@ -22,8 +27,15 @@ const CompanyTable = ({ companies }) => {
                 <td className="index data">
                   {index + 1 < 10 ? `0${index + 1}` : index + 1}
                 </td>
-                <td className="w-1/3 data">{company.name}</td>
-                <td className="data">
+                <td className="w-1/3 data">
+                  {company.name}
+                  <div className="tabledateres">
+                    {company.date}
+                    <div className="borderright" />
+                    <span className="tabledatespan">{company.time}</span>
+                  </div>
+                </td>
+                <td className="data tabledate">
                   {company.date} <br />
                   <span className="text-sm text-[#898989] time">
                     {company.time}

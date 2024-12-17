@@ -190,16 +190,16 @@ const Companies = () => {
               <tr className="bg-[#F7F7F7] border-b">
                 <th className="companiesthead">Sl</th>
                 <th className="text-start companiestheadlogo">Logo</th>
-                <th className="text-start companiesthead">Company Name</th>
+                <th className="text-start companiesthead compnyname">Company Name</th>
                 <th className="text-start companiesthead">Admin Name</th>
-                <th className="text-start companiesthead">Email</th>
+                <th className="text-start companiesthead compnyemail">Email</th>
                 <th className="text-start companiesthead">Phone</th>
                 <th className="text-start companiesthead">Status</th>
                 <th className="companiesthead">View</th>
                 <th className="companiesthead">Edit</th>
                 <th className="companiesthead">Block</th>
                 <th className="companiesthead">Delete</th>
-                <th className="companiesthead">Permissions</th>
+                <th className="companiesthead compnyper">Permissions</th>
               </tr>
             </thead>
             <tbody>

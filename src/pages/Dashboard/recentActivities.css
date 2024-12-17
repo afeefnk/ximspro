@@ -1,18 +1,22 @@
 .recent-activities {
-  max-height: 655px; /* Fixed height for the scrolling container */
-  overflow-y: auto; /* Enable vertical scrolling for the table body */
-  overflow-x: auto; /* Enable horizontal scrolling for wide tables */
+  max-height: 655px; 
+  overflow-y: auto; 
+  overflow-x: auto; 
+  
 }
 
 .recent-activities .recenthead {
-  position: sticky; /* Make the header sticky */
-  top: 0; /* Stick the header to the top */
-  z-index: 1; /* Ensure it stays above the scrolling content */
-  background-color: white; /* Match the background color */
+  position: sticky; 
+  top: 0; 
+  z-index: 1; 
+  background-color: white; 
   padding: 20px 20px;
   margin-bottom: 10px;
   line-height: 31.68px;
   width: 100%;
+  font-family: 'Switzer Regular';
+  font-weight: 600;
+  font-size: 24px;
 }
 
 .recent-activities .accards {
@@ -51,10 +55,23 @@
   scrollbar-color: #dbdbdb #f5f5f5; 
 }
 
-.recenthead {
-  font-family: 'Switzer Regular';
-  font-weight: 600;
-  font-size: 24px;
+
+
+
+@media(max-width:431px) {
+  .recent-activities {
+    width: 100%;
+    margin-bottom: 5rem;
+  }
+  .recent-activities .recenthead {
+    margin-bottom: 0px;
+    padding-bottom:10px;
+  }
+  .recent-activities .accards {
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 }
 
 
