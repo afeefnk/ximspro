@@ -12,7 +12,7 @@ const Password = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen items-center justify-center lg:bg-custom-pattern bg-cover bg-center lg:bg-[#F7F7F7]">
+    <div className="flex flex-col h-screen items-center justify-center lg:bg-custom-pattern bg-cover bg-center lg:bg-[#F7F7F7] forgotscreen">
       {/* Logo Section */}
       <div className="mb-9">
         <img src={logo} alt="Logo" className="forgotpasslogo" />
