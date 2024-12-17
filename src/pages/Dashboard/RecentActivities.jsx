@@ -9,7 +9,7 @@ const RecentActivities = ({ activities }) => {
         {activities.map((activity, index) => (
           <div
             key={index}
-            className="border border-[#E9E9E9] rounded-md cursor-pointer hover:bg-gray-100 accards"
+            className="border border-[#E9E9E9] cursor-pointer hover:bg-gray-100 accards"
           >
             <div className="icon-container flex items-center justify-center w-10 h-10 rounded-full bg-[#FAF7E7]">
               <img

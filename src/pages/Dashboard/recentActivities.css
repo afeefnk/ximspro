@@ -27,6 +27,7 @@
   margin: 0px 16px;
   box-shadow: 1px 1px 50px rgba(105, 105, 105, 0.1);
   height: 72px;
+  border-radius: 6px;
 }
 
 .activity-details p:first-child {
@@ -71,6 +72,7 @@
     margin-top: 10px;
     margin-left: 0px;
     margin-right: 0px;
+    border-radius: 0px;
   }
 }
 
