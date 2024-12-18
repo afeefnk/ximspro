@@ -3,7 +3,8 @@ import axios from "axios";
 import { toast, Toaster } from "react-hot-toast";
 import "./addcompany.css";
 import { BASE_URL } from "../../Utils/Config";
-import addcompany from "../../assets/images/Companies/addcompanyimg.svg";
+import illustrate from "../../assets/images/AddCompany/Clip path group-cropped.svg";
+import group from "../../assets/images/AddCompany/bottompic.svg";
 import uploadIcon from "../../assets/images/Companies/choose file.svg";
 
 const AddCompany = () => {
@@ -63,20 +64,21 @@ const AddCompany = () => {
 
   const handlePermissionChange = (e, permissionId) => {
     const { checked } = e.target;
-  
+
     setFormDataState((prevState) => {
       let updatedPermissions;
-  
+
       if (checked) {
         updatedPermissions = [...prevState.permissions, permissionId];
       } else {
-        updatedPermissions = prevState.permissions.filter((id) => id !== permissionId);
+        updatedPermissions = prevState.permissions.filter(
+          (id) => id !== permissionId
+        );
       }
-  
+
       return { ...prevState, permissions: updatedPermissions };
     });
   };
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -153,7 +155,7 @@ const AddCompany = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row w-full border rounded-lg min-h-screen gap-10">
+    <div className="flex flex-col md:flex-row w-full border rounded-lg">
       <Toaster position="top-center" reverseOrder={false} />
 
       {/* Left Form Section */}
@@ -248,7 +250,7 @@ const AddCompany = () => {
 
           {/* Credentials */}
           <div>
-            <h3 className="text-[#677487]">Credentials</h3>
+            <h3 className="text-[#677487] credentials">Credentials</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
               <div>
                 <label htmlFor="user_id">User ID</label>
@@ -276,22 +278,21 @@ const AddCompany = () => {
           {/* Permissions */}
           <div>
             <h3 className="text-[#677487] mb-2">Permissions</h3>
-            <div className="flex flex-wrap gap-4">
-            {permissionList.map((permission) => (
-  <label
-    key={permission.id}
-    className="inline-flex items-center cursor-pointer"
-  >
-    <input
-      type="checkbox"
-      className="form-checkbox border border-[#E9E9E9] addcmyinputs"
-      value={permission.id}
-      onChange={(e) => handlePermissionChange(e, permission.id)} // Handle permission change
-    />
-    <span className="ml-2">{permission.name}</span>
-  </label>
-))}
-
+            <div className="flex flex-wrap gap-6">
+              {permissionList.map((permission) => (
+                <label
+                  key={permission.id}
+                  className="inline-flex items-center cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    className="form-checkbox border border-[#E9E9E9] addcmyinputs"
+                    value={permission.id}
+                    onChange={(e) => handlePermissionChange(e, permission.id)}
+                  />
+                  <span className="ml-2 capitalize">{permission.name}</span>
+                </label>
+              ))}
             </div>
           </div>
 
@@ -308,12 +309,14 @@ const AddCompany = () => {
       </div>
 
       {/* Right Illustration Section */}
-      <div className="hidden md:flex md:w-1/3 justify-end">
-        <img
-          src={addcompany}
-          alt="Increase your business"
-          className="object-cover"
-        />
+      <div className="flex md:w-1/3 justify-end">
+      <div className="business-container">
+      <img src={illustrate} alt="Illustration" className="background-img" />
+      <p className="business-text">
+        Want more? <br /> Increase your business
+      </p>
+      <img src={group} alt="Group" className="group-img" />
+    </div>
       </div>
     </div>
   );

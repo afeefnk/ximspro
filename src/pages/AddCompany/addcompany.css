@@ -1,66 +1,98 @@
 .addcmpnyhead {
-    margin-bottom: 25px;
-    font-family: 'Switzer Regular';
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 27.77px;
+  margin-bottom: 24px;
+  font-family: "Switzer Regular";
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 27.77px;
 }
 
-h3 {
-    font-family: 'Switzer Regular';
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 20.83px;
-    margin-bottom: 25px;
+.head {
+  font-family: "Switzer Regular";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 20.83px;
+  margin-bottom: 10px;
 }
 
 label {
-    font-family: 'Switzer Regular';
-    font-weight: 400;
-    font-size: 14px;
-    color: #25282B;
+  font-family: "Switzer Regular";
+  font-weight: 400;
+  font-size: 14px;
+  color: #25282b;
 }
 
 .addcmyinputs {
-    border-radius: 4px;
-    height: 44px;
-    padding: 0px 15px;
-    margin-top: 8px;
-    margin-bottom: 6px;
+  border-radius: 4px;
+  height: 44px;
+  padding: 0px 15px;
+  margin-top: 8px;
+  margin-bottom: 6px;
 }
 
 .submits {
-    font-family: 'Switzer Light';
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-    padding: 8px 30px;
+  font-family: "Switzer Light";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 8px 30px;
 }
-.form-checkbox{
-    width: 15px;
-    height: 15px;
+.form-checkbox {
+  width: 15px;
+  height: 15px;
 }
 
 .form-checkbox span {
-    font-family: 'Switzer Light';
-    font-weight: 400; 
-    font-size: 14px;
+  font-family: "Switzer Light";
+  font-weight: 400;
+  font-size: 14px;
 }
 
 /* Style for unchecked checkboxes */
 input[type="checkbox"]:not(:checked) + span {
-    color: #898989; /* Gray color when not checked */
+  color: #898989; /* Gray color when not checked */
+}
+
+/* Style for checked checkboxes */
+input[type="checkbox"]:checked + span {
+  color: #1e4da1; /* Blue color when checked */
+}
+
+.filename {
+  font-family: "Switzer Light";
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.credentials {
+  margin-bottom: 15px;
+}
+
+.business-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    background-color: #B3CAFD1A;
   }
   
-  /* Style for checked checkboxes */
-  input[type="checkbox"]:checked + span {
-    color: #1E4DA1; /* Blue color when checked */
+  .background-img {
+    width: 100%;
+   padding-right: 20px;
   }
   
-  .filename {
-    font-family: 'Switzer Light';
-    font-weight: 400;
-    font-size: 14px;
+  .business-text {
+    font-size: 28px;
+    font-weight: 600;
+    font-family: "Switzer Regular";
+    line-height: 36.96px;
+    color: #25282B;
+    margin: 20px 0;
   }
-
-
+  
+  .group-img {
+    width: 100%;
+    max-width: 400px; 
+    margin-top: 5rem;
+  }
+  
