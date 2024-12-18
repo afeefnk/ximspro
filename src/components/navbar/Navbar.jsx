@@ -29,7 +29,7 @@ const Navbar = () => {
     <div className="navbar h-20 flex items-center justify-between relative">
       {/* Left Section */}
       <div className="flex flex-col -space-y-1">
-        <span className="text-[#677487] span1">Welcome To,</span>
+        <span className="text-[#677487] span1">Welcome Back,</span>
         <span className="text-[#25282B] span2">Logged in as Super Admin</span>
         <img src={logo} alt="" className="navlogo" />
       </div>
