@@ -155,7 +155,7 @@ const AddCompany = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row w-full border rounded-lg">
+    <div className="flex flex-col md:flex-row w-full border rounded-lg addmaincmpy">
       <Toaster position="top-center" reverseOrder={false} />
 
       {/* Left Form Section */}
@@ -309,14 +309,14 @@ const AddCompany = () => {
       </div>
 
       {/* Right Illustration Section */}
-      <div className="flex md:w-1/3 justify-end">
-      <div className="business-container">
-      <img src={illustrate} alt="Illustration" className="background-img" />
-      <p className="business-text">
-        Want more? <br /> Increase your business
-      </p>
-      <img src={group} alt="Group" className="group-img" />
-    </div>
+      <div className="flex md:w-1/3 justify-end illustrateimg">
+        <div className="business-container">
+          <img src={illustrate} alt="Illustration" className="background-img" />
+          <p className="business-text">
+            Want more? <br /> Increase your business
+          </p>
+          <img src={group} alt="Group" className="group-img" />
+        </div>
       </div>
     </div>
   );

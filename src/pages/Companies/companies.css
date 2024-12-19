@@ -60,7 +60,6 @@ tr {
   height: 52px;
 }
 
-
 .c_logo {
   padding: 0;
 }
@@ -120,7 +119,6 @@ tr {
 
 .companiesdata {
   padding: 15px 15px;
-  border-bottom: 1px solid #e9e9e9;
   font-family: "Switzer Regular";
   font-size: 12px;
   text-align: start;
@@ -128,10 +126,8 @@ tr {
   line-height: 18px;
   color: #677487;
 }
-
 .companiesdatasl {
   padding: 15px 15px;
-  border-bottom: 1px solid #e9e9e9;
   font-family: "Switzer Regular";
   font-size: 12px;
   text-align: center;
@@ -139,35 +135,196 @@ tr {
   line-height: 18px;
   color: #677487;
 }
-
-.block {
-  width: 60px !important;
-  text-align: center;
+.comperdata {
+  padding-left: 0px;
 }
 
+.block {
+  width: 55px !important;
+  text-align: center;
+}
+.blocks {
+  padding: 2px 6px;
+  font-family: "Switzer Light";
+  font-weight: 400;
+}
 .companiestheadlogo {
   font-family: "Switzer Regular";
-  width: 0%;
   font-weight: 400;
   font-size: 12px;
   color: #677487;
   line-height: 21px;
   height: 21px;
   padding: 0px;
+  width: 121px;
+  height: 41px;
 }
 .compnyname {
-  width: 17%;
-  padding-left: 8px;
-}
-.companydataname {
-  padding-left: 8px;
+  width: 350px;
 }
 
 .compnyemail {
-  width: 20%;
+  width: 230px;
 }
 .compnyper {
-  padding: 10px 10px;
+  padding: 10px 10px 10px 0px;
+}
+.tblrows {
+  border-bottom: 1px solid #e9e9e9;
+}
+.tblrows:last-child {
+  border-bottom: none;
+}
+.mobhead {
+  font-family: "Switzer Light";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 13.88px;
+  padding-bottom: 3px;
+  color: #677487;
+}
+.mobdata {
+  font-family: "Switzer Regular";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #25282b;
+}
+.mobcmpyadmin,
+.mobcmpyphone {
+  padding-top: 5px;
+}
+.mobemaildiv {
+  padding-top: 10px;
+}
+
+.mobactions {
+  padding-top: 15px;
+}
+.comadminname {
+  width: 150px;
+}
+.mobicon {
+  margin-top: 5px;
+}
+.mobviewicon {
+  margin-top: 7px;
+}
+
+@media (min-width: 432px) {
+  .drophead,
+  .bgarrow,
+  .addcmpymob {
+    display: none;
+  }
+  .topbtns {
+    display: flex;
+  }
+}
+
+@media (max-width: 431px) {
+  .nodisplayhead,
+  .nodisplaydata,
+  .addnewcmpy {
+    display: none;
+  }
+  .navcomitems {
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .topbtns {
+    display: flex;
+  }
+  .cmpilisthead {
+    padding-bottom: 0px;
+  }
+  .search {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .listserachicon {
+    translate: 0px -6px;
+  }
+  .excsv {
+    order: 2;
+    width: 100%;
+  }
+  .addcmpny {
+    order: 1;
+    width: 100%;
+  }
+  .companiestheadlogo {
+    width: 85px;
+    height: 28.81px;
+  }
+  .comhead {
+    height: 32px;
+  }
+  .compnyname {
+    width: 60%;
+    padding: 10px 30px;
+  }
+  .drophead {
+    justify-self: end;
+    padding-right: 20px;
+  }
+  .bgarrow {
+    background-color: #dedede;
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    margin-top: 15px;
+    margin-right: 15px;
+    align-content: center;
+    justify-items: center;
+    transition: background-color 0.3s ease;
+  }
+  .bgarrow.active {
+    background-color: #254396;
+  }
+
+  .dropdown-img {
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown-img.rotated {
+    transform: rotate(180deg);
+  }
+  .dropdown-row td {
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .dropdown-row:last-child td {
+    border: none;
+  }
+  .tblrows.no-border {
+    border-bottom: none;
+  }
+  .companiesdatasl {
+    font-family: "Switzer Regular";
+    padding-right: 25px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #25282b;
+  }
+  .companydataname {
+    font-family: "Switzer Regular";
+    font-size: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #25282b;
+    padding-left: 30px;
+  }
+  .dropdownlist {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-top: 10px;
+  }
+  .companiestheadsl {
+    padding-right: 25px;
+  }
 }
 
 /* .modal-overlay {

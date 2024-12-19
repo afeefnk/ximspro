@@ -63,4 +63,10 @@ input[type="checkbox"]:not(:checked) + span {
     font-size: 14px;
   }
 
+  @media(max-width:431px ) {
+    .maineditcmpy {
+        margin-bottom: 100px;
+    }
+  }
+
 

@@ -96,3 +96,11 @@ input[type="checkbox"]:checked + span {
     margin-top: 5rem;
   }
   
+  @media (max-width:431px) {
+    .illustrateimg  {
+      display: none;
+    }
+    .addmaincmpy {
+      margin-bottom: 100px;
+    }
+  }

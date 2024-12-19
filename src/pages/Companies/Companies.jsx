@@ -8,6 +8,8 @@ import permission from "../../assets/images/Companies/permission.svg";
 import searchIcon from "../../assets/images/Companies/search.svg";
 import csvicon from "../../assets/images/Companies/csv icon.svg";
 import addicon from "../../assets/images/Companies/add.svg";
+import arrow from "../../assets/images/Companies/downarrow.svg";
+import { motion } from "framer-motion";
 import "./companies.css";
 import { BASE_URL } from "../../Utils/Config";
 import { useNavigate } from "react-router-dom";
@@ -16,20 +18,23 @@ const Companies = () => {
   const [companies, setCompanies] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [activeDropdown, setActiveDropdown] = useState(false);
   const itemsPerPage = 10;
   const navigate = useNavigate();
 
   // Fetch companies data from the API when the component mounts
   useEffect(() => {
-    axios
-      .get(`${BASE_URL}/accounts/companies/`)
-      .then((response) => {
+    const fetchCompanies = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/accounts/companies/`);
         setCompanies(response.data);
         console.log("response data", response.data);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("Error fetching companies data:", error);
-      });
+      }
+    };
+
+    fetchCompanies();
   }, []);
 
   const handleDeleteClick = (companyId) => {
@@ -53,23 +58,25 @@ const Companies = () => {
   const toggleBlockStatus = (companyId, currentStatus) => {
     const newAction =
       currentStatus.toLowerCase() === "active" ? "block" : "active";
-  
+
     axios
       .post(`${BASE_URL}/accounts/company/${companyId}/change-status/`, {
         action: newAction,
       })
       .then(() => {
         console.log("Status updated successfully");
-        // Fetch updated companies data after status change
-        axios
-          .get(`${BASE_URL}/accounts/companies/`)
-          .then((response) => {
-            setCompanies(response.data);
-            console.log("Companies data refreshed");
-          })
-          .catch((error) => {
-            console.error("Error refreshing companies data:", error);
-          });
+
+        // Update the company data locally
+        setCompanies((prevCompanies) =>
+          prevCompanies.map((company) =>
+            company.id === companyId
+              ? {
+                  ...company,
+                  status: newAction === "block" ? "Blocked" : "Active",
+                }
+              : company
+          )
+        );
       })
       .catch((error) => {
         console.error(
@@ -78,7 +85,6 @@ const Companies = () => {
         );
       });
   };
-  
 
   const filteredCompanies = companies.filter((company) => {
     const nameMatch =
@@ -149,11 +155,15 @@ const Companies = () => {
     navigate(`/admin/editcompany/${companyId}`);
   };
 
+  const toggleDropdown = (companyId) => {
+    setActiveDropdown((prev) => (prev === companyId ? null : companyId));
+  };
+
   return (
     <div>
       <div className="border rounded-lg main">
-        <h1 className="text-[#25282B]">Companies</h1>
-        <div className="flex gap-3 p-5 ">
+        <h1 className="text-[#25282B] cmpilisthead">Companies</h1>
+        <div className="lg:flex gap-3 p-5 navcomitems">
           <div className="relative">
             <input
               type="text"
@@ -165,129 +175,260 @@ const Companies = () => {
             <img
               src={searchIcon}
               alt="Search"
-              className="absolute right-3 top-1/2 transform -translate-y-1/2"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 listserachicon"
             />
           </div>
-          <button
-            className="bg-[#677487] rounded duration-200 hover:bg-[#4f5763] text-white topbtn excsv gap-1"
-            onClick={handleExportToCSV}
-          >
-            <img src={csvicon} alt="Export" className="w-5 h-5" />
-            Export to CSV
-          </button>
-          <button
-            className="bg-[#1BC194] duration-200 text-white rounded hover:bg-[#21ab86] topbtn addcmpny gap-2"
-            onClick={handleAddCompany}
-          >
-            <img src={addicon} alt="Add" className="w-4 h-4" />
-            Add New Company
-          </button>
+          <div className="topbtns gap-x-3">
+            <button
+              className="bg-[#677487] rounded duration-200 hover:bg-[#4f5763] text-white topbtn excsv gap-1"
+              onClick={handleExportToCSV}
+            >
+              <img src={csvicon} alt="Export" className="w-5 h-5" />
+              Export to CSV
+            </button>
+            <button
+              className="bg-[#1BC194] duration-200 text-white rounded hover:bg-[#21ab86] topbtn addcmpny gap-2"
+              onClick={handleAddCompany}
+            >
+              <img src={addicon} alt="Add" className="w-4 h-4" />
+              <p className="addnewcmpy">Add New Company</p>
+              <p className="addcmpymob">Add Company</p>
+            </button>
+          </div>
         </div>
 
         <div className="overflow-x-auto w-full">
           <table className="companieslist">
-            <thead className="border-t border-b border-[#E9E9E9] listheads">
-              <tr className="bg-[#F7F7F7] border-b">
-                <th className="companiesthead">Sl</th>
+            <thead className="lg:border-t border-[#E9E9E9] listheads">
+              <tr className="bg-[#F7F7F7] lg:border-b comhead">
+                <th className="companiesthead companiestheadsl">Sl</th>
                 <th className="text-start companiestheadlogo">Logo</th>
-                <th className="text-start companiesthead compnyname">Company Name</th>
-                <th className="text-start companiesthead">Admin Name</th>
-                <th className="text-start companiesthead compnyemail">Email</th>
-                <th className="text-start companiesthead">Phone</th>
-                <th className="text-start companiesthead">Status</th>
-                <th className="companiesthead">View</th>
-                <th className="companiesthead">Edit</th>
-                <th className="companiesthead">Block</th>
-                <th className="companiesthead">Delete</th>
-                <th className="companiesthead compnyper">Permissions</th>
+                <th className="text-start companiesthead compnyname">
+                  Company Name
+                </th>
+                <th className="text-start companiesthead comadminname nodisplayhead">
+                  Admin Name
+                </th>
+                <th className="text-start companiesthead compnyemail nodisplayhead">
+                  Email
+                </th>
+                <th className="text-start companiesthead nodisplayhead">
+                  Phone
+                </th>
+                <th className="text-start companiesthead nodisplayhead">
+                  Status
+                </th>
+                <th className="companiesthead nodisplayhead">View</th>
+                <th className="companiesthead nodisplayhead">Edit</th>
+                <th className="companiesthead nodisplayhead">Block</th>
+                <th className="companiesthead nodisplayhead">Delete</th>
+                <th className="companiesthead compnyper nodisplayhead">
+                  Permissions
+                </th>
+                <div className="drophead"></div>
               </tr>
             </thead>
             <tbody>
               {paginatedCompanies.map((company, index) => (
-                <tr
-                  key={company.id}
-                  className="hover:bg-gray-100 cursor-pointer"
-                >
-                  <td className="companiesdatasl">
-                    {String(index + 1 + indexOfFirstItem).padStart(2, "0")}
-                  </td>
-                  <td className="border-b border-[#E9E9E9]">
-                    <img
-                      src={company.company_logo}
-                      alt="Logo"
-                      className="w-28"
-                    />
-                  </td>
-                  <td className="companiesdata companydataname">{company.company_name}</td>
-                  <td className="companiesdata">
-                    {company.company_admin_name}
-                  </td>
-                  <td className="companiesdata">{company.email_address}</td>
-                  <td className="companiesdata">{company.phone_no1}</td>
-                  <td className="companiesdata">
-                    <span
-                      className={`p-1 rounded block ${
-                        company.status.toLowerCase() === "active"
-                          ? "bg-green-100 text-[#24D6A5]"
-                          : "bg-violet-100 text-[#8239BC]"
+                <React.Fragment key={company.id}>
+                  <tr
+                    key={company.id}
+                    className={`lg:hover:bg-gray-100 cursor-pointer tblrows ${
+                      activeDropdown === company.id ? "no-border" : ""
+                    }`}
+                  >
+                    <td className="companiesdatasl">
+                      {String(index + 1 + indexOfFirstItem).padStart(2, "0")}
+                    </td>
+                    <td className="companiestheadlogo">
+                      <img src={company.company_logo} alt="Logo" className="" />
+                    </td>
+                    <td className="companiesdata companydataname">
+                      {company.company_name}
+                    </td>
+                    <td className="companiesdata nodisplaydata">
+                      {company.company_admin_name}
+                    </td>
+                    <td className="companiesdata companyemaildata nodisplaydata">
+                      {company.email_address}
+                    </td>
+                    <td className="companiesdata nodisplaydata">
+                      {company.phone_no1}
+                    </td>
+                    <td className="companiesdata nodisplaydata">
+                      <span
+                        className={`p-1 rounded block ${
+                          company.status.toLowerCase() === "active"
+                            ? "bg-green-100 text-[#24D6A5]"
+                            : "bg-violet-100 text-[#8239BC]"
+                        }`}
+                      >
+                        {company.status.charAt(0).toUpperCase() +
+                          company.status.slice(1).toLowerCase()}
+                      </span>
+                    </td>
+                    <td className="justify-items-center companiesdata nodisplaydata">
+                      <img
+                        src={view}
+                        alt="View"
+                        className="cursor-pointer w-5 h-auto"
+                        onClick={() => handleView(company.id)}
+                      />
+                    </td>
+                    <td className="justify-items-center companiesdata nodisplaydata">
+                      <img
+                        src={edit}
+                        alt="Edit"
+                        className="cursor-pointer w-auto h-auto"
+                        onClick={() => handleEdit(company.id)}
+                      />
+                    </td>
+                    <td className="justify-items-center companiesdata nodisplaydata">
+                      <div className="justify-items-center">
+                        <button
+                          className={`items-center rounded-full p-1 toggle ${
+                            company.status.toLowerCase() === "blocked"
+                              ? "bg-[#F36643]"
+                              : "bg-[#1BC194]"
+                          }`}
+                          onClick={() =>
+                            toggleBlockStatus(company.id, company.status)
+                          }
+                        >
+                          <div
+                            className={`bg-white rounded-full transform transition-transform bar ${
+                              company.status.toLowerCase() === "blocked"
+                                ? "translate-x-2"
+                                : "translate-x-0"
+                            }`}
+                          />
+                        </button>
+                      </div>
+                    </td>
+                    <td className="justify-items-center companiesdata nodisplaydata">
+                      <img
+                        src={deletes}
+                        alt="Delete"
+                        className="cursor-pointer w-auto h-auto"
+                        onClick={() => handleDeleteClick(company.id)}
+                      />
+                    </td>
+                    <td className="justify-items-center companiesdata comperdata nodisplaydata">
+                      <img src={permission} alt="Permissions" />
+                    </td>
+                    <div
+                      className={`bgarrow ${
+                        activeDropdown === company.id ? "active" : ""
                       }`}
                     >
-                      {company.status.charAt(0).toUpperCase() +
-                        company.status.slice(1).toLowerCase()}
-                    </span>
-                  </td>
-
-                  <td className="justify-items-center companiesdata">
-                    <img
-                      src={view}
-                      alt="View"
-                      className="cursor-pointer w-5 h-auto"
-                      onClick={() => handleView(company.id)}
-                    />
-                  </td>
-                  <td className="justify-items-center companiesdata">
-                    <img
-                      src={edit}
-                      alt="Edit"
-                      className="cursor-pointer w-auto h-auto"
-                      onClick={() => handleEdit(company.id)}
-                    />
-                  </td>
-                  <td className="justify-items-center companiesdata">
-                    <div className="justify-items-center">
-                      <button
-                        className={`items-center rounded-full p-1 toggle ${
-                          company.status.toLowerCase() === "blocked"
-                            ? "bg-[#F36643]"
-                            : "bg-[#1BC194]"
+                      <img
+                        src={arrow}
+                        alt=""
+                        className={`dropdown-img ${
+                          activeDropdown === company.id ? "rotated" : ""
                         }`}
-                        onClick={() =>
-                          toggleBlockStatus(company.id, company.status)
-                        }
-                      >
-                        <div
-                          className={`bg-white rounded-full transform transition-transform bar ${
-                            company.status.toLowerCase() === "blocked"
-                              ? "translate-x-2"
-                              : "translate-x-0"
-                          }`}
-                        />
-                      </button>
+                        onClick={() => toggleDropdown(company.id)}
+                      />
                     </div>
-                  </td>
-
-                  <td className="justify-items-center companiesdata">
-                    <img
-                      src={deletes}
-                      alt="Delete"
-                      className="cursor-pointer w-auto h-auto"
-                      onClick={() => handleDeleteClick(company.id)}
-                    />
-                  </td>
-                  <td className="justify-items-center companiesdata">
-                    <img src={permission} alt="Permissions" />
-                  </td>
-                </tr>
+                  </tr>
+                  {activeDropdown === company.id && (
+              
+                    <tr className="dropdown-row">
+                      <td colSpan="12" className="dropdownlist">
+                        {/* Dropdown content goes here */}
+                        <div className="flex justify-between gap-3 ">
+                          <div>
+                            <h4 className="mobhead">Admin Name</h4>
+                            <p className="mobdata mobcmpyadmin">
+                              {company.company_admin_name}
+                            </p>
+                          </div>
+                          <div>
+                            <h4 className="mobhead">Phone</h4>
+                            <p className="mobdata mobcmpyphone">
+                              {company.phone_no1}
+                            </p>
+                          </div>
+                          <div>
+                            <h4 className="text-end mobhead">Status</h4>
+                            <span
+                              className={`rounded block text-xs blocks ${
+                                company.status.toLowerCase() === "active"
+                                  ? "bg-green-100 text-[#24D6A5]"
+                                  : "bg-violet-100 text-[#8239BC]"
+                              }`}
+                            >
+                              {company.status.charAt(0).toUpperCase() +
+                                company.status.slice(1).toLowerCase()}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="mobemaildiv">
+                          <h4 className="mobhead">Email</h4>
+                          <p className="mobdata">{company.email_address}</p>
+                        </div>
+                        <div className="flex justify-between mobactions">
+                          <div className="justify-items-center">
+                            <h4 className="mobhead">View</h4>
+                            <img
+                              src={view}
+                              alt="View"
+                              className="w-5 h-auto mobicon mobviewicon"
+                              onClick={() => handleView(company.id)}
+                            />
+                          </div>
+                          <div className="justify-items-center">
+                            <h4 className="mobhead">Edit</h4>
+                            <img
+                              src={edit}
+                              alt="Edit"
+                              className=" w-auto h-auto mobicon"
+                              onClick={() => handleEdit(company.id)}
+                            />
+                          </div>
+                          <div className="justify-items-center">
+                            <h4 className="mobhead">Block</h4>
+                            <button
+                              className={`items-center rounded-full p-1 toggle mobicon ${
+                                company.status.toLowerCase() === "blocked"
+                                  ? "bg-[#F36643]"
+                                  : "bg-[#1BC194]"
+                              }`}
+                              onClick={() =>
+                                toggleBlockStatus(company.id, company.status)
+                              }
+                            >
+                              <div
+                                className={`bg-white rounded-full transform transition-transform bar ${
+                                  company.status.toLowerCase() === "blocked"
+                                    ? "translate-x-2"
+                                    : "translate-x-0"
+                                }`}
+                              />
+                            </button>
+                          </div>
+                          <div className="justify-items-center">
+                            <h4 className="mobhead">Delete</h4>
+                            <img
+                              src={deletes}
+                              alt="Delete"
+                              className="cursor-pointer w-auto h-auto mobicon"
+                              onClick={() => handleDeleteClick(company.id)}
+                            />
+                          </div>
+                          <div className="justify-items-center">
+                            <h4 className="mobhead">Permissions</h4>
+                            <img
+                              src={permission}
+                              alt="Permissions"
+                              className="mobicon"
+                            />
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  )}
+                </React.Fragment>
               ))}
             </tbody>
           </table>

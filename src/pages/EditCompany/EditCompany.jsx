@@ -8,7 +8,8 @@ import uploadIcon from "../../assets/images/Companies/choose file.svg";
 
 const EditCompany = () => {
   const [fileName, setFileName] = useState("Choose File");
-  const [companyLogoPreview, setCompanyLogoPreview] = useState(null); // To preview the logo
+  const [companies, setCompanies] = useState([]);
+  const [companyLogoPreview, setCompanyLogoPreview] = useState(null);
   const [formDataState, setFormDataState] = useState({
     company_name: "",
     company_admin_name: "",
@@ -119,7 +120,7 @@ const EditCompany = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const formData = new FormData();
     formData.append("company_name", formDataState.company_name);
     formData.append("company_admin_name", formDataState.company_admin_name);
@@ -128,18 +129,18 @@ const EditCompany = () => {
     formData.append("phone_no1", formDataState.phone_no1);
     formData.append("phone_no2", formDataState.phone_no2);
     formData.append("user_id", formDataState.user_id);
-
+  
     // Convert permissions to expected format
     formData.append(
       "permissions",
       JSON.stringify(formDataState.permissions.map((perm) => parseInt(perm, 10)))
     );
-
+  
     // Add company logo only if it is a valid file
     if (formDataState.company_logo instanceof File) {
       formData.append("company_logo", formDataState.company_logo);
     }
-
+  
     try {
       const response = await axios.put(
         `${BASE_URL}/accounts/companies/update/${companyId}/`,
@@ -150,10 +151,19 @@ const EditCompany = () => {
           },
         }
       );
-
+  
       if (response.status === 200 || response.status === 201) {
         toast.success("Company updated successfully!");
-
+  
+        // Assuming `companies` is your list of companies
+        setCompanies((prevCompanies) => 
+          prevCompanies.map((company) =>
+            company.id === companyId
+              ? { ...company, ...formDataState }  // Update the specific company with new data
+              : company
+          )
+        );
+  
         // Delay navigation to allow the toast to display
         setTimeout(() => {
           navigate("/admin/companies");
@@ -164,7 +174,7 @@ const EditCompany = () => {
       toast.error("Failed to update company. Please try again.");
     }
   };
-
+  
   const truncateFileName = (name, maxLength = 20) => {
     // If name is a URL (starts with http:// or https://), extract the file name
     const fileName = name.includes("://") ? name.split("/").pop() : name;
@@ -178,7 +188,7 @@ const EditCompany = () => {
   
   
   return (
-    <div className="flex flex-col md:flex-row w-full border rounded-lg min-h-screen gap-10">
+    <div className="flex flex-col md:flex-row w-full border rounded-lg min-h-screen gap-10 maineditcmpy">
       <Toaster position="top-center" reverseOrder={false} />
 
       {/* Left Form Section */}
