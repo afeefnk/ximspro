@@ -241,7 +241,7 @@ const Companies = () => {
                       {String(index + 1 + indexOfFirstItem).padStart(2, "0")}
                     </td>
                     <td className="companiestheadlogo">
-                      <img src={company.company_logo} alt="Logo" className="" />
+                      <img src={company.company_logo} alt="Logo" />
                     </td>
                     <td className="companiesdata companydataname">
                       {company.company_name}

@@ -190,10 +190,10 @@ tr {
   line-height: 16px;
   color: #25282b;
 }
-.mobcmpyadmin,
+/* .mobcmpyadmin,
 .mobcmpyphone {
   padding-top: 5px;
-}
+} */
 .mobemaildiv {
   padding-top: 10px;
 }
@@ -208,7 +208,7 @@ tr {
   margin-top: 5px;
 }
 .mobviewicon {
-  margin-top: 7px;
+  margin-top: 8px;
 }
 
 @media (min-width: 432px) {
