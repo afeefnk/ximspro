@@ -64,7 +64,7 @@ input[type="checkbox"]:checked + span {
 }
 
 .credentials {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .business-container {
@@ -95,6 +95,9 @@ input[type="checkbox"]:checked + span {
     max-width: 400px; 
     margin-top: 5rem;
   }
+  .permissionboxes {
+    gap: 1.5rem;
+  }
   
   @media (max-width:431px) {
     .illustrateimg  {
@@ -102,5 +105,11 @@ input[type="checkbox"]:checked + span {
     }
     .addmaincmpy {
       margin-bottom: 100px;
+    }
+    .credentials {
+      margin-top: 45px;
+    }
+    .permissionboxes {
+      gap: 1rem;
     }
   }

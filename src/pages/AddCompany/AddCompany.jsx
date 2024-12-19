@@ -230,7 +230,7 @@ const AddCompany = () => {
                 />
                 <label
                   htmlFor="company_logo"
-                  className="flex items-center justify-between border border-[#E9E9E9] text-sm cursor-pointer rounded px-3 w-1/2 h-11 mt-2"
+                  className="flex items-center justify-between border border-[#E9E9E9] text-sm cursor-pointer rounded px-3 lg:w-1/2 h-11 mt-2"
                 >
                   <p
                     className={`filename ${
@@ -278,7 +278,7 @@ const AddCompany = () => {
           {/* Permissions */}
           <div>
             <h3 className="text-[#677487] mb-2">Permissions</h3>
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-wrap permissionboxes">
               {permissionList.map((permission) => (
                 <label
                   key={permission.id}
