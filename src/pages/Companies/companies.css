@@ -345,7 +345,7 @@ tr {
       padding-right: 15px;
     }
     .paginationmob {
-      margin-bottom: 3rem;
+      margin-bottom: 5rem;
     }
 }
 
@@ -365,7 +365,9 @@ tr {
     .mobdata {
       font-size:13px ;
     }
-
+    .paginationmob {
+      margin-bottom: 4rem;
+    }
 }
 
 @media (max-width:401px) {
@@ -375,6 +377,9 @@ tr {
   .companydataname {
     font-size: 13px;
   }
+  .paginationmob {
+    margin-bottom: 4rem;
+  }
 }
 
 @media (max-width:385px) {
@@ -383,6 +388,9 @@ tr {
   }
   .companydataname {
     font-size: 12px;
+  }
+  .paginationmob {
+    margin-bottom: 4rem;
   }
 }
 
