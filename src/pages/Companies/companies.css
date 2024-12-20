@@ -310,7 +310,7 @@ tr {
   }
   .companydataname {
     font-family: "Switzer Regular";
-    font-size: 500;
+    font-weight: 500;
     font-size: 13px;
     line-height: 16px;
     color: #25282b;
@@ -347,6 +347,21 @@ tr {
       font-size:13px ;
     }
 
+}
+
+@media (max-width:401px) {
+  .mobdata {
+    font-size:12px ;
+  }
+  .companydataname {
+    font-size: 12px;
+  }
+}
+
+@media (max-width:385px) {
+  .mobdata {
+    font-size:11px ;
+  }
 }
 
 /* .modal-overlay {
