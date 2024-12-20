@@ -328,6 +328,18 @@ tr {
   .pagination, .pageswipe {
     font-size: 13px;
   }
+  .companydataname {
+    padding-left: 25px;
+  }
+    .compnyname {
+      padding: 10px 25px;
+    }
+    .companiestheadsl {
+      padding-right: 20px;
+    }
+    .companiesdatasl {
+      padding-right: 15px;
+    }
 }
 
 @media (max-width:415px) {
