@@ -188,11 +188,11 @@ const EditCompany = () => {
   
   
   return (
-    <div className="flex flex-col md:flex-row w-full border rounded-lg min-h-screen gap-10 maineditcmpy">
+    <div className="flex flex-col md:flex-row w-full border rounded-lg gap-10 maineditcmpy">
       <Toaster position="top-center" reverseOrder={false} />
 
       {/* Left Form Section */}
-      <div className="w-full md:w-2/3 bg-white rounded-lg p-5">
+      <div className="w-full  bg-white rounded-lg p-5">          {/* md:w-2/3 */}
         <h2 className="text-[#25282B] editcmpnyhead">Edit Company</h2>
 
         <form className="space-y-6" onSubmit={handleSubmit}>
@@ -263,7 +263,7 @@ const EditCompany = () => {
                 />
                 <label
                   htmlFor="company_logo"
-                  className="flex items-center justify-between border border-[#E9E9E9] text-sm cursor-pointer rounded px-3 w-1/2 h-11 mt-2"
+                  className="flex items-center justify-between border border-[#E9E9E9] text-sm cursor-pointer rounded px-3 lg:w-1/2 h-11 mt-2"
                 >
                   <p
                     className={`filename ${
@@ -293,8 +293,8 @@ const EditCompany = () => {
 
           {/* Permissions */}
           <div>
-            <h3 className="text-[#677487] mb-2">Permissions</h3>
-            <div className="flex flex-wrap gap-4">
+            <h3 className="text-[#677487] mb-2 permissionhead">Permissions</h3>
+            <div className="flex flex-wrap gap-4 permissionboxes">
               {permissionList.map((permission) => (
                 <label
                   key={permission.id}
@@ -309,7 +309,7 @@ const EditCompany = () => {
                     )}
                     onChange={handlePermissionChange}
                   />
-                  <span className="ml-2">{permission.name}</span>
+                  <span className="ml-2 capitalize">{permission.name}</span>
                 </label>
               ))}
             </div>

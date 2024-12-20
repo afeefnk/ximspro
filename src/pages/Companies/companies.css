@@ -84,7 +84,7 @@ tr {
 
 .pagination {
   font-family: "Switzer Light";
-  font-size: 400;
+  font-weight: 400;
   line-height: 18.48px;
   font-size: 14px;
   color: rgb(138, 148, 162);
@@ -325,6 +325,28 @@ tr {
   .companiestheadsl {
     padding-right: 25px;
   }
+  .pagination, .pageswipe {
+    font-size: 13px;
+  }
+}
+
+@media (max-width:415px) {
+  .companydataname {
+    padding-left: 25px;
+  }
+    .compnyname {
+      padding: 10px 25px;
+    }
+    .companiestheadsl {
+      padding-right: 20px;
+    }
+    .companiesdatasl {
+      padding-right: 15px;
+    }
+    .mobdata {
+      font-size:13px ;
+    }
+
 }
 
 /* .modal-overlay {

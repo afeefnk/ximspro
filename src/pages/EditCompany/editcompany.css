@@ -1,3 +1,6 @@
+.maineditcmpy {
+    height: 580px;
+}
 .editcmpnyhead {
     margin-bottom: 25px;
     font-family: 'Switzer Regular';
@@ -66,6 +69,13 @@ input[type="checkbox"]:not(:checked) + span {
   @media(max-width:431px ) {
     .maineditcmpy {
         margin-bottom: 100px;
+        height: 58rem;
+    }
+    .permissionhead {
+        margin-top: 50px;
+    }
+    .editcmpyinput {
+        margin-top: 4px;
     }
   }
 

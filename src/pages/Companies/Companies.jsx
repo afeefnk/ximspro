@@ -445,7 +445,7 @@ const Companies = () => {
           </span>{" "}
           entries
         </p>
-        <div className="flex">
+        <div className="flex pageswipe">
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
