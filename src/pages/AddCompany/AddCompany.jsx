@@ -6,6 +6,7 @@ import { BASE_URL } from "../../Utils/Config";
 import illustrate from "../../assets/images/AddCompany/Clip path group-cropped.svg";
 import group from "../../assets/images/AddCompany/bottompic.svg";
 import uploadIcon from "../../assets/images/Companies/choose file.svg";
+import { useNavigate } from "react-router-dom";
 
 const AddCompany = () => {
   const [fileName, setFileName] = useState("Choose File");
@@ -22,6 +23,7 @@ const AddCompany = () => {
   });
   const [permissionList, setPermissionList] = useState([]);
   const [permission, setPermission] = useState([]);
+  const navigate = useNavigate();
 
   const fetchPermission = async () => {
     try {
@@ -125,6 +127,9 @@ const AddCompany = () => {
 
       if (response.status === 200 || response.status === 201) {
         toast.success("Company added successfully!");
+        setTimeout(() => {
+          navigate("/admin/companies");
+        }, 1500);
         // Reset form state if necessary
         setFormDataState({
           company_name: "",
