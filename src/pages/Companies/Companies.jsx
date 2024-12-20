@@ -9,7 +9,7 @@ import searchIcon from "../../assets/images/Companies/search.svg";
 import csvicon from "../../assets/images/Companies/csv icon.svg";
 import addicon from "../../assets/images/Companies/add.svg";
 import arrow from "../../assets/images/Companies/downarrow.svg";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import "./companies.css";
 import { BASE_URL } from "../../Utils/Config";
 import { useNavigate } from "react-router-dom";
@@ -157,6 +157,25 @@ const Companies = () => {
 
   const toggleDropdown = (companyId) => {
     setActiveDropdown((prev) => (prev === companyId ? null : companyId));
+  };
+
+  const dropdownVariants = {
+    hidden: {
+      opacity: 0,
+      height: 0,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut",
+      },
+    },
+    visible: {
+      opacity: 1,
+      height: "auto",
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut",
+      },
+    },
   };
 
   return (
@@ -331,103 +350,110 @@ const Companies = () => {
                       />
                     </div>
                   </tr>
-                  {activeDropdown === company.id && (
-              
-                    <tr className="dropdown-row">
-                      <td colSpan="12" className="dropdownlist">
-                        {/* Dropdown content goes here */}
-                        <div className="flex justify-between gap-3 ">
-                          <div>
-                            <h4 className="mobhead">Admin Name</h4>
-                            <p className="mobdata mobcmpyadmin">
-                              {company.company_admin_name}
-                            </p>
-                          </div>
-                          <div>
-                            <h4 className="mobhead">Phone</h4>
-                            <p className="mobdata mobcmpyphone">
-                              {company.phone_no1}
-                            </p>
-                          </div>
-                          <div>
-                            <h4 className="text-end mobhead">Status</h4>
-                            <span
-                              className={`rounded block text-xs blocks ${
-                                company.status.toLowerCase() === "active"
-                                  ? "bg-green-100 text-[#24D6A5]"
-                                  : "bg-violet-100 text-[#8239BC]"
-                              }`}
-                            >
-                              {company.status.charAt(0).toUpperCase() +
-                                company.status.slice(1).toLowerCase()}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="mobemaildiv">
-                          <h4 className="mobhead">Email</h4>
-                          <p className="mobdata">{company.email_address}</p>
-                        </div>
-                        <div className="flex justify-between mobactions">
-                          <div className="justify-items-center">
-                            <h4 className="mobhead">View</h4>
-                            <img
-                              src={view}
-                              alt="View"
-                              className="w-5 h-auto mobicon mobviewicon"
-                              onClick={() => handleView(company.id)}
-                            />
-                          </div>
-                          <div className="justify-items-center">
-                            <h4 className="mobhead">Edit</h4>
-                            <img
-                              src={edit}
-                              alt="Edit"
-                              className=" w-auto h-auto mobicon"
-                              onClick={() => handleEdit(company.id)}
-                            />
-                          </div>
-                          <div className="justify-items-center">
-                            <h4 className="mobhead">Block</h4>
-                            <button
-                              className={`items-center rounded-full p-1 toggle mobicon ${
-                                company.status.toLowerCase() === "blocked"
-                                  ? "bg-[#F36643]"
-                                  : "bg-[#1BC194]"
-                              }`}
-                              onClick={() =>
-                                toggleBlockStatus(company.id, company.status)
-                              }
-                            >
-                              <div
-                                className={`bg-white rounded-full transform transition-transform bar ${
-                                  company.status.toLowerCase() === "blocked"
-                                    ? "translate-x-2"
-                                    : "translate-x-0"
+                  <AnimatePresence>
+                    {activeDropdown === company.id && (
+                      <motion.tr
+                        className="dropdown-row"
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
+                        variants={dropdownVariants}
+                      >
+                        <td colSpan="12" className="dropdownlist">
+                          {/* Dropdown content goes here */}
+                          <div className="flex justify-between gap-3 ">
+                            <div>
+                              <h4 className="mobhead">Admin Name</h4>
+                              <p className="mobdata mobcmpyadmin">
+                                {company.company_admin_name}
+                              </p>
+                            </div>
+                            <div>
+                              <h4 className="mobhead">Phone</h4>
+                              <p className="mobdata mobcmpyphone">
+                                {company.phone_no1}
+                              </p>
+                            </div>
+                            <div>
+                              <h4 className="text-end mobhead">Status</h4>
+                              <span
+                                className={`rounded block text-xs blocks ${
+                                  company.status.toLowerCase() === "active"
+                                    ? "bg-green-100 text-[#24D6A5]"
+                                    : "bg-violet-100 text-[#8239BC]"
                                 }`}
+                              >
+                                {company.status.charAt(0).toUpperCase() +
+                                  company.status.slice(1).toLowerCase()}
+                              </span>
+                            </div>
+                          </div>
+                          <div className="mobemaildiv">
+                            <h4 className="mobhead">Email</h4>
+                            <p className="mobdata">{company.email_address}</p>
+                          </div>
+                          <div className="flex justify-between mobactions">
+                            <div className="justify-items-center">
+                              <h4 className="mobhead">View</h4>
+                              <img
+                                src={view}
+                                alt="View"
+                                className="w-5 h-auto mobicon mobviewicon"
+                                onClick={() => handleView(company.id)}
                               />
-                            </button>
+                            </div>
+                            <div className="justify-items-center">
+                              <h4 className="mobhead">Edit</h4>
+                              <img
+                                src={edit}
+                                alt="Edit"
+                                className=" w-auto h-auto mobicon"
+                                onClick={() => handleEdit(company.id)}
+                              />
+                            </div>
+                            <div className="justify-items-center">
+                              <h4 className="mobhead">Block</h4>
+                              <button
+                                className={`items-center rounded-full p-1 toggle mobicon ${
+                                  company.status.toLowerCase() === "blocked"
+                                    ? "bg-[#F36643]"
+                                    : "bg-[#1BC194]"
+                                }`}
+                                onClick={() =>
+                                  toggleBlockStatus(company.id, company.status)
+                                }
+                              >
+                                <div
+                                  className={`bg-white rounded-full transform transition-transform bar ${
+                                    company.status.toLowerCase() === "blocked"
+                                      ? "translate-x-2"
+                                      : "translate-x-0"
+                                  }`}
+                                />
+                              </button>
+                            </div>
+                            <div className="justify-items-center">
+                              <h4 className="mobhead">Delete</h4>
+                              <img
+                                src={deletes}
+                                alt="Delete"
+                                className="cursor-pointer w-auto h-auto mobicon"
+                                onClick={() => handleDeleteClick(company.id)}
+                              />
+                            </div>
+                            <div className="justify-items-center">
+                              <h4 className="mobhead">Permissions</h4>
+                              <img
+                                src={permission}
+                                alt="Permissions"
+                                className="mobicon"
+                              />
+                            </div>
                           </div>
-                          <div className="justify-items-center">
-                            <h4 className="mobhead">Delete</h4>
-                            <img
-                              src={deletes}
-                              alt="Delete"
-                              className="cursor-pointer w-auto h-auto mobicon"
-                              onClick={() => handleDeleteClick(company.id)}
-                            />
-                          </div>
-                          <div className="justify-items-center">
-                            <h4 className="mobhead">Permissions</h4>
-                            <img
-                              src={permission}
-                              alt="Permissions"
-                              className="mobicon"
-                            />
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  )}
+                        </td>
+                      </motion.tr>
+                    )}
+                  </AnimatePresence>
                 </React.Fragment>
               ))}
             </tbody>
