@@ -115,9 +115,8 @@ input[type="checkbox"]:checked + span {
 
 /* Add the blue tick */
 .form-checkbox:checked::after {
-  content: '✔';
-  color: #1E4DA1; /* Blue tick */
-  font-size: 14px;
+  content: url('../../assets/images/AddCompany/tickmark.svg');
+  color: #1E4DA1; 
   position: absolute;
   top: 50%;
   left: 50%;
