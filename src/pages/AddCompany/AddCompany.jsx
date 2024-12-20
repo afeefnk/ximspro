@@ -277,7 +277,7 @@ const AddCompany = () => {
 
           {/* Permissions */}
           <div>
-            <h3 className="text-[#677487] mb-2">Permissions</h3>
+            <h3 className="text-[#677487] mb-4">Permissions</h3>
             <div className="flex flex-wrap permissionboxes">
               {permissionList.map((permission) => (
                 <label
@@ -286,11 +286,20 @@ const AddCompany = () => {
                 >
                   <input
                     type="checkbox"
-                    className="form-checkbox border border-[#E9E9E9] addcmyinputs"
+                    className="form-checkbox"
                     value={permission.id}
                     onChange={(e) => handlePermissionChange(e, permission.id)}
                   />
-                  <span className="ml-2 capitalize">{permission.name}</span>
+                  <span className="ml-2">
+                    {permission.name
+                      .replace(/_/g, " ") // Replace underscores with spaces
+                      .split(" ") // Split into words
+                      .map(
+                        (word) => word.charAt(0).toUpperCase() + word.slice(1)
+                      ) // Capitalize each word
+                      .join(" ")}{" "}
+                    {/* Join words back with spaces */}
+                  </span>
                 </label>
               ))}
             </div>
@@ -300,7 +309,7 @@ const AddCompany = () => {
           <div className="flex justify-end">
             <button
               type="submit"
-              className="lg:w-full md:w-auto bg-[#1E4DA1] text-white px-7 py-2 rounded duration-200 hover:bg-[#18366b] cursor-pointer"
+              className="lg:w-1/5 md:w-auto bg-[#1E4DA1] text-white px-7 py-2 rounded duration-200 hover:bg-[#18366b] cursor-pointer"
             >
               Submit
             </button>
