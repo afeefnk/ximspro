@@ -344,6 +344,9 @@ tr {
     .companiesdatasl {
       padding-right: 15px;
     }
+    .paginationmob {
+      margin-bottom: 3rem;
+    }
 }
 
 @media (max-width:415px) {

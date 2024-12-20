@@ -461,7 +461,7 @@ const Companies = () => {
         </div>
       </div>
 
-      <div className="flex justify-between items-center mt-1">
+      <div className="flex justify-between items-center mt-1 paginationmob">
         <p className="pagination">
           Showing{" "}
           <span className="text-[#1E4DA1]">
@@ -487,7 +487,7 @@ const Companies = () => {
             <button
               key={i}
               onClick={() => handlePageChange(i + 1)}
-              className={`px-2 py-2 ${
+              className={`px-1 py-2 ${
                 currentPage === i + 1
                   ? "border-[#1E4DA1] text-[#1E4DA1] underline pageno"
                   : "border-gray-300 text-[#898989] pageno"
