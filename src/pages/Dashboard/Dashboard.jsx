@@ -76,7 +76,7 @@ const Dashboard = () => {
         } else {
           clearInterval(interval); // Stop the interval when the target is reached
         }
-      }, 10); // Update interval (10ms)
+      }, 30); // Update interval (10ms)
     };
 
     // Start counting for each stat when target values change
