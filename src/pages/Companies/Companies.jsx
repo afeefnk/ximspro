@@ -86,7 +86,8 @@ const Companies = () => {
       });
   };
 
-  const filteredCompanies = companies.filter((company) => {
+  const filteredCompanies = companies
+  .filter((company) => {
     const nameMatch =
       company.company_name &&
       company.company_name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -101,7 +102,9 @@ const Companies = () => {
     const phoneMatch =
       company.phone_no1 && company.phone_no1.includes(searchQuery);
     return nameMatch || adminNameMatch || emailMatch || phoneMatch;
-  });
+  })
+  .sort((a, b) => b.id - a.id); // Sort in descending order by ID
+
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
