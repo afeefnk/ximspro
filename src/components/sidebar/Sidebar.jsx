@@ -10,12 +10,10 @@ const Sidebar = () => {
   const location = useLocation();
 
   const [activeItem, setActiveItem] = useState(() => {
-    // Retrieve the saved active item from localStorage or default to "dashboard"
     return localStorage.getItem("activeItem") || "dashboard";
   });
 
   useEffect(() => {
-    // Update activeItem state based on the current path
     const currentPath = location.pathname;
     if (currentPath.includes("dashboard")) {
       setActiveItem("dashboard");
@@ -26,7 +24,7 @@ const Sidebar = () => {
 
   const handleItemClick = (item, path) => {
     setActiveItem(item);
-    localStorage.setItem("activeItem", item); // Save the active item in localStorage
+    localStorage.setItem("activeItem", item);
     navigate(path);
   };
 
@@ -36,7 +34,7 @@ const Sidebar = () => {
       <img src={logo} alt="XIMSpro Logo" className="logo mb-8" />
 
       {/* Navigation */}
-      <nav className="lg:flex lg:flex-col items-center lg:space-y-3 relative lg:top-20 sidebartab">
+      <nav className="lg:flex lg:flex-col items-center lg:space-y-3 relative lg:top-16 sidebartab">
         {/* Dashboard */}
         <div
           onClick={() => handleItemClick("dashboard", "/admin/dashboard")}

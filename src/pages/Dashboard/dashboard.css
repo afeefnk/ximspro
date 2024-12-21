@@ -74,6 +74,28 @@
 }
 
 
+@media (min-width: 501px) and (max-width:821px) {
+    .singlecard {
+        width: 65px;
+        height: 65px;
+    }
+    .dashicons {
+        height: 24px;
+        width: 24px;
+    }
+    .subheads {
+        font-size: 14px;
+        line-height: 18px;
+        margin-top: 10px;
+    }
+    .ptexts {
+        font-size: 28px;
+    }
+    .card {
+        height: 190px;
+    }
+}
+
 
 
 @media(min-width:432px){

@@ -96,6 +96,39 @@
 
 
   /* Responsive Design */
+  @media (min-width: 501px) and (max-width:821px) {
+    .navbaritem {
+        display: flex;
+    }
+    .span3 {
+        font-size: 13px;
+    }
+    .span4 {
+        font-size: 11px;
+    }
+    .profileicon {
+        width: 30px;
+        height: 30px;
+        margin-right: 0.5rem;
+    }
+    .bellicon {
+        width: 30px;
+        height: 30px;
+    }
+    .settingicon {
+        width: 30px;
+        height: 30px;
+    }
+    .divider {
+        height: 24px;
+    }
+    .span1 {
+        font-size: 14px;
+    }
+    .span2 {
+        font-size: 16px;
+    }
+  }
 
   @media(min-width:432px){
     .navlogo, .dashboardicon {

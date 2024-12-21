@@ -68,7 +68,7 @@ const Navbar = () => {
               />
             </button>
 
-            <div className="lg:flex flex-col -space-y-1 adminname">
+            <div className="lg:flex flex-col -space-y-1 adminname navbaritem">
               <span className="text-[#25282B] span3">Hello, super admin</span>
               <span className="text-[#677487] span4">example@gmail.com</span>
             </div>
