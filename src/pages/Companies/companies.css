@@ -210,6 +210,80 @@ tr {
 .mobviewicon {
   margin-top: 8px;
 }
+.topbtns {
+  display: flex;
+}
+
+
+@media (min-width: 501px) and (max-width:821px) {
+  .tabview {
+    display: none;
+  }
+  .navcomitems {
+    display: flex;
+    margin: auto;
+    gap: 40px;
+  }
+  .cmpilisthead {
+    padding-bottom: 0px;
+  }
+  .dropheadtab {
+    justify-self: end;
+    padding-right: 60px;
+  }
+  .bgarrowtab {
+      background-color: #dedede;
+      border-radius: 100%;
+      width: 20px;
+      height: 20px;
+      margin: 20px;
+      align-content: center;
+      justify-items: center;
+      transition: background-color 0.3s ease;
+    
+  }
+  .bgarrowtab.active {
+    background-color: #254396;
+  }
+  .dropdown-imgtab {
+    transition: transform 0.3s ease;
+  }
+  .dropdown-imgtab.rotated {
+    transform: rotate(180deg);
+  }
+  .companiesdata {
+    font-size: 11px;
+  }
+  .dropdownlist {
+    padding-left: 45px;
+    padding-right: 45px;
+    padding-bottom: 15px;
+    padding-top: 10px;
+  }
+  .mobactions {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .tabview {
+    display: none;
+  }
+  .dropdown-row td {
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .tblrows.no-border {
+    border-bottom: none;
+  }
+  .companiesdata{
+    padding-right: 0px;
+  }
+  .mobdata {
+    font-size: 12px;
+  }
+  .mobhead{
+    font-size: 11px;
+  }
+
+}
 
 
 
@@ -219,13 +293,11 @@ tr {
   .addcmpymob {
     display: none;
   }
-  .topbtns {
-    display: flex;
-  }
 }
 
 @media (max-width: 431px) {
   .nodisplayhead,
+  .dropheadtab,
   .nodisplaydata,
   .addnewcmpy {
     display: none;

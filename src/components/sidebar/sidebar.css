@@ -13,7 +13,7 @@
   width: 127px;
   height: 49px;
   padding: 8px 0;
-  transition: all 0.3s ease-in-out; /* Smooth animation */
+  transition: all 0.3s ease-in-out;
 }
 
 .mainsidebar .item .sideicon {

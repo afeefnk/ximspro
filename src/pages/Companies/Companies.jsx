@@ -231,23 +231,24 @@ const Companies = () => {
                 <th className="text-start companiesthead comadminname nodisplayhead">
                   Admin Name
                 </th>
-                <th className="text-start companiesthead compnyemail nodisplayhead">
+                <th className="text-start companiesthead compnyemail nodisplayhead ">
                   Email
                 </th>
-                <th className="text-start companiesthead nodisplayhead">
+                <th className="text-start companiesthead nodisplayhead tabview">
                   Phone
                 </th>
-                <th className="text-start companiesthead nodisplayhead">
+                <th className="text-start companiesthead nodisplayhead tabview">
                   Status
                 </th>
-                <th className="companiesthead nodisplayhead">View</th>
-                <th className="companiesthead nodisplayhead">Edit</th>
-                <th className="companiesthead nodisplayhead">Block</th>
-                <th className="companiesthead nodisplayhead">Delete</th>
-                <th className="companiesthead compnyper nodisplayhead">
+                <th className="companiesthead nodisplayhead tabview">View</th>
+                <th className="companiesthead nodisplayhead tabview">Edit</th>
+                <th className="companiesthead nodisplayhead tabview">Block</th>
+                <th className="companiesthead nodisplayhead tabview">Delete</th>
+                <th className="companiesthead compnyper nodisplayhead tabview">
                   Permissions
                 </th>
                 <div className="drophead"></div>
+                <div className="dropheadtab"></div>
               </tr>
             </thead>
             <tbody>
@@ -271,13 +272,13 @@ const Companies = () => {
                     <td className="companiesdata nodisplaydata">
                       {company.company_admin_name}
                     </td>
-                    <td className="companiesdata companyemaildata nodisplaydata">
+                    <td className="companiesdata companyemaildata nodisplaydata ">
                       {company.email_address}
                     </td>
-                    <td className="companiesdata nodisplaydata">
+                    <td className="companiesdata nodisplaydata tabview">
                       {company.phone_no1}
                     </td>
-                    <td className="companiesdata nodisplaydata">
+                    <td className="companiesdata nodisplaydata tabview">
                       <span
                         className={`p-1 rounded block ${
                           company.status.toLowerCase() === "active"
@@ -289,7 +290,7 @@ const Companies = () => {
                           company.status.slice(1).toLowerCase()}
                       </span>
                     </td>
-                    <td className="justify-items-center companiesdata nodisplaydata">
+                    <td className="justify-items-center companiesdata nodisplaydata tabview">
                       <img
                         src={view}
                         alt="View"
@@ -297,7 +298,7 @@ const Companies = () => {
                         onClick={() => handleView(company.id)}
                       />
                     </td>
-                    <td className="justify-items-center companiesdata nodisplaydata">
+                    <td className="justify-items-center companiesdata nodisplaydata tabview">
                       <img
                         src={edit}
                         alt="Edit"
@@ -305,7 +306,7 @@ const Companies = () => {
                         onClick={() => handleEdit(company.id)}
                       />
                     </td>
-                    <td className="justify-items-center companiesdata nodisplaydata">
+                    <td className="justify-items-center companiesdata nodisplaydata tabview">
                       <div className="justify-items-center">
                         <button
                           className={`items-center rounded-full p-1 toggle ${
@@ -327,7 +328,7 @@ const Companies = () => {
                         </button>
                       </div>
                     </td>
-                    <td className="justify-items-center companiesdata nodisplaydata">
+                    <td className="justify-items-center companiesdata nodisplaydata tabview">
                       <img
                         src={deletes}
                         alt="Delete"
@@ -335,7 +336,7 @@ const Companies = () => {
                         onClick={() => handleDeleteClick(company.id)}
                       />
                     </td>
-                    <td className="justify-items-center companiesdata comperdata nodisplaydata">
+                    <td className="justify-items-center companiesdata comperdata nodisplaydata tabview">
                       <img src={permission} alt="Permissions" />
                     </td>
                     <div
@@ -352,6 +353,29 @@ const Companies = () => {
                         onClick={() => toggleDropdown(company.id)}
                       />
                     </div>
+
+
+
+
+
+
+                    <div
+                      className={`bgarrowtab ${
+                        activeDropdown === company.id ? "active" : ""
+                      }`}
+                    >
+                      <img
+                        src={arrow}
+                        alt=""
+                        className={`dropdown-imgtab ${
+                          activeDropdown === company.id ? "rotated" : ""
+                        }`}
+                        onClick={() => toggleDropdown(company.id)}
+                      />
+                    </div>
+
+
+
                   </tr>
                   <AnimatePresence>
                     {activeDropdown === company.id && (
@@ -391,7 +415,7 @@ const Companies = () => {
                               </span>
                             </div>
                           </div>
-                          <div className="mobemaildiv">
+                          <div className="mobemaildiv tabview">
                             <h4 className="mobhead">Email</h4>
                             <p className="mobdata">{company.email_address}</p>
                           </div>
