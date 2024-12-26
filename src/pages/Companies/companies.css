@@ -282,7 +282,16 @@ tr {
   .mobhead{
     font-size: 11px;
   }
+  .recent-activities .accards {
+    margin: 10px 0px;
+  }
 
+}
+
+@media (min-width: 501px) and (max-width:769px) {
+  .search {
+    width: 200px;
+  }
 }
 
 
