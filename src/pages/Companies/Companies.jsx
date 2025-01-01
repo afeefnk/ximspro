@@ -87,24 +87,23 @@ const Companies = () => {
   };
 
   const filteredCompanies = companies
-  .filter((company) => {
-    const nameMatch =
-      company.company_name &&
-      company.company_name.toLowerCase().includes(searchQuery.toLowerCase());
-    const adminNameMatch =
-      company.company_admin_name &&
-      company.company_admin_name
-        .toLowerCase()
-        .includes(searchQuery.toLowerCase());
-    const emailMatch =
-      company.email_address &&
-      company.email_address.toLowerCase().includes(searchQuery.toLowerCase());
-    const phoneMatch =
-      company.phone_no1 && company.phone_no1.includes(searchQuery);
-    return nameMatch || adminNameMatch || emailMatch || phoneMatch;
-  })
-  .sort((a, b) => b.id - a.id); // Sort in descending order by ID
-
+    .filter((company) => {
+      const nameMatch =
+        company.company_name &&
+        company.company_name.toLowerCase().includes(searchQuery.toLowerCase());
+      const adminNameMatch =
+        company.company_admin_name &&
+        company.company_admin_name
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase());
+      const emailMatch =
+        company.email_address &&
+        company.email_address.toLowerCase().includes(searchQuery.toLowerCase());
+      const phoneMatch =
+        company.phone_no1 && company.phone_no1.includes(searchQuery);
+      return nameMatch || adminNameMatch || emailMatch || phoneMatch;
+    })
+    .sort((a, b) => b.id - a.id); // Sort in descending order by ID
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -354,11 +353,6 @@ const Companies = () => {
                       />
                     </div>
 
-
-
-
-
-
                     <div
                       className={`bgarrowtab ${
                         activeDropdown === company.id ? "active" : ""
@@ -373,9 +367,6 @@ const Companies = () => {
                         onClick={() => toggleDropdown(company.id)}
                       />
                     </div>
-
-
-
                   </tr>
                   <AnimatePresence>
                     {activeDropdown === company.id && (
