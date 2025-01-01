@@ -289,24 +289,31 @@ const Companies = () => {
                           company.status.slice(1).toLowerCase()}
                       </span>
                     </td>
-                    <td className="justify-items-center companiesdata nodisplaydata tabview">
-                      <img
-                        src={view}
-                        alt="View"
-                        className="cursor-pointer w-5 h-auto"
-                        onClick={() => handleView(company.id)}
-                      />
-                    </td>
-                    <td className="justify-items-center companiesdata nodisplaydata tabview">
+                    <td className="companiesdata nodisplaydata tabview">
+  <div className="flex justify-center items-center w-full">
+    <img
+      src={view}
+      alt="View"
+      className="cursor-pointer "
+      onClick={() => handleView(company.id)}
+    />
+  </div>
+</td>
+
+
+
+                    <td className=" companiesdata nodisplaydata tabview">
+                    <div className="flex justify-center items-center w-full">
                       <img
                         src={edit}
                         alt="Edit"
-                        className="cursor-pointer w-auto h-auto"
+                        className="cursor-pointer "
                         onClick={() => handleEdit(company.id)}
                       />
+                      </div>
                     </td>
-                    <td className="justify-items-center companiesdata nodisplaydata tabview">
-                      <div className="justify-items-center">
+                    <td className="companiesdata nodisplaydata tabview">
+                      <div className="flex justify-center items-center w-full">
                         <button
                           className={`items-center rounded-full p-1 toggle ${
                             company.status.toLowerCase() === "blocked"
@@ -327,16 +334,20 @@ const Companies = () => {
                         </button>
                       </div>
                     </td>
-                    <td className="justify-items-center companiesdata nodisplaydata tabview">
+                    <td className="companiesdata nodisplaydata tabview">
+                    <div className="flex justify-center items-center w-full">
                       <img
                         src={deletes}
                         alt="Delete"
-                        className="cursor-pointer w-auto h-auto"
+                        className="cursor-pointer "
                         onClick={() => handleDeleteClick(company.id)}
                       />
+                      </div>
                     </td>
-                    <td className="justify-items-center companiesdata comperdata nodisplaydata tabview">
+                    <td className="companiesdata comperdata nodisplaydata tabview">
+                    <div className="flex justify-center items-center w-full">
                       <img src={permission} alt="Permissions" />
+                      </div>
                     </td>
                     <div
                       className={`bgarrow ${
