@@ -4,7 +4,7 @@ import "./recentActivities.css";
 const RecentActivities = ({ activities }) => {
   return (
     <div className="border border-[#E9E9E9] rounded-lg recent-activities">
-      <h1 className="text-[#25282B] recenthead">Companies<br/>Recent Activities</h1>
+      <h2 className="text-[#25282B] recenthead">Companies<br/>Recent Activities</h2>
       <div className="lg:space-y-4 mb-3">
         {activities.map((activity, index) => (
           <div

@@ -23,9 +23,9 @@
 
 .mainsidebar .spans {
   font-family: "Switzer Light";
+  font-weight: 400;
   font-size: 14px;
   color: #677487;
-  font-weight: 400;
 }
 
 /* Hover State */

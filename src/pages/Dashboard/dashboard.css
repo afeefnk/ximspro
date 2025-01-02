@@ -1,9 +1,8 @@
 
 
 .mainheadss {
-    font-family: 'Switzer Regular';
+    font-family: 'Switzer SemiBold';
     font-size: 24px;
-    font-weight: 600;
     line-height: 27.77px;
 }
 
@@ -36,8 +35,7 @@
 }
 
 .ptexts {
-    font-family: 'Switzer Regular';
-    font-weight: 600;
+    font-family: 'Switzer SemiBold';
     font-size: 32px;
     line-height: 42.24px;
 }

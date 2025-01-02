@@ -290,26 +290,24 @@ const Companies = () => {
                       </span>
                     </td>
                     <td className="companiesdata nodisplaydata tabview">
-  <div className="flex justify-center items-center w-full">
-    <img
-      src={view}
-      alt="View"
-      className="cursor-pointer "
-      onClick={() => handleView(company.id)}
-    />
-  </div>
-</td>
-
-
+                      <div className="flex justify-center items-center w-full">
+                        <img
+                          src={view}
+                          alt="View"
+                          className="cursor-pointer "
+                          onClick={() => handleView(company.id)}
+                        />
+                      </div>
+                    </td>
 
                     <td className=" companiesdata nodisplaydata tabview">
-                    <div className="flex justify-center items-center w-full">
-                      <img
-                        src={edit}
-                        alt="Edit"
-                        className="cursor-pointer "
-                        onClick={() => handleEdit(company.id)}
-                      />
+                      <div className="flex justify-center items-center w-full">
+                        <img
+                          src={edit}
+                          alt="Edit"
+                          className="cursor-pointer "
+                          onClick={() => handleEdit(company.id)}
+                        />
                       </div>
                     </td>
                     <td className="companiesdata nodisplaydata tabview">
@@ -335,18 +333,18 @@ const Companies = () => {
                       </div>
                     </td>
                     <td className="companiesdata nodisplaydata tabview">
-                    <div className="flex justify-center items-center w-full">
-                      <img
-                        src={deletes}
-                        alt="Delete"
-                        className="cursor-pointer "
-                        onClick={() => handleDeleteClick(company.id)}
-                      />
+                      <div className="flex justify-center items-center w-full">
+                        <img
+                          src={deletes}
+                          alt="Delete"
+                          className="cursor-pointer "
+                          onClick={() => handleDeleteClick(company.id)}
+                        />
                       </div>
                     </td>
                     <td className="companiesdata comperdata nodisplaydata tabview">
-                    <div className="flex justify-center items-center w-full">
-                      <img src={permission} alt="Permissions" />
+                      <div className="flex justify-center items-center w-full">
+                        <img src={permission} alt="Permissions" />
                       </div>
                     </td>
                     <div

@@ -4,7 +4,7 @@
 
 
 @font-face {
-    font-family: 'Cabinet Grotesk Medium';
+    font-family: 'Cabinet Grotesk Bold';
     src: url('../src/assets/fonts/Cabinet Grotesk/CabinetGrotesk-Bold.woff') format('woff');
     font-style: normal;
   }
@@ -34,5 +34,11 @@
   @font-face {
     font-family: 'Switzer Regular';
     src: url('../src/assets/fonts/Switzer/Switzer-Regular.otf') format('truetype');
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Switzer SemiBold';
+    src: url('../src/assets/fonts/Switzer/Switzer-Semibold.otf') format('truetype');
     font-style: normal;
   }

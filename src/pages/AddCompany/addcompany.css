@@ -1,7 +1,6 @@
 .addcmpnyhead {
-  margin-bottom: 24px;
-  font-family: "Switzer Regular";
-  font-weight: 600;
+  margin-bottom: 35px;
+  font-family: 'Switzer SemiBold';
   font-size: 24px;
   line-height: 27.77px;
 }
@@ -79,8 +78,7 @@ input[type="checkbox"]:checked + span {
   
   .business-text {
     font-size: 28px;
-    font-weight: 600;
-    font-family: "Switzer Regular";
+    font-family: 'Switzer SemiBold';
     line-height: 36.96px;
     color: #25282B;
     margin: 20px 0;
@@ -124,6 +122,9 @@ input[type="checkbox"]:checked + span {
 }
   
   @media (max-width:431px) {
+    .addcmpnyhead {
+      margin-bottom: 15px;
+    }
     .addcmyinputs {
       margin-top: 4px;
     }
