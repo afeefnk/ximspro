@@ -15,9 +15,13 @@
   color: #25282B;
 }
 
-.recent-activities .text-gray-600 {
+.recent-activities .arrownotactive {
   font-size: 14px;
-  color: #6b7280;
+  color: #DCDCDC;
+}
+.recent-activities .arrowactive {
+  font-size: 15px;
+  color: #25282B;
 }
 
 .recent-activities .text-black {
@@ -86,6 +90,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
+  color: #25282B;
 }
 
 .cmytext {
@@ -93,7 +98,67 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
+  color: #25282B;
 }
+.expirydaystabs {
+  border-bottom: 1px solid #E9E9E9;
+}
+.paginateactive {
+  color: #1E4DA1;
+  font-family: 'Switzer Medium';
+}
+.paginateInactive {
+  color: #898989;
+  font-family: 'Switzer Medium';
+}
+
+
+
+
+
+
+.recent-activities.dark {
+  border: 1px solid #343434;
+}
+.recent-activities.dark .recenthead {
+  background-color: #13131A;
+  color: white;
+}
+.recent-activities.dark .expirydaystabs {
+  border-bottom: 1px solid #13131A;
+}
+.recent-activities.dark .expirydatesactive {
+  border-bottom: 3px solid white;
+  color: white;
+}
+.recent-activities.dark .activitytabs {
+  background-color: #1C1C24;
+  border: 1px solid #343434;
+  box-shadow: 1px 1px 50px rgba(105, 105, 105, 0.03);
+}
+.recent-activities.dark .recentactivitythead {
+  border-bottom: 1px solid #343434;
+}
+.recent-activities.dark .idtext {
+  color: white;
+}
+.recent-activities.dark .cmytext {
+  color: white;
+}
+.recent-activities.dark .paginateactive {
+  color: #2258B6;
+}
+.recent-activities.dark .arrownotactive {
+  color: #25282B;
+}
+.recent-activities.dark .arrowactive {
+  color: #DCDCDC;
+}
+.recent-activities.dark .activitytabs:hover {
+  background-color: rgb(14, 14, 14);
+}
+
+
 
 
 

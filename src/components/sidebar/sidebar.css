@@ -160,6 +160,10 @@
     /* width: 55%; */
     width: 110px;
   }
+  .mainsidebar.dark .item.active {
+    border-right: 3px transparent;
+    border-bottom: 0.2rem solid #1E84AF;
+  }
 
   .mainsidebar .item .sideicon {
     width: 16.67px;
@@ -180,6 +184,12 @@
   .mainsidebar .item .sideicon {
     filter: brightness(0) saturate(100%) invert(12%) sepia(7%) saturate(400%)
       hue-rotate(180deg) brightness(95%) contrast(85%);
+  }
+  .mainsidebar.dark .item .sideicon {
+    filter: brightness(0) saturate(100%) invert(45%) sepia(30%) saturate(241%) hue-rotate(176deg) brightness(94%) contrast(98%);
+  }
+  .mainsidebar.dark .spans {
+    color: #677487;
   }
 
   .mainsidebar .spans {

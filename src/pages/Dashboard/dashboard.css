@@ -201,6 +201,10 @@
     line-height: 21.12px;
     margin-top: 15px;
   }
+  .dashboarddark.dark .toptextspan {
+    color: white;
+  }
+  
 }
 
 @media (max-width: 421px) {

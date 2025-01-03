@@ -209,11 +209,13 @@ const Dashboard = () => {
 
   // Recent activities data
   const activities = [
-    { id: '01', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Dec 19, 2013' },
-    { id: '02', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Dec 19, 2013' },
-    { id: '03', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Dec 19, 2013' },
-    { id: '04', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Dec 19, 2013' },
-    { id: '05', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Dec 19, 2013' } 
+    { id: '01', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Jan 10, 2025' },
+    { id: '02', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Jan 10, 2025' },
+    { id: '03', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Jan 10, 2025' },
+    { id: '04', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Jan 10, 2025' },
+    { id: '05', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Jan 10, 2025' },
+    { id: '06', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Jan 10, 2025' }, 
+    { id: '07', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Jan 10, 2025' } 
   ];
 
   return (

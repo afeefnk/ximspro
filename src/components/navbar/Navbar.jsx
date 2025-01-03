@@ -92,7 +92,7 @@ const Navbar = () => {
               alt="Profile Avatar"
               className="w-10 h-10 rounded-full profileicon"
             />
-            <button aria-label="Dashboard" className="dashboardicon">
+            <button aria-label="Dashboard" className={`dashboardicon ${theme === "dark" ? "dark" : "light"}`}>
               <img
                 src={dashboardicon}
                 alt="dashboard icon"
@@ -107,19 +107,20 @@ const Navbar = () => {
           </div>
 
           <div
-            className={`dropdown-menu absolute right-0 mt-2 bg-white border border-[#E9E9E9] shadow-md rounded-lg w-48 ${
-              isDropdownOpen ? "show" : ""
-            }`}
-          >
+  className={`dropdown-menu absolute right-0 mt-2 border shadow-md rounded-lg w-48 
+    ${isDropdownOpen ? "show" : ""} 
+    ${theme === "dark" ? "dark" : "light"}`}
+>
+
             <ul className="py-2">
               <li
-                className="px-4 py-2 hover:bg-[#f5f5f5] cursor-pointer text-sm text-[#25282B]"
+                className="px-4 py-2 cursor-pointer text-sm chngepaswd"
                 onClick={handleChangePassword}
               >
                 Change Password
               </li>
               <li
-                className="px-4 py-2 hover:bg-[#f5f5f5] cursor-pointer text-sm text-[#25282B]"
+                className="px-4 py-2 cursor-pointer text-sm logoutbtn"
                 onClick={handleLogout}
               >
                 Logout

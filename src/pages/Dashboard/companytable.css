@@ -9,7 +9,7 @@
 
 .companytable {
   border-color: #E9E9E9;
-  max-height: 540.88px;
+  max-height: 537px;
   overflow: hidden;
 }
 
@@ -216,6 +216,13 @@
   font-weight: 400;
   font-size: 12px;
   margin-left: 5px;
+}
+
+.companytable.dark .rightborder {
+  border-right: 1px solid #343434;
+}
+.companytable.dark .tabledateres {
+  background-color: #1C1C24;
 }
 }
 
