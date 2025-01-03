@@ -42,3 +42,9 @@
     src: url('../src/assets/fonts/Switzer/Switzer-Semibold.otf') format('truetype');
     font-style: normal;
   }
+
+  @font-face {
+    font-family: 'Switzer Medium';
+    src: url('../src/assets/fonts/Switzer/Switzer-Medium.otf') format('truetype');
+    font-style: normal;
+  }

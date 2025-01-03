@@ -2,13 +2,15 @@
   font-family: 'Switzer SemiBold';
   font-size: 24px;
   color: #25282B;
-  width: 40%;
+  
   line-height: 31.68px;
   padding: 1.25rem;
 }
 
 .companytable {
   border-color: #E9E9E9;
+  max-height: 534.88px;
+  overflow: hidden;
 }
 
 .theads {

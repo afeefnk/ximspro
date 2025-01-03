@@ -207,74 +207,13 @@ const Dashboard = () => {
     // Other company entries...
   ]);
 
-
-
-
-
-
-
-
-
-
-
-
   // Recent activities data
   const activities = [
-    {
-      title: "PSM Thomassen Gulf (PTG) Uploaded Policy",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      icon: activityIcon,
-    },
-    {
-      title: "Direct Shipping Uploaded Manual",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      icon: activityIcon,
-    },
-    {
-      title: "Direct Shipping Uploaded Manual",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      icon: activityIcon,
-    },
-    {
-      title: "Direct Shipping Uploaded Manual",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      icon: activityIcon,
-    },
-    {
-      title: "Direct Shipping Uploaded Manual",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      icon: activityIcon,
-    },
-    {
-      title: "Direct Shipping Uploaded Manual",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      icon: activityIcon,
-    },
-    {
-      title: "Direct Shipping Uploaded Manual",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      icon: activityIcon,
-    },
-    {
-      title: "Direct Shipping Uploaded Manual",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      icon: activityIcon,
-    },
-    {
-      title: "Direct Shipping Uploaded Manual",
-      date: "Dec 19, 2013",
-      time: "07:40 am",
-      icon: activityIcon,
-    },
-    // Other activities...
+    { id: '01', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Dec 19, 2013' },
+    { id: '02', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Dec 19, 2013' },
+    { id: '03', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Dec 19, 2013' },
+    { id: '04', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Dec 19, 2013' },
+    { id: '05', company: 'PSM Thomassen Gulf (PTG)', expiryDate: 'Dec 19, 2013' } 
   ];
 
   return (
