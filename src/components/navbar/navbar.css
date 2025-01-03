@@ -307,11 +307,11 @@
     .icons {
         transform: translateY(15%);
     }
-    .bellimg, .settingimg, .imgdashicon {
+    .bellimg, .settingimg, .imgdashicon, .theme-icon {
         width: 17px;
         height: 17px;
     }
-    .bellicon, .settingicon, .dashboardicon {
+    .bellicon, .settingicon, .dashboardicon, .toggle-theme-btn {
         width: 36px;
         height: 36px;
     }
@@ -326,11 +326,11 @@
         width: 139px;
         transform: translateY(27%);
     }
-    .bellicon, .settingicon, .dashboardicon {
+    .bellicon, .settingicon, .dashboardicon, .toggle-theme-btn {
         width: 36px;
         height: 36px;
     }
-    .bellimg, .settingimg, .imgdashicon {
+    .bellimg, .settingimg, .imgdashicon, .theme-icon {
         width: 17px;
         height: 17px;
     }
@@ -345,11 +345,11 @@
         width: 120px;
         transform: translateY(39%);
     }
-    .bellimg, .settingimg, .imgdashicon {
+    .bellimg, .settingimg, .imgdashicon, .theme-icon {
         width: 15px;
         height: 15px;
     }
-    .bellicon, .settingicon, .dashboardicon {
+    .bellicon, .settingicon, .dashboardicon, .toggle-theme-btn {
         width: 30px;
         height: 30px;
     }
@@ -367,11 +367,11 @@
     .icons {
         transform: translateY(20%);
     }
-    .bellimg, .settingimg, .imgdashicon {
+    .bellimg, .settingimg, .imgdashicon, .theme-icon {
         width: 14px;
         height: 14px;
     }
-    .bellicon, .settingicon, .dashboardicon {
+    .bellicon, .settingicon, .dashboardicon, .toggle-theme-btn {
         width: 27px;
         height: 27px;
     }
