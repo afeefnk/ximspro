@@ -4,8 +4,10 @@ import logo from "../../assets/images/logo.svg";
 import dashboard from "../../assets/images/Sidebar/dashboard.svg";
 import company from "../../assets/images/Sidebar/company.svg";
 import "./sidebar.css";
+import { useTheme } from "../../ThemeContext";
 
 const Sidebar = () => {
+  const { theme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -29,7 +31,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="h-screen bg-[#F7F7F7] border-r border-[#E9E9E9] flex flex-col items-center transition-all duration-300 mainsidebar">
+    <div className={`h-screen border-r flex flex-col items-center transition-all duration-300 mainsidebar ${theme === "dark" ? "dark" : "light"}`}>
       {/* Logo */}
       <img src={logo} alt="XIMSpro Logo" className="logo mb-8" />
 

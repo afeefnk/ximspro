@@ -2,8 +2,11 @@ import React from "react";
 import Navbar from "../components/navbar/Navbar";
 import Sidebar from "../components/sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
+import "./layout.css";
+import { useTheme } from "../ThemeContext";
 
 const Layout = () => {
+  const { theme } = useTheme();
   return (
     <div className="flex h-screen overflow-hidden">
       {/* Sidebar */}
@@ -15,7 +18,7 @@ const Layout = () => {
         <Navbar />
 
         {/* Main Content */}
-        <div className="flex-1 overflow-y-auto p-4">
+        <div className={`flex-1 overflow-y-auto p-4 transition-all duration-300 outlets ${theme === "dark" ? "dark" : "light"}`}>
           <Outlet />
         </div>
       </div>

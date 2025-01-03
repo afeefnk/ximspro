@@ -13,6 +13,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./companies.css";
 import { BASE_URL } from "../../Utils/Config";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "../../ThemeContext";
 
 const Companies = () => {
   const [companies, setCompanies] = useState([]);
@@ -21,6 +22,7 @@ const Companies = () => {
   const [activeDropdown, setActiveDropdown] = useState(false);
   const itemsPerPage = 10;
   const navigate = useNavigate();
+   const { theme } = useTheme();
 
   // Fetch companies data from the API when the component mounts
   useEffect(() => {
@@ -182,14 +184,14 @@ const Companies = () => {
 
   return (
     <div>
-      <div className="border rounded-lg main">
-        <h1 className="text-[#25282B] cmpilisthead">Companies</h1>
+      <div className={`border rounded-lg main ${theme === "dark" ? "dark" : "light"}`}>
+        <h1 className="cmpilisthead">Companies</h1>
         <div className="lg:flex gap-3 p-5 navcomitems">
           <div className="relative">
             <input
               type="text"
               placeholder="Search..."
-              className="border border-[#E9E9E9] rounded focus:outline-none search"
+              className="border rounded focus:outline-none search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -208,7 +210,7 @@ const Companies = () => {
               Export to CSV
             </button>
             <button
-              className="bg-[#1BC194] duration-200 text-white rounded hover:bg-[#21ab86] topbtn addcmpny gap-2"
+              className="duration-200 rounded hover:bg-[#21ab86] topbtn addcmpny gap-2"
               onClick={handleAddCompany}
             >
               <img src={addicon} alt="Add" className="w-4 h-4" />
@@ -220,8 +222,8 @@ const Companies = () => {
 
         <div className="overflow-x-auto w-full">
           <table className="companieslist">
-            <thead className="lg:border-t border-[#E9E9E9] listheads">
-              <tr className="bg-[#F7F7F7] lg:border-b comhead">
+            <thead className="lg:border-t  listheads">
+              <tr className="lg:border-b comhead">
                 <th className="companiesthead companiestheadsl">Sl</th>
                 <th className="text-start companiestheadlogo">Logo</th>
                 <th className="text-start companiesthead compnyname">

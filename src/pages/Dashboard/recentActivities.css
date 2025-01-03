@@ -2,7 +2,7 @@
   max-height: 655px; 
   overflow-y: auto; 
   overflow-x: auto; 
-  
+  border: 1px solid #E9E9E9;
 }
 
 .recent-activities .recenthead {
@@ -28,6 +28,19 @@
   box-shadow: 1px 1px 50px rgba(105, 105, 105, 0.1);
   height: 72px;
   border-radius: 6px;
+  border: 1px solid #E9E9E9;
+}
+
+.recent-activities .accards:hover {
+  background-color: #f3f4f6;
+}
+
+.icon-container {
+  background-color: #FAF7E7;
+}
+
+.activitytitle {
+  color: #25282B;
 }
 
 .activity-details p:first-child {
@@ -54,6 +67,37 @@
 .recent-activities {
   scrollbar-width: thin; 
   scrollbar-color: #dbdbdb #f5f5f5; 
+}
+
+
+
+.recent-activities.dark {
+  border: 1px solid #343434;
+  scrollbar-width: thin;
+  scrollbar-color: #373737 #1C1C24;
+}
+
+.recent-activities.dark .recenthead {
+  background-color: #13131A; 
+  color: white;
+}
+
+.recent-activities.dark .accards {
+  border: 1px solid #343434;
+  background-color: #1C1C24;
+  box-shadow: none;
+}
+
+.recent-activities.dark .accards:hover {
+  background-color: rgb(14, 14, 14);
+}
+
+.recent-activities.dark .icon-container {
+  background-color: #1B1B1B;
+}
+
+.recent-activities.dark .activitytitle {
+  color: white;
 }
 
 

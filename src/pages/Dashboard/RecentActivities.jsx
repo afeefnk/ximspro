@@ -1,17 +1,20 @@
 import React from "react";
 import "./recentActivities.css";
+import { useTheme } from "../../ThemeContext";
 
 const RecentActivities = ({ activities }) => {
+   const { theme } = useTheme();
+
   return (
-    <div className="border border-[#E9E9E9] rounded-lg recent-activities">
-      <h2 className="text-[#25282B] recenthead">Companies<br/>Recent Activities</h2>
+    <div className={`border rounded-lg recent-activities ${theme === "dark" ? "dark" : "light"}`}>
+      <h2 className="recenthead">Companies<br/>Recent Activities</h2>
       <div className="lg:space-y-4 mb-3">
         {activities.map((activity, index) => (
           <div
             key={index}
-            className="border border-[#E9E9E9] cursor-pointer hover:bg-gray-100 accards"
+            className="border cursor-pointer accards"
           >
-            <div className="icon-container flex items-center justify-center w-10 h-10 rounded-full bg-[#FAF7E7]">
+            <div className="icon-container flex items-center justify-center w-10 h-10 rounded-full">
               <img
                 src={activity.icon}
                 alt="Activity Icon"
@@ -19,7 +22,7 @@ const RecentActivities = ({ activities }) => {
               />
             </div>
             <div className="activity-details">
-              <p className="text-[#25282B]">{activity.title}</p>
+              <p className="activitytitle">{activity.title}</p>
               <p className="text-[#677487]">
                 {activity.date}
                 <span className="text-[#898989] ml-2">{activity.time}</span>

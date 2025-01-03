@@ -2,6 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  border-color: #E9E9E9;
 }
 
 .cmpilisthead {
@@ -9,12 +10,14 @@
   font-family: 'Switzer SemiBold';
   font-size: 24px;
   line-height: 27.77px;
+  color: #25282B;
 }
 
 .search {
   width: 266px;
   height: 40px;
   padding: 0px 10px;
+  border-color: #E9E9E9;
 }
 
 .search::placeholder {
@@ -37,6 +40,8 @@
 .addcmpny {
   width: 169px;
   height: 40px;
+  color: white;
+  background-color: #1BC194;
 }
 
 .excsv {
@@ -103,8 +108,8 @@ tr {
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: #fafafa;
   height: 30px;
+  border-top: 1px solid #E9E9E9;
 }
 .companiesthead {
   font-family: "Switzer Regular";
@@ -212,6 +217,62 @@ tr {
 .topbtns {
   display: flex;
 }
+
+.comhead {
+  background-color: #F7F7F7;
+}
+
+.main.dark {
+  border-color: #343434;
+}
+
+.main.dark .cmpilisthead {
+  color: white;
+}
+
+.main.dark .search {
+  background-color: #13131A;
+  border-color: #343434;
+  color: #677487;
+}
+
+.main.dark .search::placeholder {
+  color: #677487;
+}
+
+.main.dark .listserachicon {
+  filter: brightness(0) saturate(100%) invert(49%) sepia(22%) saturate(386%) hue-rotate(176deg) brightness(86%) contrast(82%);
+}
+
+.main.dark .addcmpny { 
+  color: #0D0D0D;
+  background-color: #1FD8A3;
+}
+
+.main.dark .addcmpny img { 
+  filter: brightness(0) saturate(100%) invert(0%) sepia(3%) saturate(7489%) hue-rotate(111deg) brightness(98%) contrast(91%);
+}
+
+.main.dark .listheads  { 
+  border-top: 1px solid #232323;
+}
+
+.main.dark .comhead { 
+  background-color: #1C1C24;
+}
+
+.main.dark .companiesthead { 
+  color: #ADADAD;
+}
+
+.main.dark .companiestheadlogo {
+  color: #ADADAD;
+}
+
+
+
+
+
 
 
 @media (min-width: 501px) and (max-width:1025px) {

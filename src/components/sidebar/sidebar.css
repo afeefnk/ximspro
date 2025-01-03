@@ -1,5 +1,7 @@
 .mainsidebar {
   width: 127px;
+  background-color: #f7f7f7;
+  border-color: #E9E9E9;
 }
 
 .mainsidebar .logo {
@@ -14,6 +16,8 @@
   height: 49px;
   padding: 8px 0;
   transition: all 0.3s ease-in-out;
+  border-right: 3px solid transparent;
+  border-left: 3px solid transparent;
 }
 
 .mainsidebar .item .sideicon {
@@ -61,15 +65,45 @@
   gap: 20px;
 }
 
+.mainsidebar.dark {
+  background-color: #1c1c24;
+  border-right: 1px solid #232323;
+}
+
+.mainsidebar.dark .logo {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
+    hue-rotate(180deg) brightness(105%) contrast(100%);
+}
+
+.mainsidebar.dark .item.active .sideicon {
+  filter: brightness(0) saturate(100%) invert(38%) sepia(88%) saturate(431%) hue-rotate(152deg) brightness(97%) contrast(93%);
+}
+
+.mainsidebar.dark .item.active .spans {
+  color: #1E84AF;
+}
+
+.mainsidebar.dark .item.active {
+  border-right: 3px solid #1E84AF;
+  border-left: 3px solid transparent;
+}
+
+
+
+
+
+
+
+
+
 /* Responsive Styles */
-@media (min-width: 501px) and (max-width:821px) {
+@media (min-width: 501px) and (max-width: 821px) {
   .sidebartab {
     margin-top: 3rem;
   }
   .mainsidebar .item {
     margin-top: 2rem;
   }
- 
 }
 @media (max-width: 500px) {
   .mainsidebar .item {

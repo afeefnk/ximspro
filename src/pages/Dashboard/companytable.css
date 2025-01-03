@@ -7,6 +7,10 @@
   padding: 1.25rem;
 }
 
+.companytable {
+  border-color: #E9E9E9;
+}
+
 .theads {
   position: sticky;
   top: 0;
@@ -55,6 +59,20 @@
   line-height: 18px;
 }
 
+.activestate {
+  background-color: #dcfce7;
+  color: #24D6A5;
+}
+
+.blockedstate {
+  background-color: #ede9fe;
+  color: #8239BC;
+}
+
+.cmytble:hover {
+  background-color: #f3f4f6;
+}
+
 .status {
   padding: 5px 8px;
   border-radius: 4px;
@@ -74,6 +92,45 @@
   scrollbar-width: thin;
   scrollbar-color: #dbdbdb #f5f5f5;
 }
+
+
+.companytable.dark {
+  border-color: #343434;
+}
+
+.companytable.dark .regcompany {
+  color: white;
+}
+
+.companytable.dark .theads {
+  background-color: #1C1C24;
+}
+
+.companytable.dark .data {
+  border-bottom: 1px solid #343434;
+  color: #D4D7DA;
+}
+
+.companytable.dark .cmytble:hover  {
+ background-color: rgb(14, 14, 14);
+}
+
+.companytable.dark .blockedstate {
+ background-color: #E310101C;
+ color: #E13F23;
+}
+
+.companytable.dark .activestate {
+ background-color: #36DDAE1C;
+ color: #36DDAE;
+}
+
+.companytable.dark .table-container {
+  scrollbar-width: thin;
+  scrollbar-color: #373737 #1C1C24;
+}
+
+
 
 @media (min-width: 432px) {
   .headingdate, .tabledateres {

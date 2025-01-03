@@ -44,6 +44,7 @@
     font-family: 'Switzer Light';
     font-weight: 400;
     font-size: 16px;
+    color: #25282B;
 }
 
 .span4 {
@@ -92,6 +93,86 @@
     filter: brightness(100%) saturate(0%);
   }
 
+
+
+
+
+  
+
+/* Dark Theme */
+.toggle-theme-btn {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #e9e9e9;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  /* Icon Styles */
+  .theme-icon {
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease;
+  }
+
+@keyframes rotateIcon {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Define a class to apply the animation */
+  .theme-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .rotate {
+    animation: rotateIcon 0.5s ease-in-out;
+  }
+  
+
+  .navbar.dark {
+    background-color: #13131A;
+    border-bottom: 1px solid #343434;
+  }
+
+
+  .span2.light {
+    color: #25282B;
+  }
+
+  .span2.dark {
+    color: white;
+  }
+
+  .icon-button.dark {
+    border: 1.6px solid #343434;
+}
+
+.divider.dark {
+    background-color: #343434;
+    width: 1.6px;
+}
+.span3.dark {
+    color: white;
+}
+
+
+.bellicon.dark img, .settingicon.dark img, .toggle-theme-btn.dark img {
+    filter: brightness(0) saturate(100%) invert(85%) sepia(0%) saturate(0%) hue-rotate(180deg) brightness(105%) contrast(100%);
+}
+
+
+  
 
 
 

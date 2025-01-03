@@ -1,10 +1,13 @@
 import React from "react";
 import "./companytable.css";
+import { useTheme } from "../../ThemeContext";
 
 const CompanyTable = ({ companies }) => {
+  const { theme } = useTheme();
+
   return (
-    <div className="border border-[#E9E9E9] rounded-lg companytable">
-      <h4 className=" text-[#25282B] regcompany">
+    <div className={`border rounded-lg companytable ${theme === "dark" ? "dark" : "light"}`}>
+      <h4 className="regcompany">
         Recent Registered Companies
       </h4>
       <div className="table-container">
@@ -23,7 +26,7 @@ const CompanyTable = ({ companies }) => {
           </thead>
           <tbody>
             {companies.map((company, index) => (
-              <tr key={index} className="hover:bg-gray-100 cursor-pointer">
+              <tr key={index} className="cursor-pointer cmytble">
                 <td className="index data">
                   {index + 1 < 10 ? `0${index + 1}` : index + 1}
                 </td>
@@ -46,8 +49,8 @@ const CompanyTable = ({ companies }) => {
                   <span
                     className={`status ${
                       company.status === "Active"
-                        ? "bg-green-100 text-[#24D6A5]"
-                        : "bg-violet-100 text-[#8239BC]"
+                        ? "activestate"
+                        : "blockedstate"
                     }`}
                   >
                     {company.status}
